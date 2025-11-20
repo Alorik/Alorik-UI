@@ -5,7 +5,7 @@ import {Input} from "@/components/Input1";
 export default function Home() {
   return (
     <div>
-
+<div></div>
       <Button1 />
     </div>
   );
