@@ -5,8 +5,8 @@ import Input from "@/components/Input1";
 export default function Home() {
   return (
     <div>
-<Input />
-      {/* <Button1 /> */}
+{/* <Input /> */}
+      <Button1 />
     </div>
   );
 }
