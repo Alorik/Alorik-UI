@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "motion/react";
 
-const AgencyButton = ({ children }) => {
+const AgencyButton = ({ children }: { children: string }) => {
   return (
     <motion.button
       whileTap={{ scale: 0.97 }}
@@ -13,8 +13,8 @@ const AgencyButton = ({ children }) => {
           {children}
         </div>
         {/* layer2 */}
-        <div className="inset-0 absolute translate-y-[150%] group-hover:translate-y-0 ease-in-out flex items-center justify-center gap-2">
-          
+        <div className="inset-0 absolute translate-y-[150%] group-hover:translate-y-0 ease-in-out flex items-center justify-center gap-2 transition-transform duration-300">
+
           <span className="text-white">Proceed</span>
         </div>
       </div>
