@@ -1,21 +1,22 @@
 import BeamButton from "@/components/BeamButton";
 import Button1 from "@/components/Button1";
 import Button2 from "@/components/Button2";
+import SlideButton from "@/components/Card";
+import InteractiveCard from "@/components/Card";
+import CosmicBorderBeam from "@/components/CosmicBorder";
 import HolographicCard from "@/components/fifth";
 import Input from "@/components/Input1";
 import Spotlight from "@/components/Sixth";
 
-
 export default function Home() {
   return (
     <div>
-<Input />
-      <Button1 /> 
- <Button2 /> 
-
-
+      <Input />
+      <Button1 />
+      <Button2 />
       <BeamButton />
-
+<SlideButton />
+      {/* <CosmicBorderBeam /> */}
     </div>
   );
 }

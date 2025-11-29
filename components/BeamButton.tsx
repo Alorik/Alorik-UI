@@ -17,7 +17,6 @@ export default function BeamButton() {
           <span className="text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-400 via-white to-slate-400 bg-[length:200%_auto] animate-[beam-slide_2s_linear_infinite]">
             Unlock Potential
           </span>
-
           <ArrowRight
             className="text-slate-500 group-hover:text-white group-hover:translate-x-1 transition-all"
             size={20}
