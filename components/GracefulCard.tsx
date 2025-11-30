@@ -2,14 +2,21 @@
 
 import { motion } from "motion/react";
 
-const GracefulCard = ({ subtitle, title, description, color = "indigo" }) => {
-  const colors = {
-    indigo: "from-indigo-500/20 via-purple-200 to-slate-900",
-    emerald: "from-emerald-500 via-teal-500 to-slate-900",
-    rose: "from-rose-500 via-pink-500 to-slate-900",
-  };
+const GracefulCard = ({ subtitle, title, description, color = "depth" }) => {
+const colors = {
+  midnight: "from-slate-900 via-indigo-400 to-slate-900",
+  abyss: "from-gray-900 via-purple-400 to-gray-900",
+  shadow: "from-black via-blue-500 to-black",
+  twilight: "from-slate-950 via-violet-400 to-slate-950",
+  void: "from-neutral-900 via-cyan-400 to-neutral-900",
+  eclipse: "from-zinc-900 via-rose-400 to-zinc-900",
+  nebula: "from-slate-900 via-fuchsia-400 to-slate-900",
+  phantom: "from-gray-950 via-emerald-400 to-gray-950",
+  depth: "from-black via-teal-500 to-black",
+  cosmos: "from-slate-950 via-pink-400 to-slate-950",
+};
 
-  const accentColor = colors[color] || colors.indigo;
+  const accentColor = colors[color] || colors.eclipse;
 
    const slideUp = {
      rest: { y: 0 },
@@ -30,10 +37,9 @@ const GracefulCard = ({ subtitle, title, description, color = "indigo" }) => {
     >
       {/* bg layer */}
       <div
-        className={`absolute inset-0 bg-gradient-to-br ${
-          colors[color] || colors.indigo
-        } opacity-50 transition-transform duration-700 group-hover:scale-110`}
+        className={`absolute inset-0 bg-gradient-to-br ${accentColor} opacity-50 transition-transform duration-700 group-hover:scale-110`}
       />
+      <div className="absolute inset-0 opacity-5 bg-gradient-to-br from-white/10 via-transparent to-white/10 backdrop-blur-3xl" />
 
       <div className="absolute inset-0 flex flex-col justify-end p-6">
         <div className="mb-4 h-px w-full bg-gradient-to-r from-slate-500/30 to-transparent" />
