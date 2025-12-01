@@ -8,6 +8,7 @@ import HolographicCard from "@/components/fifth";
 import Input from "@/components/Input1";
 import Spotlight from "@/components/Sixth";
 import GracefulHoverCard from "@/components/GracefulCard";
+import StackCard from "@/components/StackedCard";
 
 export default function Home() {
   return (
@@ -18,6 +19,7 @@ export default function Home() {
       <BeamButton />
 <SlideButton />
       <GracefulHoverCard />
+      <StackCard />
     </div>
   );
 }
