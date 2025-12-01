@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 
 
 
-const StackedCard = ({ title, date, category, color = "indigo" }) => {
+const StackedCard = ({ title, date, category, color = "indigo" }:{ title :string, date:number, category:string, color: string}) => {
   const colors = {
     indigo: "bg-indigo-500",
     rose: "bg-rose-500",
