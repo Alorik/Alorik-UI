@@ -1,16 +1,24 @@
-"use client"
+"use client";
 import { motion } from "motion/react";
 
-
-
-const StackedCard = ({ title, date, category, color = "indigo" }:{ title :string, date:number, category:string, color: string}) => {
+const StackedCard = ({
+  title,
+  date,
+  category,
+  color = "rose",
+}: {
+  title: string;
+  date: number;
+  category: string;
+  color: string;
+}) => {
   const colors = {
-    indigo: "bg-indigo-500",
+    indigo: "bg-gradient-to-r from-indigo-400 to-indigo-900",
     rose: "bg-rose-500",
     emerald: "bg-emerald-500",
   };
 
-  const accentColor = colors[color] || colors.indigo;
+  const accentColor = colors[color] || colors.rose;
 
   return (
     <motion.div
@@ -54,18 +62,13 @@ const StackedCard = ({ title, date, category, color = "indigo" }:{ title :string
           </div>
           <div className="bg-clip-text bg-gradient-to-r from-slate-400 from-10% to-slate-700 to-90% text-transparent font-bold">
             {category}
-         
-          <p className="text-slate-300 mt-3 text-2xl">
-            {title}
-          </p>
+            <p className="text-slate-300 mt-3 text-3xl">{title}</p>
           </div>
-          </div>
+        </div>
       </motion.div>
     </motion.div>
   );
 };
-
-
 
 export default function StackCard() {
   return (
