@@ -7,6 +7,7 @@ import GracefulHoverCard from "@/components/GracefulCard";
 import StackCard from "@/components/StackedCard";
 import HoverReveal from "@/components/NavRecveal";
 import ExpandableCard from "@/components/ExpandableCards";
+import HoveredCard from "@/components/HoveredCard";
 
 export default function Home() {
   return (
@@ -19,7 +20,8 @@ export default function Home() {
       <GracefulHoverCard />
       <StackCard />
 
-        <ExpandableCard />
+      <ExpandableCard />
+<HoveredCard />
     
       {/* <HoverReveal /> */}
     </div>
