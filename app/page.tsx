@@ -6,6 +6,7 @@ import Input from "@/components/Input1";
 import GracefulHoverCard from "@/components/GracefulCard";
 import StackCard from "@/components/StackedCard";
 import HoverReveal from "@/components/NavRecveal";
+import ExpandableCard from "@/components/ExpandableCards";
 
 export default function Home() {
   return (
@@ -17,6 +18,9 @@ export default function Home() {
       <SlideButton />
       <GracefulHoverCard />
       <StackCard />
+
+        <ExpandableCard />
+    
       {/* <HoverReveal /> */}
     </div>
   );
