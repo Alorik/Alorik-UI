@@ -8,6 +8,7 @@ import StackCard from "@/components/StackedCard";
 import HoverReveal from "@/components/NavRecveal";
 import ExpandableCard from "@/components/ExpandableCards";
 import HoveredCard from "@/components/HoveredCard";
+import BreadCrumb from "@/components/Navigation/BreadCrumb";
 
 export default function Home() {
   return (
@@ -19,9 +20,9 @@ export default function Home() {
       <SlideButton />
       <GracefulHoverCard />
       <StackCard />
-
       <ExpandableCard />
-<HoveredCard />
+      <HoveredCard />
+      <BreadCrumb />
     
       {/* <HoverReveal /> */}
     </div>
