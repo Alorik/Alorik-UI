@@ -84,7 +84,7 @@ export default function Timeline2() {
       </div>
 
       <div className="relative w-full max-w-6xl mx-auto">
-        <div className="absolute left-0 top-0 right-0 h-1 bg-slate-800 rounded-full overflow-hidden mb-8 z-10">
+        <div className="absolute left-0 top-0 right-0 h-1 bg-slate-800 rounded-full overflow-hidden mb-8 z-10 p-1">
           <motion.div
             style={{
               scaleX,
