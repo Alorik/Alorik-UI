@@ -1,0 +1,116 @@
+"use client";
+import React from "react";
+import { motion } from "framer-motion";
+import { Flag, Star, Rocket, Trophy, Globe, Zap } from "lucide-react";
+
+const events = [
+  {
+    year: "2020",
+    title: "The Inception",
+    description: "Founded in a garage with a vision to democratize AI for everyone. The core engine v1.0 was released.",
+    icon: Flag,
+    color: "bg-blue-500",
+  },
+  {
+    year: "2021",
+    title: "Series A Funding",
+    description: "Secured $10M to expand the engineering team and scale infrastructure globally.",
+    icon: Rocket,
+    color: "bg-purple-500",
+  },
+  {
+    year: "2022",
+    title: "Global Expansion",
+    description: "Opened offices in Tokyo, London, and Berlin. User base grew by 400% year-over-year.",
+    icon: Globe,
+    color: "bg-cyan-500",
+  },
+  {
+    year: "2023",
+    title: "Product Breakthrough",
+    description: "Launched the 'Neural Sync' feature, revolutionizing real-time data processing speeds.",
+    icon: Zap,
+    color: "bg-amber-500",
+  },
+  {
+    year: "2024",
+    title: "Market Leader",
+    description: "Recognized as the top innovator in the sector. Integration with major enterprise partners complete.",
+    icon: Trophy,
+    color: "bg-emerald-500",
+  },
+  {
+    year: "2025",
+    title: "The Next Frontier",
+    description: "R&D begins on quantum-resistant encryption modules for the next generation of web security.",
+    icon: Star,
+    color: "bg-rose-500",
+  },
+];
+
+const TimelineItem = ({ event, index }) => {
+  const isEven = index % 2 === 0;
+
+  return (
+    <div className={`mb-8 flex justify-between items-center w-full ${isEven ? "flex-row-reverse" : ""}`}>
+      
+      {/* 1. EMPTY SPACE (for alignment) */}
+      <div className="order-1 w-5/12" />
+
+      {/* 2. CENTRAL NODE */}
+      <div className="z-20 flex items-center order-1 bg-slate-900 shadow-xl w-10 h-10 rounded-full border-4 border-slate-800">
+        <div className={`w-full h-full rounded-full flex items-center justify-center ${event.color} bg-opacity-20 text-white`}>
+          <event.icon size={14} />
+        </div>
+      </div>
+
+      {/* 3. CONTENT CARD */}
+      <motion.div
+        initial={{ opacity: 0, x: isEven ? -50 : 50 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+        className="order-1 w-5/12 cursor-pointer group"
+      >
+        <div className="bg-slate-900/50 border border-slate-800 rounded-xl p-6 hover:bg-slate-800/80 transition-all duration-300 hover:border-slate-700 shadow-lg">
+          
+          {/* Header */}
+          <div className={`flex items-center gap-3 mb-3 ${isEven ? "flex-row-reverse text-right" : ""}`}>
+             <span className={`text-2xl font-bold text-slate-200 group-hover:text-white transition-colors`}>
+               {event.year}
+             </span>
+             <span className={`h-px w-8 ${event.color}`} />
+          </div>
+          
+          {/* Body */}
+          <div className={isEven ? "text-right" : "text-left"}>
+            <h3 className="text-lg font-semibold text-white mb-2">{event.title}</h3>
+            <p className="text-sm text-slate-400 leading-relaxed">
+              {event.description}
+            </p>
+          </div>
+
+        </div>
+      </motion.div>
+    </div>
+  );
+};
+
+export default function Timeline() {
+  return (
+    <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center py-20 px-4">
+
+      <div className="relative w-full max-w-4xl">
+        
+        {/* CENTRAL LINE */}
+        <div className="absolute left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-slate-800" />
+        
+        {/* EVENTS */}
+        {events.map((event, index) => (
+          <TimelineItem key={index} event={event} index={index} />
+        ))}
+
+      </div>
+    </div>
+  );
+}

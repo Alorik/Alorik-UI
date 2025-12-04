@@ -1,20 +1,21 @@
-import BeamButton from "@/components/BeamButton";
-import Button1 from "@/components/Button1";
-import Button2 from "@/components/Button2";
-import SlideButton from "@/components/SlideUpButton";
-import Input from "@/components/Input1";
-import GracefulHoverCard from "@/components/GracefulCard";
-import StackCard from "@/components/StackedCard";
-import HoverReveal from "@/components/NavRecveal";
-import ExpandableCard from "@/components/ExpandableCards";
-import HoveredCard from "@/components/HoveredCard";
+import BeamButton from "@/components/Button/BeamButton";
+import Button1 from "@/components/Button/Button1";
+import Button2 from "@/components/Button/Button2";
+import ExpandableCard from "@/components/Card/ExpandableCards";
+import GracefulHoverCard from "@/components/Card/GracefulCard";
+import HoveredCard from "@/components/Card/HoveredCard";
+import StackCard from "@/components/Card/StackedCard";
+import Timeline2 from "@/components/DataDisplay/Timeline2";
+import InputComponent from "@/components/Input1";
 import BreadCrumb from "@/components/Navigation/BreadCrumb";
+import SlideButton from "@/components/SlideUpButton";
+
 
 export default function Home() {
   return (
     <div>
-      <Input />
-      <Button1 />
+      <InputComponent />
+     <Button1 />
       <Button2 />
       <BeamButton />
       <SlideButton />
@@ -23,7 +24,7 @@ export default function Home() {
       <ExpandableCard />
       <HoveredCard />
       <BreadCrumb />
-    
+      <Timeline2 />
       {/* <HoverReveal /> */}
     </div>
   );
