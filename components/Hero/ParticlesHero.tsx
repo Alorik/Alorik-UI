@@ -146,6 +146,10 @@ export default function ParticlesHero() {
       className="relative min-h-screen bg-slate-950 flex items-center justify-center"
     >
       <canvas ref={canvasRef} className="absolute inset-0"></canvas>
+      <div className="relative z-10 text-center text-white">
+        <h1 className="text-6xl font-bold mb-4">Particle Network</h1>
+        <p className="text-xl text-slate-300">Move your mouse to interact</p>
+      </div>
     </div>
   );
 }
