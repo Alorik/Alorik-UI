@@ -3,6 +3,9 @@ import { useEffect, useRef } from "react";
 
 export default function ParticlesHero() {
   const canvasRef = useRef(null);
+  const containerRef = useRef(null);
+  const mouse = useRef({ x: 0, y: 0 });
+  
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -11,39 +14,49 @@ export default function ParticlesHero() {
     const ctx = canvas.getContext("2d");
     let animationFrameId; // ← ADD THIS LINE!
 
+    let particles = [];
+    const particlesCount = 150;
+    const connectionDistance = 100;
+    const mouseDistance = 150;
+    
+
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
-    resize();
 
-class Particle {
-  constructor() {
-    this.x = Math.random() * canvas.width; // Random position
-    this.y = Math.random() * canvas.height;
-    this.vx = (Math.random() - 0.5) * 0.5; // Random velocity
-    this.vy = (Math.random() - 0.5) * 0.5;
-    this.size = Math.random() * 2;
-    this.color = "rgba(148, 163, 184, 0.5)"; // Gray color
-  }
 
-  update() {
-    // Move
-    this.x += this.vx;
-    this.y += this.vy;
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width; // Random position
+        this.y = Math.random() * canvas.height;
+        this.vx = (Math.random() - 0.5) * 0.5; // Random velocity
+        this.vy = (Math.random() - 0.5) * 0.5;
+        this.size = Math.random() * 2;
+        this.color = `rgba(148, 163, 184, ${Math.random()* 0.5 + 0.1})`; // Gray color
+      }
 
-    // Bounce
-    if (this.x < 0 || this.x > canvas.width) this.vx *= -1;
-    if (this.y < 0 || this.y > canvas.height) this.vy *= -1;
-  }
+      update() {
+        // Move
+        this.x += this.vx;
+        this.y += this.vy;
 
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.fillStyle = this.color;
-    ctx.fill();
-  }
-}
+        // Bounce
+        if (this.x < 0 || this.x > canvas.width){ this.vx *= -1};
+        if (this.y < 0 || this.y > canvas.height) { this.vy *= -1 };
+        
+        //mouserepulsion
+
+        
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+      }
+    }
 
     const particle = {
       x: canvas.width / 2,
@@ -53,8 +66,6 @@ class Particle {
       size: 3,
     };
 
-    const particles = [];
-    const particlesCount = 150;
 
     for (let i = 0; i < particlesCount; i++) {
       particles.push(new Particle());
