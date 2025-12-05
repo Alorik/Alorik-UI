@@ -47,7 +47,18 @@ export default function ParticlesHero() {
         
         //mouserepulsion
 
-        
+        const dx = mouse.current.x - this.x;
+        const dy = mouse.current.y - this.y;
+        const distance = Math.sqrt(dx * dx + dy *dy);
+        if (distance < mouseDistance) {
+          const forceDirectionX = dx / distance;
+          const forceDirectionY = dy / distance;
+          const force = (mouseDistance - distance) / mouseDistance;
+          const directionX = forceDirectionX * force * 3;
+          const directionY = forceDirectionY * force * 3;
+          this.x -= directionX;
+          this.y -= directionY;
+        }
       }
 
       draw() {
@@ -58,18 +69,13 @@ export default function ParticlesHero() {
       }
     }
 
-    const particle = {
-      x: canvas.width / 2,
-      y: canvas.height / 2,
-      vx: 2,
-      vy: 1,
-      size: 3,
-    };
-
-
-    for (let i = 0; i < particlesCount; i++) {
-      particles.push(new Particle());
-    }
+    const init = () => {
+      resize();
+      particles = [];
+      for (let i = 0; i < particlesCount; i++) {
+        particles.push(new Particle());
+      }
+    };   
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -100,18 +106,27 @@ export default function ParticlesHero() {
 
       animationFrameId = requestAnimationFrame(animate); // Now it works!
     };
-
-    animate(); // Start the animation
+    // Start the animation
 
     window.addEventListener("resize", resize);
+
+    const handleMouseMove = (e) => {
+      mouse.current.x = e.clientX;
+      mouse.current.y = e.clientY;
+    }
+    window.addEventListener("mousemove", handleMouseMove);
+    init();
+    animate();
+
     return () => {
       window.removeEventListener("resize", resize);
+      window.removeEventListener("mousemove", handleMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
   return (
-    <div className="relative min-h-screen bg-slate-950 flex items-center justify-center">
+    <div ref={containerRef} className="relative min-h-screen bg-slate-950 flex items-center justify-center">
       <canvas ref={canvasRef} className="absolute inset-0"></canvas>
     </div>
   );
