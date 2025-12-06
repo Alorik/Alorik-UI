@@ -6,6 +6,8 @@ import GracefulHoverCard from "@/components/Card/GracefulCard";
 import HoveredCard from "@/components/Card/HoveredCard";
 import StackCard from "@/components/Card/StackedCard";
 import Timeline2 from "@/components/DataDisplay/Timeline2";
+import GridBackground from "@/components/Hero/GridBackground";
+
 import ParticlesHero from "@/components/Hero/ParticlesHero";
 import InputComponent from "@/components/Input1";
 import BreadCrumb from "@/components/Navigation/BreadCrumb";
@@ -27,6 +29,8 @@ export default function Home() {
       <BreadCrumb />
       <Timeline2 />
       <ParticlesHero />
+      <GridBackground />
+      
       {/* <HoverReveal /> */}
     </div>
   );
