@@ -5,11 +5,11 @@ import ExpandableCard from "@/components/Card/ExpandableCards";
 import GracefulHoverCard from "@/components/Card/GracefulCard";
 import HoveredCard from "@/components/Card/HoveredCard";
 import StackCard from "@/components/Card/StackedCard";
+import AnimatedList from "@/components/DataDisplay/AnimatedList";
 import Timeline2 from "@/components/DataDisplay/Timeline2";
 import GridBackground from "@/components/Hero/GridBackground";
 
 import ParticlesHero from "@/components/Hero/ParticlesHero";
-import WaveHero from "@/components/Hero/WaveHero";
 import InputComponent from "@/components/Input1";
 import BreadCrumb from "@/components/Navigation/BreadCrumb";
 import SlideButton from "@/components/SlideUpButton";
@@ -31,7 +31,7 @@ export default function Home() {
       <Timeline2 />
       <ParticlesHero />
       <GridBackground />
-      <WaveHero />
+      <AnimatedList />
       {/* <HoverReveal /> */}
     </div>
   );
