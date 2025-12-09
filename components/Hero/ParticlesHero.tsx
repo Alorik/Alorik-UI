@@ -68,7 +68,7 @@ export default function ParticlesHero() {
 
     let animationFrameId: number;
     let particles: Particle[] = [];
-    const particlesCount = 150;
+    const particlesCount = 180;
     const connectionDistance = 100;
     const mouseDistance = 150;
 

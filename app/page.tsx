@@ -9,6 +9,7 @@ import Timeline2 from "@/components/DataDisplay/Timeline2";
 import GridBackground from "@/components/Hero/GridBackground";
 
 import ParticlesHero from "@/components/Hero/ParticlesHero";
+import WaveHero from "@/components/Hero/WaveHero";
 import InputComponent from "@/components/Input1";
 import BreadCrumb from "@/components/Navigation/BreadCrumb";
 import SlideButton from "@/components/SlideUpButton";
@@ -30,7 +31,7 @@ export default function Home() {
       <Timeline2 />
       <ParticlesHero />
       <GridBackground />
-      
+      <WaveHero />
       {/* <HoverReveal /> */}
     </div>
   );
