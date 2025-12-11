@@ -12,6 +12,7 @@ import GridBackground from "@/components/Hero/GridBackground";
 import ParticlesHero from "@/components/Hero/ParticlesHero";
 import InputComponent from "@/components/Input1";
 import BreadCrumb from "@/components/Navigation/BreadCrumb";
+import FloatingNav from "@/components/Navigation/FloatingNav";
 import SlideButton from "@/components/SlideUpButton";
 
 
@@ -32,6 +33,7 @@ export default function Home() {
       <ParticlesHero />
       <GridBackground />
       <AnimatedList />
+      <FloatingNav />
       {/* <HoverReveal /> */}
     </div>
   );
