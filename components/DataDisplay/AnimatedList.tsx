@@ -24,7 +24,7 @@ export default function AnimatedList() {
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
-              className="bg-slate-900 border border-slate-800 rounded-xl p-4 flex justify-between items-center group"
+              className="bg-slate-900 border border-slate-800 rounded-xl p-4 flex justify-between items-center group bg-gradient-to-r from-cyan-500/0 via-cyan-500/10 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity bg-[length:200%_auto] animate-[beam-slide_2s_linear_infinite]"
             >
               <div
                 className={`w-8 h-8 rounded-lg  bg-opacity-20 flex items-center justify-center text-white`}
