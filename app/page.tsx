@@ -5,6 +5,7 @@ import ExpandableCard from "@/components/Card/ExpandableCards";
 import GracefulHoverCard from "@/components/Card/GracefulCard";
 import HoveredCard from "@/components/Card/HoveredCard";
 import StackCard from "@/components/Card/StackedCard";
+import CursorFollower from "@/components/cursor/CursorFollower";
 import AnimatedList from "@/components/DataDisplay/AnimatedList";
 import Timeline2 from "@/components/DataDisplay/Timeline2";
 import GridBackground from "@/components/Hero/GridBackground";
@@ -34,6 +35,7 @@ export default function Home() {
       <GridBackground />
       <AnimatedList />
       <FloatingNav />
+      <CursorFollower />
       {/* <HoverReveal /> */}
     </div>
   );
