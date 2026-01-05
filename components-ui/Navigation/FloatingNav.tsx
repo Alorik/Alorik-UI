@@ -1,7 +1,7 @@
-"use client"
-import { Home, User, Briefcase, Mail, LayoutGrid } from "lucide-react";
+"use client";
+import React, { useState, useRef } from "react"; // Added useRef
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
-import { useState } from "react";
+import { Home, User, Briefcase, Mail, LayoutGrid } from "lucide-react";
 
 const navItems = [
   { name: "Home", icon: Home },
@@ -16,7 +16,8 @@ export default function FloatingNav() {
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
   const [lastY, setLastY] = useState(0);
-  
+  const scrollTimer = useRef(null);
+
   useMotionValueEvent(scrollY, "change", (latest) => {
     const difference = latest - lastY;
 
@@ -26,6 +27,14 @@ export default function FloatingNav() {
       setHidden(false);
     }
     setLastY(latest);
+
+    if (scrollTimer.current) {
+      clearTimeout(scrollTimer.current);
+    }
+
+    scrollTimer.current = setTimeout(() => {
+      setHidden(false);
+    }, 400);
   });
 
   return (

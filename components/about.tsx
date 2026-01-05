@@ -2,6 +2,8 @@
 import { useRef } from "react";
 import { motion } from "motion/react";
 import { ArrowRight, Terminal } from "lucide-react";
+import BeamButton from "@/components-ui/Button/BeamButton";
+import Button1 from "@/components-ui/Button/Button1";
 
 export default function AlorikHero() {
   const containerRef = useRef(null);
@@ -44,25 +46,24 @@ export default function AlorikHero() {
             />
           </motion.div>
 
-          {/* Title */}
-          <motion.h1
+          <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-6xl md:text-8xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-slate-900 via-slate-800 to-slate-500 mb-6 leading-[0.95]"
+            transition={{ delay: 0.2 }}
+            className="text-lg md:text-6xl max-w-lg font-bold leading-tighter mb-5 text-transparent bg-clip-text bg-linear-to-r from-10% to-60% from-slate-900 via-green-900 to-slate-900"
           >
-            Alorik UI
-          </motion.h1>
+            Where aesthetics meet performance
+          </motion.p>
 
           {/* Description */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg md:text-xl text-slate-500 max-w-lg mb-10 leading-relaxed font-medium"
+            className="text-lg md:text-2xl text-slate-700 max-w-lg mb-10 tracking-tight leading-relaxed font-medium"
           >
             The component library for developers who value{" "}
-            <span className="text-slate-900 font-semibold">aesthetics</span> as
+            <span className="text-slate-900 font-bold">aesthetics</span> as
             much as performance. Light mode optimized. Motion included.
           </motion.p>
 
@@ -83,6 +84,8 @@ export default function AlorikHero() {
         </div>
 
         {/* --- RIGHT COLUMN: 3D VISUAL --- */}
+        <BeamButton />
+        <Button1 />
       </div>
     </div>
   );
