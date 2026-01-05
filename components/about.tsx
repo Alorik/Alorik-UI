@@ -1,22 +1,10 @@
 "use client";
-import  { useRef } from "react";
-import {
-  motion,
-  useScroll,
-  useTransform,
-  useMotionValue,
-  useSpring,
-} from "motion/react";
-import { ArrowRight, Terminal, Zap, LayoutTemplate } from "lucide-react";
+import { useRef } from "react";
+import { motion } from "motion/react";
+import { ArrowRight, Terminal } from "lucide-react";
 
 export default function AlorikHero() {
   const containerRef = useRef(null);
-
-
-  // Mouse Tilt Logic
-
-
-
   return (
     <div
       ref={containerRef}
@@ -95,7 +83,6 @@ export default function AlorikHero() {
         </div>
 
         {/* --- RIGHT COLUMN: 3D VISUAL --- */}
-
       </div>
     </div>
   );
