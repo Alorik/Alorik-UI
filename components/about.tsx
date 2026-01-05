@@ -1,12 +1,13 @@
 "use client";
-import { useRef } from "react";
-import { motion } from "motion/react";
-import { ArrowRight, Terminal } from "lucide-react";
 import BeamButton from "@/components-ui/Button/BeamButton";
 import Button1 from "@/components-ui/Button/Button1";
+import { motion } from "framer-motion";
+import { ArrowRight, Terminal } from "lucide-react";
+import { useRef } from "react";
 
 export default function AlorikHero() {
   const containerRef = useRef(null);
+
   return (
     <div
       ref={containerRef}
@@ -50,7 +51,7 @@ export default function AlorikHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg md:text-6xl max-w-lg font-bold leading-tighter mb-5 text-transparent bg-clip-text bg-linear-to-r from-10% to-60% from-slate-900 via-green-900 to-slate-900"
+            className="text-4xl md:text-6xl max-w-lg font-bold leading-tight mb-5 text-transparent bg-clip-text bg-gradient-to-br from-slate-900 via-slate-700 to-slate-500"
           >
             Where aesthetics meet performance
           </motion.p>
@@ -60,11 +61,11 @@ export default function AlorikHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-lg md:text-2xl text-slate-700 max-w-lg mb-10 tracking-tight leading-relaxed font-medium"
+            className="text-lg md:text-xl text-slate-600 max-w-lg mb-10 tracking-tight leading-relaxed font-medium"
           >
             The component library for developers who value{" "}
-            <span className="text-slate-900 font-bold">aesthetics</span> as
-            much as performance. Light mode optimized. Motion included.
+            <span className="text-slate-900 font-bold">aesthetics</span> as much
+            as performance. Light mode optimized. Motion included.
           </motion.p>
 
           {/* Action Buttons */}
@@ -83,9 +84,45 @@ export default function AlorikHero() {
           </motion.div>
         </div>
 
-        {/* --- RIGHT COLUMN: 3D VISUAL --- */}
-        <BeamButton />
-        <Button1 />
+        {/* --- RIGHT COLUMN: 3D COMPONENT SHOWCASE --- */}
+        <div className="w-full relative z-20 flex justify-center lg:justify-end py-10">
+          <motion.div
+            style={{
+              transformStyle: "preserve-3d",
+            }}
+            className="relative w-full max-w-md"
+          >
+            <div className="relative w-full bg-white rounded-3xl border border-slate-200 shadow-[0_20px_60px_-15px_rgba(0,0,0,0.15)] overflow-hidden flex flex-col items-center p-8 gap-6 hover:shadow-[0_30px_80px_-20px_rgba(0,0,0,0.2)] transition-shadow duration-500">
+              {/* Window Controls */}
+              <div className="w-full flex items-center gap-2 mb-2 opacity-40">
+                <div className="w-3 h-3 rounded-full bg-red-400" />
+                <div className="w-3 h-3 rounded-full bg-yellow-400" />
+                <div className="w-3 h-3 rounded-full bg-green-400" />
+              </div>
+
+              {/* Background Grid inside Card */}
+              <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:20px_20px] opacity-20 pointer-events-none" />
+
+              {/* Component Slot 1 - BeamButton */}
+              <div className="w-full bg-linear-to-br from-slate-200 to-slate-800 border border-slate-300 rounded-2xl p-6 flex items-center justify-center relative group/slot overflow-hidden">
+                <div className="w-full flex items-center justify-center transform group-hover/slot:scale-105 transition-transform duration-300">
+                  <BeamButton />
+                </div>
+              </div>
+
+              {/* Component Slot 2 - Button1 */}
+              <div className="w-full bg-gradient-to-br from-slate-100 to-slate-300 border border-slate-700 rounded-2xl p-6 flex items-center justify-center relative group/slot overflow-hidden">
+                <div className="w-full flex items-center justify-center transform group-hover/slot:scale-105 transition-transform duration-300">
+                  <Button1 />
+                </div>
+              </div>
+
+              {/* Floating glow effects */}
+              <div className="absolute -top-20 -right-20 w-40 h-40 bg-indigo-300/20 rounded-full blur-3xl pointer-events-none" />
+              <div className="absolute -bottom-20 -left-20 w-40 h-40 bg-purple-300/20 rounded-full blur-3xl pointer-events-none" />
+            </div>
+          </motion.div>
+        </div>
       </div>
     </div>
   );

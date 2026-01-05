@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 
 export default function BeamButton() {
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center">
+    <div className="flex items-center justify-center">
       <style>
         {`@keyframes beam-slide{
         0% {background-position: 200% center;}
