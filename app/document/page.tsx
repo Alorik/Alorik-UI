@@ -65,7 +65,7 @@ const ComponentPreview = ({ title, children, code }) => (
     id={title.toLowerCase().replace(" ", "-")}
   >
     <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-      <Box size={20} className="text-indigo-500" />
+      <Box size={20} className="text-gray-500" />
       {title}
     </h3>
     <div className="border border-slate-200 rounded-xl overflow-hidden bg-slate-50/50">
@@ -98,7 +98,7 @@ export default function AlorikDocs() {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-indigo-100 flex">
+    <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-gray-100 flex">
       {/* MOBILE HEADER */}
       <div className="lg:hidden fixed top-0 left-0 right-0 h-16 bg-white/80 backdrop-blur-md border-b border-slate-200 z-50 flex items-center px-4 justify-between">
         <span className="font-bold text-lg tracking-tight">Alorik UI</span>
@@ -138,7 +138,7 @@ export default function AlorikDocs() {
                       onClick={() => setActiveSection(item.toLowerCase())}
                       className={`text-sm block transition-colors w-full text-left ${
                         activeSection === item.toLowerCase()
-                          ? "text-indigo-600 font-medium translate-x-1"
+                          ? "text-gray-600 font-medium translate-x-1"
                           : "text-slate-500 hover:text-slate-900"
                       }`}
                     >
@@ -225,27 +225,27 @@ export default function AlorikDocs() {
         </h5>
         <ul className="space-y-3 text-sm text-slate-500">
           <li>
-            <a href="#" className="hover:text-indigo-600 transition-colors">
+            <a href="#" className="hover:text-gray-600 transition-colors">
               Introduction
             </a>
           </li>
           <li>
-            <a href="#" className="hover:text-indigo-600 transition-colors">
-              Installation
+            <a href="#" className="hover:text-gray-600 transition-colors">
+              Installation 
             </a>
           </li>
           <li>
-            <a href="#" className="hover:text-indigo-600 transition-colors">
+            <a href="#" className="hover:text-gray-600 transition-colors">
               Components
             </a>
           </li>
           <li className="pl-4 border-l border-slate-200">
-            <a href="#" className="hover:text-indigo-600 transition-colors">
+            <a href="#" className="hover:text-gray-600 transition-colors">
               Beam Button
             </a>
           </li>
           <li className="pl-4 border-l border-slate-200">
-            <a href="#" className="hover:text-indigo-600 transition-colors">
+            <a href="#" className="hover:text-gray-600 transition-colors">
               System Button
             </a>
           </li>
