@@ -2,14 +2,14 @@
 import { motion } from "framer-motion";
 const BorderBeam = () => {
   return (
-    <div className="absolute pointer-events-none rounded-[2.5rem] overflow-hidden">
+    <div className="absolute inset-0 z-20 pointer-events-none rounded-[2.5rem] overflow-hidden">
       <svg className="absolute inset-0 w-full h-full">
         <rect
           x="2"
           y="2"
           width="calc(100% - 4px)"
           height="calc(100% - 4px)"
-          rx="38"
+          rx="38" // Matches rounded-[2.5rem] (40px) minus padding
           ry="38"
           fill="none"
           stroke="transparent"
@@ -36,9 +36,9 @@ const BorderBeam = () => {
         />
         <defs>
           <linearGradient id="beam-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#6366f1" stopOpacity="0" />
-            <stop offset="50%" stopColor="#818cf8" stopOpacity="1" />
-            <stop offset="100%" stopColor="#6366f1" stopOpacity="0" />
+            <stop offset="0%" stopColor="#A8A0A0" stopOpacity="0" />
+            <stop offset="50%" stopColor="#EDAFC3" stopOpacity="1" />
+            <stop offset="100%" stopColor="#EDAFC3" stopOpacity="0" />
           </linearGradient>
         </defs>
       </svg>
@@ -51,30 +51,26 @@ const features = [
     title: "Motion First",
     description: "Built-in spring physics that feel natural and responsive.",
     colSpan: "col-span-1 md:col-span-2",
-    hasBorderBeam: true,
-    bgGradient: "from-emerald-100/50 to-pink-100/10",
+    hasBorderBeam: true, // Trigger for the infinite border
+    bgGradient: "from-indigo-50/50 to-white",
+    borderColor: "group-hover:border-pink-800",
     bgContent: (
-      <>
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(99,102,241,0.1)_1px,transparent_1px)] bg-[size:24px_24px]" />
-        </div>
-        <div className="absolute right-8 bottom-8 flex gap-3">
-          {[1, 2, 3].map((i) => (
-            <motion.div
-              key={i}
-              initial={{ y: 0 }}
-              animate={{ y: [0, -8, 0] }}
-              transition={{
-                duration: 2,
-                delay: i * 0.2,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-              className="w-12 h-12 rounded-full bg-gradient-to-b from-indigo-200 to-white border border-indigo-100 shadow-sm"
-            />
-          ))}
-        </div>
-      </>
+      <div className="absolute right-8 bottom-8 flex gap-3">
+        {[1, 2, 3].map((i) => (
+          <motion.div
+            key={i}
+            initial={{ y: 0 }}
+            animate={{ y: [0, -8, 0] }}
+            transition={{
+              duration: 2,
+              delay: i * 0.2,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+            className="w-12 h-12 rounded-full bg-gradient-to-b from-indigo-100 to-white border border-indigo-50 shadow-sm"
+          />
+        ))}
+      </div>
     ),
   },
   {
@@ -114,8 +110,8 @@ const features = [
     ),
   },
   {
-    title: "Accessible",
-    description: "WAI-ARIA compliant patterns for everyone.",
+    title: "Built for Everyone",
+    description: "Inclusive components that work seamlessly for all users.",
     colSpan: "col-span-1 md:col-span-2",
     bgGradient: "from-emerald-50/50 to-teal-50/50",
     bgContent: (
@@ -167,33 +163,40 @@ export default function AlorikFeatures() {
           </p>
         </div>
 
-        {/* Bento Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[320px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 auto-rows-[340px]">
           {features.map((feature, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1, duration: 0.5 }}
+              whileHover={{ scale: 1.03, y: -5 }} // Scale & Pop effect
+              transition={{
+                duration: 0.4,
+                ease: [0.25, 1, 0.5, 1], // Smooth spring-like ease
+              }}
               className={`
-                group relative overflow-hidden rounded-[2.5rem] border border-slate-200 
-                bg-gradient-to-br ${feature.bgGradient} bg-white
-                hover:bg-slate-50/50 hover:border-slate-300 hover:shadow-2xl hover:shadow-slate-200/40 
-                hover:-translate-y-1
-                transition-all duration-500
-                ${feature.colSpan}
+                group relative overflow-hidden rounded-[2.5rem] border border-slate-200 bg-white
+                hover:shadow-2xl hover:shadow-slate-200/50 
+                ${feature.colSpan} ${feature.borderColor}
               `}
             >
+              {/* Traveling Border Beam (Only for designated card) */}
               {feature.hasBorderBeam && <BorderBeam />}
-              {/* Background Decor */}
+
+              {/* 1. Ghost Gradient Layer */}
+              <div
+                className={`absolute inset-0 bg-gradient-to-br ${feature.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out`}
+              />
+
+              {/* 2. Background Content (Scales on Hover) */}
               <div className="absolute inset-0 z-0 transition-transform duration-700 group-hover:scale-105 origin-bottom-right">
                 {feature.bgContent}
               </div>
 
-              {/* Content */}
+              {/* 3. Text Content */}
               <div className="relative z-10 flex flex-col justify-between h-full p-10 pointer-events-none">
-                <div className="w-12 h-12 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-900 font-bold text-sm font-mono group-hover:bg-white group-hover:border-slate-300 transition-all duration-500 pointer-events-auto shadow-sm">
+                <div className="w-12 h-12 rounded-full bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-900 font-bold text-sm font-mono group-hover:bg-white/80 group-hover:border-slate-200 group-hover:scale-110 transition-all duration-500 shadow-sm">
                   0{i + 1}
                 </div>
 
@@ -201,15 +204,10 @@ export default function AlorikFeatures() {
                   <h3 className="text-3xl font-bold text-slate-900 mb-4 tracking-tight">
                     {feature.title}
                   </h3>
-                  <p className="text-slate-600 font-medium leading-relaxed max-w-sm text-lg group-hover:text-slate-700 transition-colors duration-500">
+                  <p className="text-slate-500 font-medium leading-relaxed max-w-sm text-lg group-hover:text-slate-600 transition-colors duration-500">
                     {feature.description}
                   </p>
                 </div>
-              </div>
-
-              {/* Hover glow effect */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-br from-white/50 via-transparent to-transparent" />
               </div>
             </motion.div>
           ))}
