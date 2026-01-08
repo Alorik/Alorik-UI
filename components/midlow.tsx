@@ -67,7 +67,7 @@ const features = [
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="w-12 h-12 rounded-full bg-gradient-to-b from-indigo-100 to-white border border-indigo-50 shadow-sm"
+            className="w-12 h-12 rounded-full bg-gradient-to-b from-emerald-100 to-gray-200 border border-gray-200 shadow-sm"
           />
         ))}
       </div>
@@ -80,7 +80,7 @@ const features = [
     bgGradient: "from-blue-50/50 to-cyan-50/50",
     bgContent: (
       <>
-        <div className="absolute inset-0 flex items-center justify-center opacity-[0.03] font-mono text-9xl font-bold tracking-tighter select-none pointer-events-none">
+        <div className="absolute inset-0 flex items-center justify-center opacity-[0.06] font-mono text-9xl font-bold tracking-tighter select-none pointer-events-none">
           TS
         </div>
         <div className="absolute right-4 top-4 font-mono text-[10px] text-blue-400 opacity-40 leading-relaxed">
@@ -103,7 +103,7 @@ const features = [
     bgContent: (
       <>
         <div className="absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] opacity-40" />
-        <div className="absolute inset-0 flex items-center justify-center opacity-[0.03]">
+        <div className="absolute inset-0 flex items-center justify-center opacity-[0.06]">
           <div className="text-8xl font-black">CSS</div>
         </div>
       </>

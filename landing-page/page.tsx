@@ -5,7 +5,7 @@ import AlorikLogo from "@/components/logo";
 export default function LandingPage() {
   return (
     <>
-      <div className="mt-5 z-100 ">
+      <div className="container mt-5 ml-2 ">
         <AlorikLogo />
       </div>
       <FloatingNav />
