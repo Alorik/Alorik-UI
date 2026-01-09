@@ -53,7 +53,7 @@ export default function HoveredCard() {
   const [hovered, setHovered] = useState(null);
 
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center p-8">
+    <div className="flex items-center justify-center p-8">
       <div className="grid w-full max-w-4xl grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4">
         {items.map((item, index) => (
           <Card

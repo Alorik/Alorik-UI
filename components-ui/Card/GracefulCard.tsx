@@ -72,7 +72,7 @@ const colors = {
 
 export default function GracefulHoverCard() {
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col md:flex-row items-center justify-center p-8">
+    <div className="relative flex flex-col md:flex-row items-center justify-center">
       <GracefulCard
         subtitle="Strategy"
         title="Vision"

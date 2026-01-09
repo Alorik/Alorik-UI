@@ -24,7 +24,7 @@ const AgencyButton = ({ children }: { children: string }) => {
 
 export default function SlideButton() {
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-8">
+    <div className=" bg-slate-950 flex flex-col items-center rounded-2xl justify-center p-8">
       <AgencyButton>Get in touch</AgencyButton>
     </div>
   );

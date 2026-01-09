@@ -1,14 +1,16 @@
 "use client";
-import { motion, useAnimation, AnimatePresence } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { useState, useRef } from "react";
 
 export default function InputComponent() {
   const [value, setValue] = useState("");
+  const [glowColor, setGlowColor] = useState("rgba(59, 130, 246, 0.8)");
   const controls = useAnimation();
+  const glowControls = useAnimation();
   const inputRef = useRef(null);
 
   const colors = [
-    "rgba(59, 130, 246, 0.8)", // blue - more vibrant
+    "rgba(59, 130, 246, 0.8)", // blue
     "rgba(139, 92, 246, 0.8)", // purple
     "rgba(236, 72, 153, 0.8)", // pink
     "rgba(245, 158, 11, 0.8)", // amber
@@ -19,29 +21,42 @@ export default function InputComponent() {
 
   const handleKeyDown = (e) => {
     const randomColor = colors[Math.floor(Math.random() * colors.length)];
+    setGlowColor(randomColor);
 
-    // Input animation with background color change
     if (e.key === " ") {
       controls.start({
         scale: 1.02,
-        boxShadow: `0 0 40px ${randomColor}, 0 0 100px ${randomColor}`,
+        transition: { duration: 0.5 },
+      });
+      glowControls.start({
+        opacity: [0.6, 1, 0.6],
+        scale: [1, 1.3, 1],
         transition: { duration: 0.5 },
       });
     } else if (e.key.length === 1) {
       controls.start({
-        scale: [1, 1.1, 1],
-        boxShadow: `0 0 80px ${randomColor}`,
+        scale: [1, 1.05, 1],
         transition: { duration: 0.4, ease: "easeInOut" },
+      });
+      glowControls.start({
+        opacity: [0.5, 1, 0.5],
+        scale: [1, 1.2, 1],
+        transition: { duration: 0.4 },
       });
     }
   };
 
   return (
-    <div className="relative flex items-center justify-center min-h-screen overflow-hidden">
-      {/* Base gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-gray-900 via-black to-gray-950" />
-
-      {/* Interactive typing blobs - CLOSER TO INPUT */}
+    <div className="relative flex items-center justify-center overflow-visible px-10 py-8">
+      {/* Animated glow background - CIRCULAR */}
+      <motion.div
+        animate={glowControls}
+        className="absolute inset-0 rounded-full blur-3xl"
+        style={{
+          background: `radial-gradient(circle, ${glowColor}, transparent 70%)`,
+          opacity: 0.5,
+        }}
+      />
 
       {/* Input field */}
       <div className="relative z-10">
@@ -56,7 +71,7 @@ export default function InputComponent() {
           onKeyDown={handleKeyDown}
           onChange={(e) => setValue(e.target.value)}
           animate={controls}
-          className="border-2 border-gray-600 bg-black/40 backdrop-blur-md text-white px-6 py-3 rounded-lg outline-none text-lg placeholder-gray-400 min-w-[300px] shadow-2xl"
+          className="border-2 border-gray-600 bg-black backdrop-blur-md text-white px-6 py-3 rounded-lg outline-none text-lg placeholder-gray-400 min-w-[300px] shadow-2xl"
         />
       </div>
     </div>

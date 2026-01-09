@@ -7,7 +7,7 @@ const StarlightButton = ({children, onClick}) => {
       <motion.button
         whileHover={{ scale: 1.05 }}
         whileTap={{ scale: 0.95 }}
-        className="relative px-7  py-2 rounded-lg bg-slate-800 text-slate-300 font-medium"
+        className="relative px-7  py-2 rounded-lg text-slate-300 font-medium"
       >
         <span className="text-slate-300 font-medium relative z-10 py-7">
           {children}
@@ -64,7 +64,7 @@ const StarlightButton = ({children, onClick}) => {
 
 export default function Button2() {
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-8">
+    <div className=" rounded-xl bg-slate-950 flex flex-col items-center justify-center p-8">
       {/* Button Instance */}
       <StarlightButton onClick={() => console.log("Exploring...")}>
         Explore Universe
