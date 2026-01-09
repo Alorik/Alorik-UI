@@ -10,7 +10,7 @@ import SlideButton from "@/components-ui/SlideUpButton";
 export default function ShowcaseComponents() {
   
   return (
-    <div className="flex-col container justify-center items-center">
+    <div className="min-h-screen flex-col container justify-center items-center py-12">
       <div className="">
         <h1 className="text-gray-800 text-3xl font-medium tracking-tight">
           Simply copy and paste the code

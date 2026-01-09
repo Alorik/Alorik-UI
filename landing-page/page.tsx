@@ -1,5 +1,6 @@
 import FloatingNav from "@/components-ui/Navigation/FloatingNav";
 import AlorikHero from "@/components/landingpage-components/about";
+import Footer from "@/components/landingpage-components/footer";
 import AlorikLogo from "@/components/landingpage-components/logo";
 import ShowcaseComponents from "@/components/landingpage-components/showcase-components";
 
@@ -12,6 +13,7 @@ export default function LandingPage() {
       <FloatingNav />
       <AlorikHero />
       <ShowcaseComponents />
+      <Footer />
     </>
   );
 }

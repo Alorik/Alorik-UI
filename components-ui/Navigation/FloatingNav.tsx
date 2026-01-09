@@ -2,7 +2,7 @@
 import { useState, useRef } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Home, User, Briefcase, Mail, LayoutGrid } from "lucide-react";
-import { useRouter, usePathname } from "next/navigation"; // Changed import
+import { useRouter } from "next/navigation"; // Changed import
 
 const navItems = [
   { name: "Home", icon: Home, path: "/" },
@@ -14,7 +14,6 @@ const navItems = [
 
 export default function FloatingNav() {
   const router = useRouter();
-  const pathname = usePathname();
   const [active, setActive] = useState("Home");
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
