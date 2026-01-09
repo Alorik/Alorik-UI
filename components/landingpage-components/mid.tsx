@@ -1,12 +1,12 @@
 import { FaReact } from "react-icons/fa";
-import {  RiNextjsFill } from "react-icons/ri";
+import { RiNextjsFill } from "react-icons/ri";
 import { TbBrandFramerMotion } from "react-icons/tb";
 import { BiLogoTypescript } from "react-icons/bi";
 import { RiTailwindCssFill } from "react-icons/ri";
 import { ReactNode } from "react";
 import AlorikFeatures from "./midlow";
 
-interface IconWithTooltipProps{
+interface IconWithTooltipProps {
   icon: ReactNode;
   name: string;
 }

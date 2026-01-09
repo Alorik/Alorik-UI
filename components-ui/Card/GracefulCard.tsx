@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 
-const GracefulCard = ({ subtitle, title, description, color = "depth" }) => {
+const GracefulCard = ({ subtitle, title, description, color = "void" }) => {
 const colors = {
   midnight: "from-slate-900 via-indigo-400 to-slate-900",
   abyss: "from-gray-900 via-purple-400 to-gray-900",

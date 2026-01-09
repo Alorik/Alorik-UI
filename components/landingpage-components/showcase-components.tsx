@@ -23,22 +23,22 @@ export default function ShowcaseComponents() {
       <div className="grid grid-cols-2 gap-6 mt-5 max-w-7xl mx-auto p-6">
         {/* Left Column */}
         <div className="space-y-6">
-          <div className="rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-12 shadow-2xl border border-slate-700 min-h-[400px] flex items-center justify-center">
+          <div className="rounded-3xl bg-gray-950 p-12 shadow-2xl border border-slate-700 min-h-[400px] flex items-center justify-center">
             <GracefulHoverCard />
           </div>
 
-          <div className="rounded-3xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 p-12 shadow-2xl border border-slate-700 min-h-[215px] flex items-center justify-center">
+          <div className="rounded-3xl bg-gray-950 p-12 shadow-2xl border border-slate-700 min-h-[215px] flex items-center justify-center">
             <InputComponent />
           </div>
         </div>
 
         {/* Right Column */}
         <div className="space-y-6">
-          <div className="rounded-3xl bg-gradient-to-br from-slate-950 to-slate-900 p-12 shadow-2xl border border-slate-800 min-h-[400px] flex items-center justify-center">
+          <div className="rounded-3xl bg-gray-950 p-12 shadow-2xl border border-slate-800 min-h-[400px] flex items-center justify-center">
             <SlideButton />
           </div>
 
-          <div className="rounded-3xl bg-gradient-to-br from-slate-950 to-slate-900 p-12 shadow-2xl border border-slate-800 min-h-[300px] flex items-center justify-center">
+          <div className="rounded-3xl bg-gray-950 p-12 shadow-2xl border border-slate-800 min-h-[300px] flex items-center justify-center">
             <Button2 />
           </div>
         </div>

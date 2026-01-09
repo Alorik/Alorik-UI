@@ -1,20 +1,22 @@
 "use client";
 import React, { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   Terminal,
   Copy,
   Check,
   Menu,
   X,
-  Sparkles,
-  Command,
   Box,
-  Layout,
-  Type,
 } from "lucide-react";
 import BeamButton from "@/components-ui/Button/BeamButton";
 import Button1 from "@/components-ui/Button/Button1";
+
+
+interface ComponentsPreviewProps {
+  title: string;
+  children: string;
+  code: string;
+}
 
 // --- 1. INLINE COMPONENTS FOR PREVIEW ---
 
@@ -59,7 +61,7 @@ const CodeBlock = ({ code }) => {
   );
 };
 
-const ComponentPreview = ({ title, children, code }) => (
+const ComponentPreview = ({ title, children, code }: ComponentsPreviewProps) => (
   <div
     className="mb-12 scroll-mt-24"
     id={title.toLowerCase().replace(" ", "-")}
@@ -160,9 +162,10 @@ export default function AlorikDocs() {
             Introduction
           </h1>
           <p className="text-xl text-slate-500 leading-relaxed max-w-3xl">
-            Alorik is a collection of re-usable components built with Radix UI
-            and Tailwind CSS. It's not a component library. It's a collection of
-            copy and paste components that you can copy into your apps.
+            Alorik is a collection of re-usable components built with Motion and
+            Tailwind CSS. It&apos;s not a component library. It&apos;s a
+            collection of copy and paste components that you can copy into your
+            apps.
           </p>
           <div className="mt-8 flex gap-4">
             <button className="px-6 py-2.5 bg-slate-900 text-white rounded-lg font-medium text-sm hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/10">
@@ -231,7 +234,7 @@ export default function AlorikDocs() {
           </li>
           <li>
             <a href="#" className="hover:text-gray-600 transition-colors">
-              Installation 
+              Installation
             </a>
           </li>
           <li>

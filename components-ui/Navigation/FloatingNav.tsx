@@ -1,22 +1,25 @@
 "use client";
-import React, { useState, useRef } from "react"; // Added useRef
+import { useState, useRef } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Home, User, Briefcase, Mail, LayoutGrid } from "lucide-react";
+import { useRouter, usePathname } from "next/navigation"; // Changed import
 
 const navItems = [
-  { name: "Home", icon: Home },
-  { name: "About", icon: User },
-  { name: "Services", icon: Briefcase },
-  { name: "Projects", icon: LayoutGrid },
-  { name: "Contact", icon: Mail },
+  { name: "Home", icon: Home, path: "/" },
+  { name: "About", icon: User, path: "/about" },
+  { name: "Documentation", icon: Briefcase, path: "/documentation" },
+  { name: "Projects", icon: LayoutGrid, path: "/projects" },
+  { name: "Contact", icon: Mail, path: "/contact" },
 ];
 
 export default function FloatingNav() {
+  const router = useRouter();
+  const pathname = usePathname();
   const [active, setActive] = useState("Home");
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
   const [lastY, setLastY] = useState(0);
-  const scrollTimer = useRef(null);
+  const scrollTimer = useRef<NodeJS.Timeout | null>(null);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     const difference = latest - lastY;
@@ -37,6 +40,11 @@ export default function FloatingNav() {
     }, 400);
   });
 
+  const handleNavClick = (item: (typeof navItems)[0]) => {
+    setActive(item.name);
+    router.push(item.path);
+  };
+
   return (
     <motion.nav
       variants={{
@@ -53,7 +61,7 @@ export default function FloatingNav() {
           return (
             <button
               key={item.name}
-              onClick={() => setActive(item.name)}
+              onClick={() => handleNavClick(item)}
               className="relative px-4 py-2 text-sm font-medium transition-colors duration-300 rounded-full flex items-center gap-2"
               style={{
                 color: isActive ? "#184742" : "black",
