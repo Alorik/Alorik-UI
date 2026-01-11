@@ -5,13 +5,14 @@ import GracefulHoverCard from "@/components-ui/Card/GracefulCard"
 
 import InputComponent from "@/components-ui/Input1"
 import SlideButton from "@/components-ui/SlideUpButton";
+import Link from "next/link";
 
 
 export default function ShowcaseComponents() {
   
   return (
     <div className="min-h-screen flex-col container justify-center items-center py-12">
-      <div className="">
+      <div>
         <h1 className="text-gray-800 text-3xl font-medium tracking-tight">
           Simply copy and paste the code
         </h1>

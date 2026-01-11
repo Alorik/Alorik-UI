@@ -9,6 +9,7 @@ import {
   Box,
 } from "lucide-react";
 import DocumentLeftSIdebar from "@/components/documentation-components/left-header";
+import DocumentationContent from "@/components/documentation-components/main-content";
 
 
 
@@ -56,7 +57,7 @@ export default function AlorikDocs() {
         </div>
 
 
-
+<DocumentationContent />
         {/* COMPONENTS SHOWCASE */}
 
       </main>
