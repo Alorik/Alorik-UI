@@ -33,11 +33,11 @@ export default function DocumentLeftSidebar() {
         },
         {
           title: "Inputs",
-          subItems: ["Text Field"],
+          subItems: ["Input Field"],
         },
         {
           title: "Cards",
-          subItems: ["HoverCard"],
+          subItems: ["GracefulCard","HoveredCard","StackedCard"],
         },
       ],
     },

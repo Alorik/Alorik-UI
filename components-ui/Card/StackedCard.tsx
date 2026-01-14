@@ -8,7 +8,7 @@ const StackedCard = ({
   color = "rose",
 }: {
   title: string;
-  date: number;
+  date: string;
   category: string;
   color: string;
 }) => {
@@ -73,7 +73,7 @@ const StackedCard = ({
 export default function StackCard() {
   return (
     <div>
-      <div className="min-h-screen bg-slate-950 flex flex-col md:flex-row items-center justify-center p-8">
+      <div className="w-full rounded-2xl bg-slate-950 flex flex-col md:flex-row items-center justify-center p-8">
         <StackedCard
           title="Design Systems"
           category="UI Assets"

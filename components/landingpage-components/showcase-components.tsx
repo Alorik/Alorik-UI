@@ -1,15 +1,13 @@
-"use client"
+"use client";
 
 import Button2 from "@/components-ui/Button/Button2";
-import GracefulHoverCard from "@/components-ui/Card/GracefulCard"
+import GracefulHoverCard from "@/components-ui/Card/GracefulCard";
 
-import InputComponent from "@/components-ui/Input1"
+import InputComponent from "@/components-ui/InputComponent";
 import SlideButton from "@/components-ui/SlideUpButton";
 import Link from "next/link";
 
-
 export default function ShowcaseComponents() {
-  
   return (
     <div className="min-h-screen flex-col container justify-center items-center py-12">
       <div>
@@ -47,4 +45,3 @@ export default function ShowcaseComponents() {
     </div>
   );
 }
-

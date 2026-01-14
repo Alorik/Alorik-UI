@@ -3,9 +3,15 @@
 import { useState } from "react";
 import { Box, Check, Copy, Terminal } from "lucide-react";
 import BeamButton from "@/components-ui/Button/BeamButton";
-import Button1 from "@/components-ui/Button/Button1";
 import StarlightButtonDisplay from "@/components-ui/Button/Button2";
 import ScaleButton from "@/components-ui/Button/Button1";
+import InputComponent from "@/components-ui/InputComponent";
+import GracefulHoverCard from "@/components-ui/Card/GracefulCard";
+import HoveredCard from "@/components-ui/Card/HoveredCard";
+import StackCard from "@/components-ui/Card/StackedCard";
+import ParticlesHero from "@/components-ui/Hero/ParticlesHero";
+import GridBackground from "@/components-ui/Hero/GridBackground";
+import CursorFollower from "@/components-ui/cursor/CursorFollower";
 
 interface ComponentsPreviewProps {
   title: string;
@@ -140,6 +146,46 @@ export default function Home() {
 }`}
         >
           <ScaleButton />
+        </ComponentPreview>
+
+        {/* Text-Input */}
+        <ComponentPreview
+          title="Input Field"
+          code={`import { InputComponent } from "@/components/alorik";
+export default function Home() {
+  return <InputComponent />;
+}`}
+        >
+          <InputComponent />
+        </ComponentPreview>
+
+        {/* Cards */}
+        <ComponentPreview
+          title="GracefulCard"
+          code={`import { GracefulCard } from "@/components/alorik/Card";
+export default function Home() {
+  return <GracefulCard />;
+}`}
+        >
+          <GracefulHoverCard />
+        </ComponentPreview>
+        <ComponentPreview
+          title="HoveredCard"
+          code={`import { HoveredCard } from "@/components/alorik/Card";
+export default function Home() {
+  return <HoveredCard />;
+}`}
+        >
+          <HoveredCard />
+        </ComponentPreview>
+        <ComponentPreview
+          title="StackedCard"
+          code={`import { StackedCard } from "@/components/alorik/Card";
+export default function Home() {
+  return <StackedCard />;
+}`}
+        >
+          <StackCard />
         </ComponentPreview>
       </section>
     </div>
