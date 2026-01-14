@@ -1,4 +1,5 @@
 import InstallationBlock from "@/components-ui/install/install";
+import ComponentShowcase from "./component-showcase";
 
 export default function DocumentationContent() {
   return (
@@ -26,7 +27,7 @@ export default function DocumentationContent() {
       </div>
 
       <div id="installation" className="mb-16">
-        <h2 className="text-4xl font-bold mb-4">Installation</h2>
+        <h2 className="text-5xl font-bold mb-8">Installation</h2>
         <div>
           <p className="font-semibold text-3xl">Install Nextjs</p>
           <InstallationBlock
@@ -82,27 +83,18 @@ export default function DocumentationContent() {
           </div>
 
           <div>
-            <p className="font-semibold mb-1 text-3xl my-6">
-              Install Tailwind CSS
+            <p className="font-semibold mb-1 text-lg mt-2">
+              {" "}
+              Start your build process
             </p>
-            <p className="text-gray-400 text-xl mb-10">
-              Install Tailwind CSS with Next.js (v3 and v4)
-            </p>
-            <p className="text-2xl">Tailwind CSS v4 Installation</p>
-            <InstallationBlock
-              commands={{
-              npm:"npx create-next-app@latest",
-            }}
-            />
+            <div className="bg-gray-200 flex-col gap-2 p-4 rounded-xl">
+              npm run dev
+            </div>
           </div>
         </div>
       </div>
 
-      <div id="theming" className="mb-16">
-        <h2 className="text-3xl font-bold mb-4">Theming</h2>
-        <p>Your theming content...</p>
-      </div>
-
+      <ComponentShowcase />
       {/* Components */}
       <div id="beam-button" className="mb-16">
         <h2 className="text-3xl font-bold mb-4">Beam Button</h2>

@@ -11,7 +11,7 @@ export default function DocumentLeftSidebar() {
   const sidebarLinks = [
     {
       category: "Getting Started",
-      items: ["Introduction", "Installation", "Theming"],
+      items: ["Introduction", "Installation"],
     },
     {
       category: "Components",

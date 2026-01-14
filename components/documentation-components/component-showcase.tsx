@@ -1,7 +1,7 @@
-
+"use client"
 import BeamButton from "@/components-ui/Button/BeamButton";
 import Button1 from "@/components-ui/Button/Button1";
-import { Check, Copy, Terminal } from "lucide-react";
+import { Box, Check, Copy, Terminal } from "lucide-react";
 import { useState } from "react";
 
 
