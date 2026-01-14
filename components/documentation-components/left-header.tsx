@@ -2,119 +2,185 @@
 
 import { Menu, X } from "lucide-react";
 import { useState, useEffect } from "react";
+import Link from "next/link";
 import AlorikLogo from "../landingpage-components/logo";
+
+type SidebarItem = {
+  title: string;
+  subItems?: string[];
+};
+
+type SidebarSection = {
+  category: string;
+  items: SidebarItem[];
+};
 
 export default function DocumentLeftSidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [activeSection, setActiveSection] = useState("introduction");
+  const [activeSection, setActiveSection] = useState<string>("");
 
-  const sidebarLinks = [
+  const sidebarLinks: SidebarSection[] = [
     {
       category: "Getting Started",
-      items: ["Introduction", "Installation"],
+      items: [{ title: "Introduction" }, { title: "Installation" }],
     },
     {
       category: "Components",
-      items: ["Beam Button", "System Button", "Ghost Keyboard"],
+      items: [
+        {
+          title: "Buttons",
+          subItems: ["Beam Button", "Move Button", "System Button"],
+        },
+        {
+          title: "Inputs",
+          subItems: ["Ghost Keyboard", "Text Field"],
+        },
+      ],
     },
-    { category: "Layouts", items: ["Hero Section", "Features Grid"] },
+    {
+      category: "Layouts",
+      items: [
+        {
+          title: "Navigation",
+          subItems: ["Navbar", "Sidebar"],
+        },
+        {
+          title: "Sections",
+          subItems: ["Hero Section", "Features Grid"],
+        },
+        {
+          title: "Visuals",
+          subItems: ["Cards", "Backgrounds"],
+        },
+      ],
+    },
   ];
 
-  // Scroll to section when clicking sidebar item
-  const scrollToSection = (item: string) => {
-    const sectionId = item.toLowerCase().replace(/\s+/g, "-");
-    const element = document.getElementById(sectionId);
+  // Scroll to section
+  const scrollToSection = (label: string) => {
+    const id = label.toLowerCase().replace(/\s+/g, "-");
+    const el = document.getElementById(id);
 
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "start" });
-      setActiveSection(item.toLowerCase());
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      setActiveSection(id);
+    }
+
+    // close sidebar on mobile
+    if (window.innerWidth < 1024) {
+      setIsSidebarOpen(false);
     }
   };
 
-  // Detect which section is in view while scrolling
+  // Active section detection on scroll
   useEffect(() => {
     const handleScroll = () => {
-      const sections = sidebarLinks.flatMap((section) =>
-        section.items.map((item) => item.toLowerCase().replace(/\s+/g, "-"))
+      const allIds: string[] = [];
+
+      sidebarLinks.forEach((section) =>
+        section.items.forEach((item) => {
+          if (item.subItems) {
+            item.subItems.forEach((sub) =>
+              allIds.push(sub.toLowerCase().replace(/\s+/g, "-"))
+            );
+          } else {
+            allIds.push(item.title.toLowerCase().replace(/\s+/g, "-"));
+          }
+        })
       );
 
-      let currentSection = "";
+      for (const id of allIds) {
+        const el = document.getElementById(id);
+        if (!el) continue;
 
-      for (const sectionId of sections) {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          const rect = element.getBoundingClientRect();
-          // Check if section is in viewport (with offset for better UX)
-          if (rect.top <= 150 && rect.bottom >= 150) {
-            currentSection = sectionId;
-            break;
-          }
+        const rect = el.getBoundingClientRect();
+        if (rect.top <= 150 && rect.bottom >= 150) {
+          setActiveSection(id);
+          break;
         }
-      }
-
-      if (currentSection && currentSection !== activeSection) {
-        setActiveSection(currentSection);
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Check on mount
+    handleScroll();
 
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [activeSection, sidebarLinks]);
+  }, []);
 
   return (
-    <div>
+    <>
       {/* Mobile Header */}
       <div className="lg:hidden fixed top-0 left-0 right-0 h-16 bg-white/80 backdrop-blur-md border-b border-slate-200 z-50 flex items-center px-4 justify-between">
-        <AlorikLogo />
-        <button onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+        <Link href="/">
+          <AlorikLogo />
+        </Link>
+        <button onClick={() => setIsSidebarOpen((v) => !v)}>
           {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
       </div>
 
-      {/* SIDEBAR */}
-      <div
+      {/* Sidebar */}
+      <aside
         className={`
-          fixed lg:sticky top-0 left-0 z-40 h-screen w-64 border-r border-slate-200 bg-white
-          transition-transform duration-300 lg:translate-x-0 pt-20 lg:pt-8 px-6 overflow-y-auto
+          fixed lg:sticky top-0 left-0 z-40 h-screen w-64 bg-white border-r border-slate-200
+          transition-transform duration-300
+          pt-20 lg:pt-8 px-6 overflow-y-auto
           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
         `}
       >
-        <div className="mb-8 hidden lg:block">
-          <AlorikLogo />
+        {/* Desktop Logo */}
+        <div className="hidden lg:block mb-8">
+          <Link href="/">
+            <AlorikLogo />
+          </Link>
           <p className="text-xs text-slate-500 mt-1">Documentation v1.0</p>
         </div>
 
+        {/* Links */}
         <div className="space-y-8">
           {sidebarLinks.map((section) => (
             <div key={section.category}>
               <h4 className="text-xs font-bold text-slate-900 uppercase tracking-wider mb-3">
                 {section.category}
               </h4>
-              <div className="space-y-2">
-                {section.items.map((item) => {
-                  const itemId = item.toLowerCase().replace(/\s+/g, "-");
-                  return (
-                    <div key={item}>
-                      <button
-                        onClick={() => scrollToSection(item)}
-                        className={`text-sm block transition-all w-full text-left ${
-                          activeSection === itemId
-                            ? "text-slate-900 font-medium translate-x-1 border-l-2 border-slate-900 pl-2"
-                            : "text-slate-500 hover:text-slate-900 pl-2"
-                        }`}
-                      >
-                        {item}
-                      </button>
-                    </div>
-                  );
-                })}
+
+              <div className="space-y-3">
+                {section.items.map((item) => (
+                  <div key={item.title}>
+                    {/* Parent label */}
+                    <p className="text-sm font-medium text-slate-700 pl-2 mb-1">
+                      {item.title}
+                    </p>
+
+                    {/* Sublinks */}
+                    {item.subItems && (
+                      <div className="ml-3 space-y-1">
+                        {item.subItems.map((sub) => {
+                          const subId = sub.toLowerCase().replace(/\s+/g, "-");
+
+                          return (
+                            <button
+                              key={sub}
+                              onClick={() => scrollToSection(sub)}
+                              className={`block w-full text-left text-sm transition-all pl-3 ${
+                                activeSection === subId
+                                  ? "text-slate-900 font-medium border-l-2 border-slate-900"
+                                  : "text-slate-500 hover:text-slate-900"
+                              }`}
+                            >
+                              {sub}
+                            </button>
+                          );
+                        })}
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
             </div>
           ))}
         </div>
-      </div>
-    </div>
+      </aside>
+    </>
   );
 }

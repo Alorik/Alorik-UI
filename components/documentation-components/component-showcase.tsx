@@ -7,7 +7,7 @@ import { useState } from "react";
 
 interface ComponentsPreviewProps {
   title: string;
-  children: string;
+  children: React.ReactNode;
   code: string;
 }
 
@@ -80,26 +80,7 @@ const ComponentPreview = ({
 export default function ComponentShowcase() {
   return (
     <div>
-      <section className="space-y-16">
-        <div>
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">Components</h2>
-          <div className="w-full h-px bg-slate-200 mb-8" />
-        </div>
-
-        <ComponentPreview
-          title="Beam Button"
-          code={`import { BeamButton } from "@/components/alorik/buttons";\n\nexport default function Home() {\n  return <BeamButton />\n}`}
-        >
-          <BeamButton />
-        </ComponentPreview>
-
-        <ComponentPreview
-          title="System Button"
-          code={`import { Button1 } from "@/components/alorik/buttons";\n\nexport default function Home() {\n  return <Button1 />\n}`}
-        >
-          <Button1 />
-        </ComponentPreview>
-      </section>
+      <section className="space-y-16"></section>
       {/* INSTALLATION */}
       <section className="mb-20 space-y-6">
         <h2 className="text-2xl font-bold text-slate-900">Installation</h2>
@@ -118,6 +99,26 @@ export default function ComponentShowcase() {
           </p>
         </div>
       </section>
+      <div>
+        <div>
+          <h2 className="text-2xl font-bold text-slate-900 mb-6">Components</h2>
+          <div className="w-full h-px bg-slate-200 mb-8" />
+        </div>
+
+        <ComponentPreview
+          title="Beam Button"
+          code={`import { BeamButton } from "@/components/alorik/buttons";\n\nexport default function Home() {\n  return <BeamButton />\n}`}
+        >
+          <BeamButton />
+        </ComponentPreview>
+
+        <ComponentPreview
+          title="System Button"
+          code={`import { Button1 } from "@/components/alorik/buttons";\n\nexport default function Home() {\n  return <Button1 />\n}`}
+        >
+          <Button1 />
+        </ComponentPreview>
+      </div>
     </div>
   );
 }
