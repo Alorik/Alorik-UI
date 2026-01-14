@@ -29,11 +29,15 @@ export default function DocumentLeftSidebar() {
       items: [
         {
           title: "Buttons",
-          subItems: ["Beam Button", "Move Button", "System Button"],
+          subItems: ["Beam Button", "System Button", "Move Button"],
         },
         {
           title: "Inputs",
-          subItems: ["Ghost Keyboard", "Text Field"],
+          subItems: ["Text Field"],
+        },
+        {
+          title: "Cards",
+          subItems: ["HoverCard"],
         },
       ],
     },

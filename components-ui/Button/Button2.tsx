@@ -62,7 +62,7 @@ const StarlightButton = ({children, onClick}) => {
 }
 
 
-export default function Button2() {
+export default function StarlightButtonDisplay() {
   return (
     <div className=" rounded-xl bg-slate-950 flex flex-col items-center justify-center p-8">
       {/* Button Instance */}

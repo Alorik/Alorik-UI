@@ -2,7 +2,7 @@
 import { motion } from "motion/react";
 import React from "react";
 
-export default function Button1() {
+export default function ScaleButton() {
   return (
     <div className="flex items-center justify-center w-full">
       <motion.button
