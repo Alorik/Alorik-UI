@@ -60,25 +60,7 @@ export default function ComponentShowcase() {
   return (
     <div className="space-y-24">
       {/* INSTALLATION */}
-      <section id="installation" className="space-y-6 scroll-mt-24">
-        <h2 className="text-2xl font-bold text-slate-900">Installation</h2>
-
-        <p className="text-slate-600 max-w-xl">
-          Install the required dependencies to start using Alorik UI.
-        </p>
-
-        <CodeBlock
-          code={`npm install framer-motion lucide-react clsx tailwind-merge`}
-        />
-
-        <div className="bg-amber-50 border border-amber-100 rounded-lg p-4 text-sm text-amber-800 flex gap-3 max-w-xl">
-          <Terminal size={16} className="mt-0.5 shrink-0" />
-          <p>
-            Alorik UI assumes Tailwind CSS is already configured in your
-            project.
-          </p>
-        </div>
-      </section>
+      
 
       {/* COMPONENTS */}
       <section>

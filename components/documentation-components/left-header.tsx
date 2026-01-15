@@ -90,9 +90,10 @@ export default function DocumentLeftSidebar() {
       {/* Sidebar */}
       <aside
         className={`
-          fixed lg:sticky top-0 left-0 z-40 h-screen w-64 bg-white border-r border-slate-200
+          fixed lg:sticky top-0 left-0 z-40 h-screen w-[600px] bg-white border-r border-slate-200
           transition-transform duration-300
           pt-20 lg:pt-8 px-4 overflow-y-auto
+
           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
         `}
       >
