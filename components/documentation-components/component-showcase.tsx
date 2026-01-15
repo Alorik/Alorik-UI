@@ -1,7 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { Box, Check, Copy, Terminal } from "lucide-react";
+import { Check, Copy, Terminal } from "lucide-react";
+
 import BeamButton from "@/components-ui/Button/BeamButton";
 import StarlightButtonDisplay from "@/components-ui/Button/Button2";
 import ScaleButton from "@/components-ui/Button/Button1";
@@ -10,17 +11,8 @@ import GracefulHoverCard from "@/components-ui/Card/GracefulCard";
 import HoveredCard from "@/components-ui/Card/HoveredCard";
 import StackCard from "@/components-ui/Card/StackedCard";
 import CursorFollower from "@/components-ui/cursor/CursorFollower";
+
 import ComponentPlayground from "./component-Playground";
-
-
-interface ComponentsPreviewProps {
-  title: string;
-  children: React.ReactNode;
-  code: string;
-}
-
-// 🔑 Single source of truth for section IDs
-const toSectionId = (label: string) => label.toLowerCase().replace(/\s+/g, "-");
 
 /* ----------------------------- Code Block ----------------------------- */
 
@@ -62,31 +54,6 @@ const CodeBlock = ({ code }: { code: string }) => {
   );
 };
 
-/* -------------------------- Component Preview -------------------------- */
-
-const ComponentPreview = ({
-  title,
-  children,
-  code,
-}: ComponentsPreviewProps) => (
-  <section id={toSectionId(title)} className="mb-16 scroll-mt-24">
-    <h3 className="text-xl font-bold text-slate-900 mb-4 flex items-center gap-2">
-      <Box size={18} className="text-slate-500" />
-      {title}
-    </h3>
-
-    <div className="border border-slate-200 rounded-xl overflow-hidden bg-slate-50/50">
-      <div className="p-12 flex items-center justify-center min-h-[220px] bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:20px_20px]">
-        {children}
-      </div>
-
-      <div className="border-t border-slate-200">
-        <CodeBlock code={code} />
-      </div>
-    </div>
-  </section>
-);
-
 /* ------------------------------ Page ------------------------------ */
 
 export default function ComponentShowcase() {
@@ -118,8 +85,9 @@ export default function ComponentShowcase() {
         <h2 className="text-2xl font-bold text-slate-900 mb-6">Components</h2>
         <div className="h-px w-full bg-slate-200 mb-10" />
 
-        <ComponentPreview
+        <ComponentPlayground
           title="Beam Button"
+          description="A glowing button with animated beam effects."
           code={`import { BeamButton } from "@/components/alorik/buttons";
 
 export default function Home() {
@@ -127,71 +95,91 @@ export default function Home() {
 }`}
         >
           <BeamButton />
-        </ComponentPreview>
+        </ComponentPlayground>
 
-        <ComponentPreview
+        <ComponentPlayground
           title="System Button"
-          code={`import { StarlightButtonDisplay} from "@/components/alorik/buttons";
+          description="A system-style button with subtle interaction."
+          code={`import { StarlightButtonDisplay } from "@/components/alorik/buttons";
+
 export default function Home() {
-  return < StarlightButtonDisplay/>;
+  return <StarlightButtonDisplay />;
 }`}
         >
           <StarlightButtonDisplay />
-        </ComponentPreview>
-        <ComponentPreview
+        </ComponentPlayground>
+
+        <ComponentPlayground
           title="Move Button"
+          description="A button with motion-based hover interaction."
           code={`import { ScaleButton } from "@/components/alorik/buttons";
+
 export default function Home() {
   return <ScaleButton />;
 }`}
         >
           <ScaleButton />
-        </ComponentPreview>
+        </ComponentPlayground>
 
-        {/* Text-Input */}
-        <ComponentPreview
+        <ComponentPlayground
           title="Input Field"
+          description="A clean, accessible text input component."
           code={`import { InputComponent } from "@/components/alorik";
+
 export default function Home() {
   return <InputComponent />;
 }`}
         >
           <InputComponent />
-        </ComponentPreview>
+        </ComponentPlayground>
 
-        {/* Cards */}
-        <ComponentPreview
+        <ComponentPlayground
           title="GracefulCard"
+          description="A card with smooth hover reveal animations."
           code={`import { GracefulCard } from "@/components/alorik/Card";
+
 export default function Home() {
   return <GracefulCard />;
 }`}
         >
           <GracefulHoverCard />
-        </ComponentPreview>
-        <ComponentPreview
+        </ComponentPlayground>
+
+        <ComponentPlayground
           title="HoveredCard"
+          description="A card that lifts gently on hover."
           code={`import { HoveredCard } from "@/components/alorik/Card";
+
 export default function Home() {
   return <HoveredCard />;
 }`}
         >
           <HoveredCard />
-        </ComponentPreview>
-        <ComponentPreview
+        </ComponentPlayground>
+
+        <ComponentPlayground
           title="StackedCard"
+          description="A layered card stack with depth."
           code={`import { StackedCard } from "@/components/alorik/Card";
+
 export default function Home() {
   return <StackedCard />;
 }`}
         >
           <StackCard />
-        </ComponentPreview>
-        {/* layout preview */}
-        <ComponentPlayground title="Cursor Folower" description="this is this" code="cgyvhjb">
+        </ComponentPlayground>
+
+        <ComponentPlayground
+          title="Cursor Follower"
+          description="A container-scoped custom cursor interaction."
+          code={`import CursorFollower from "@/components-ui/cursor/CursorFollower";
+
+export default function Home() {
+  return <CursorFollower />;
+}`}
+        >
           <CursorFollower />
         </ComponentPlayground>
-       
       </section>
     </div>
   );

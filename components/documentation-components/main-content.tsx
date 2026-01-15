@@ -1,14 +1,13 @@
 import ComponentShowcase from "./component-showcase";
-import InstallationContent from "./installation-conenten";
+import IntroductionPage from "./inroduction";
+import InstallationPage from "./installation";
 
 export default function DocumentationContent() {
   return (
     <div className="p-8">
-      <InstallationContent />
-      {/* Components */}
+      <IntroductionPage />
+      <InstallationPage />
       <ComponentShowcase />
-
-      {/* Layouts */}
     </div>
   );
 }

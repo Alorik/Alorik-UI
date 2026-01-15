@@ -2,8 +2,6 @@
 
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import Link from "next/link";
-import AlorikLogo from "../landingpage-components/logo";
 
 type SidebarItem = {
   title: string;
@@ -62,15 +60,14 @@ export default function DocumentLeftSidebar() {
   return (
     <>
       {/* Mobile Header */}
-      <div className="lg:hidden fixed top-0 inset-x-0 h-16 bg-white/80 backdrop-blur-md border-b border-slate-200 z-50 flex items-center justify-between px-4">
-        <Link href="/">
-          <AlorikLogo />
-        </Link>
-
-        <button onClick={() => setIsSidebarOpen((v) => !v)}>
+      <header className="lg:hidden fixed top-0 inset-x-0 h-16 bg-white/80 backdrop-blur-md border-b border-slate-200 z-50 flex items-center px-4">
+        <button
+          onClick={() => setIsSidebarOpen((v) => !v)}
+          className="p-2 rounded-md hover:bg-slate-100 transition"
+        >
           {isSidebarOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
-      </div>
+      </header>
 
       {/* Sidebar */}
       <aside
@@ -81,37 +78,30 @@ export default function DocumentLeftSidebar() {
           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
         `}
       >
-        {/* Logo */}
-        <div className="hidden lg:block mb-8">
-          <Link href="/">
-            <AlorikLogo />
-          </Link>
-          <p className="text-xs text-slate-500 mt-1">Documentation v1.0</p>
-        </div>
-
         {/* Navigation */}
-        <div className="space-y-8">
+        <nav className="space-y-10">
           {sidebarLinks.map((section) => (
             <div key={section.category}>
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-500 mb-3">
+              {/* Category */}
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-4">
                 {section.category}
               </h4>
 
-              <div className="space-y-3">
+              <div className="space-y-4">
                 {section.items.map((item) => (
                   <div key={item.title}>
                     {/* Parent */}
-                    <p className="text-sm font-medium text-slate-700 mb-1">
+                    <p className="text-sm font-medium text-slate-700 mb-2">
                       {item.title}
                     </p>
 
                     {/* Sublinks */}
                     {item.subItems && (
-                      <div className="space-y-1">
+                      <div className="flex flex-col gap-1 pl-3">
                         {item.subItems.map((sub) => (
                           <button
                             key={sub}
-                            className="block w-full text-left text-sm text-slate-500 hover:text-slate-900 transition-colors"
+                            className="text-left text-sm text-slate-500 hover:text-slate-900 transition-colors leading-6"
                           >
                             {sub}
                           </button>
@@ -123,7 +113,7 @@ export default function DocumentLeftSidebar() {
               </div>
             </div>
           ))}
-        </div>
+        </nav>
       </aside>
     </>
   );

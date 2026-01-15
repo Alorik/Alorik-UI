@@ -1,31 +1,9 @@
 import InstallationBlock from "@/components-ui/install/install";
 
-export default function InstallationContent() {
+export default function InstallationPage() {
   return (
-    <div>
-      {/* Getting Started */}
-      <div id="introduction" className="mb-16">
-        <h1 className="text-4xl lg:text-5xl font-bold tracking-tight text-slate-900 mb-6">
-          Introduction
-        </h1>
-        <p className="text-xl text-slate-500 leading-relaxed max-w-3xl">
-          Alorik is a collection of re-usable components built with Motion and
-          Tailwind CSS. It&apos;s not a component library. It&apos;s a
-          collection of copy and paste components that you can copy into your
-          apps.
-        </p>
-
-        <div className="mt-8 flex gap-4">
-          <button className="px-6 py-2.5 bg-slate-900 text-white rounded-lg font-medium text-sm hover:bg-slate-800 transition-colors shadow-lg shadow-slate-900/10">
-            Browse Components
-          </button>
-          <button className="px-6 py-2.5 bg-white border border-slate-200 text-slate-700 rounded-lg font-medium text-sm hover:bg-slate-50 transition-colors">
-            Read the Philosophy
-          </button>
-        </div>
-      </div>
-
-      <div id="installation" className="mb-16">
+    <>
+      <section id="installation" className="mb-16">
         <h2 className="text-5xl font-bold mb-8">Installation</h2>
         <div>
           <p className="font-semibold text-3xl">Install Nextjs</p>
@@ -91,10 +69,7 @@ export default function InstallationContent() {
             </div>
           </div>
         </div>
-      </div>
-      {/* Components */}
-
-      {/* Layouts */}
-    </div>
+      </section>
+    </>
   );
 }
