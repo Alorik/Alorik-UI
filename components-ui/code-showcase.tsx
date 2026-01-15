@@ -28,10 +28,8 @@ export default function CodeShowCase({
 
   return (
     <div className="my-8 border border-slate-800 rounded-xl overflow-hidden bg-slate-950 shadow-xl">
-      {/* 1. Header Bar (Title & Copy Button) */}
       <div className="flex items-center justify-between px-4 py-3 bg-slate-900 border-b border-slate-800">
         <div className="flex items-center gap-2">
-          {/* macOS style window dots for aesthetics */}
           <div className="flex gap-1.5">
             <div className="w-3 h-3 rounded-full bg-red-500/80" />
             <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
@@ -54,7 +52,6 @@ export default function CodeShowCase({
         </button>
       </div>
 
-      {/* 2. The Code Container with Motion */}
       <div className="relative font-mono text-[13px] leading-relaxed">
         <motion.div
           initial={false}
@@ -62,13 +59,11 @@ export default function CodeShowCase({
           transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }} // Smooth bezier
           className="overflow-hidden bg-slate-950 p-5 text-slate-300"
         >
-          {/* Using 'whitespace-pre-wrap' keeps formatting but wraps long lines */}
           <pre className="whitespace-pre-wrap break-words">
             <code className={`language-${language}`}>{code}</code>
           </pre>
         </motion.div>
 
-        {/* 3. The Gradient Fade Overlay (Only visible when collapsed) */}
         <AnimatePresence>
           {!isExpanded && (
             <motion.div
@@ -82,7 +77,6 @@ export default function CodeShowCase({
         </AnimatePresence>
       </div>
 
-      {/* 4. The Show More / Show Less Button Footer */}
       <div className="border-t border-slate-800 bg-slate-900/50 p-2 flex justify-center relative z-10">
         <button
           onClick={() => setIsExpanded(!isExpanded)}
