@@ -1,6 +1,6 @@
 "use client";
-
-import { Menu, X } from "lucide-react";
+import { motion } from "motion/react";
+import { Menu, X, ChevronRight } from "lucide-react";
 import { useState } from "react";
 
 type SidebarItem = {
@@ -15,6 +15,7 @@ type SidebarSection = {
 
 export default function DocumentLeftSidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+  const [activeItem, setActiveItem] = useState<string | null>("Introduction");
 
   const sidebarLinks: SidebarSection[] = [
     {
@@ -60,7 +61,7 @@ export default function DocumentLeftSidebar() {
   return (
     <>
       {/* Mobile Header */}
-      <header className="lg:hidden fixed top-0 inset-x-0 h-16 bg-white/80 backdrop-blur-md border-b border-slate-200 z-50 flex items-center px-4">
+      <header className="lg:hidden fixed top-0 inset-x-0 h-16 bg-white border-b border-slate-200 z-50 flex items-center px-4">
         <button
           onClick={() => setIsSidebarOpen((v) => !v)}
           className="p-2 rounded-md hover:bg-slate-100 transition"
@@ -74,42 +75,80 @@ export default function DocumentLeftSidebar() {
         className={`
           fixed lg:sticky top-0 left-0 z-40 h-screen w-64 bg-white border-r border-slate-200
           transition-transform duration-300
-          pt-20 lg:pt-8 px-6 overflow-y-auto
+          pt-20 lg:pt-8 px-4 overflow-y-auto
           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
         `}
       >
-        {/* Navigation */}
         <nav className="space-y-10">
           {sidebarLinks.map((section) => (
             <div key={section.category}>
               {/* Category */}
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-4">
+              <h4 className="px-2 text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
                 {section.category}
               </h4>
 
-              <div className="space-y-4">
-                {section.items.map((item) => (
-                  <div key={item.title}>
-                    {/* Parent */}
-                    <p className="text-sm font-medium text-slate-700 mb-2">
-                      {item.title}
-                    </p>
+              <div className="space-y-2">
+                {section.items.map((item) => {
+                  const isActive = activeItem === item.title;
 
-                    {/* Sublinks */}
-                    {item.subItems && (
-                      <div className="flex flex-col gap-1 pl-3">
-                        {item.subItems.map((sub) => (
-                          <button
-                            key={sub}
-                            className="text-left text-sm text-slate-500 hover:text-slate-900 transition-colors leading-6"
-                          >
-                            {sub}
-                          </button>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
+                  return (
+                    <motion.button
+                      layout
+                      key={item.title}
+                      onClick={() => setActiveItem(item.title)}
+                      transition={{
+                        layout: {
+                          duration: 0.2,
+                          type: "spring",
+                          stiffness: 300,
+                          damping: 30,
+                        },
+                      }}
+                      className={`
+    group flex items-center justify-between w-full px-4 py-2 rounded-xl text-sm relative z-10
+    ${isActive ? "text-slate-900" : "text-slate-600 hover:text-slate-900"}
+  `}
+                    >
+                      {isActive && (
+                        <motion.div
+                          layoutId="active-bg"
+                          className="absolute inset-0 bg-gradient-to-r from-slate-200 to-slate-300 rounded-xl shadow-sm -z-10"
+                          initial={{ opacity: 0 }}
+                          animate={{ opacity: 1 }}
+                          exit={{ opacity: 0 }}
+                        />
+                      )}
+
+                      {!isActive && (
+                        <div className="absolute inset-0 rounded-xl bg-slate-100/0 transition-colors duration-200 group-hover:bg-slate-100/70 -z-10" />
+                      )}
+
+                      <span className="font-medium relative z-20">
+                        {item.title}
+                      </span>
+
+                      <motion.span
+                        className="relative z-20 flex items-center justify-center"
+                        animate={{
+                          opacity: isActive ? 1 : 0,
+                          x: isActive ? 0 : -4,
+                        }}
+                        style={{ opacity: undefined, x: undefined }}
+                      >
+                        <ChevronRight
+                          size={16}
+                          className={`
+        transition-all duration-300
+        ${
+          !isActive &&
+          "opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0"
+        }
+      `}
+                        />
+                      </motion.span>
+                    </motion.button>
+                  );
+                })}
               </div>
             </div>
           ))}
