@@ -9,9 +9,9 @@ import InputComponent from "@/components-ui/InputComponent";
 import GracefulHoverCard from "@/components-ui/Card/GracefulCard";
 import HoveredCard from "@/components-ui/Card/HoveredCard";
 import StackCard from "@/components-ui/Card/StackedCard";
-import ParticlesHero from "@/components-ui/Hero/ParticlesHero";
-import GridBackground from "@/components-ui/Hero/GridBackground";
 import CursorFollower from "@/components-ui/cursor/CursorFollower";
+import ComponentPlayground from "./component-Playground";
+
 
 interface ComponentsPreviewProps {
   title: string;
@@ -187,6 +187,11 @@ export default function Home() {
         >
           <StackCard />
         </ComponentPreview>
+        {/* layout preview */}
+        <ComponentPlayground title="Cursor Folower" description="this is this" code="cgyvhjb">
+          <CursorFollower />
+        </ComponentPlayground>
+       
       </section>
     </div>
   );
