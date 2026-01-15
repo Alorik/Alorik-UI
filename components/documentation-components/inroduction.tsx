@@ -1,9 +1,17 @@
-import { Terminal, Copy, Layers } from "lucide-react";
+import {
+  Terminal,
+  Copy,
+  Layers,
+
+  Code2,
+  Paintbrush,
+} from "lucide-react";
+import { FAQSection } from "./faq";
 
 export default function IntroductionPage() {
   return (
-    <div className=" mx-auto py-10 px-6">
-      <div className="space-y-12">
+    <div className="mx-auto py-10 px-6">
+      <div className="space-y-16">
         {/* Header Section */}
         <div className="space-y-4 border-b border-slate-200 pb-10">
           <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
@@ -49,49 +57,94 @@ export default function IntroductionPage() {
           </div>
         </div>
 
-        {/* Detailed Explanation */}
-        <div className="space-y-6">
-          <h2 className="text-2xl font-bold tracking-tight text-slate-900">
-            Why copy-paste?
-          </h2>
-          <div className="prose prose-slate max-w-none text-slate-600">
-            <p>
-              Alorik UI is <strong>not</strong> a traditional component library.
-              Most libraries lock you into an abstraction layer that makes
-              simple customizations frustratingly difficult. You often end up
-              fighting the library to implement your specific design
-              requirements.
-            </p>
-            <p className="mt-4">
-              Instead, we treat code as a starting point. By copying the source
-              directly into your project:
-            </p>
-            <ul className="list-disc pl-6 mt-4 space-y-2 text-slate-600">
-              <li>You avoid dependency bloat and version conflicts.</li>
-              <li>You have full control over styling and behavior.</li>
-              <li>
-                Components can evolve naturally alongside your application.
-              </li>
-            </ul>
+        {/* New Section: The Philosophy (Replaces "Why copy paste") */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div className="space-y-6">
+            <h2 className="text-2xl font-bold tracking-tight text-slate-900">
+              Ownership over Abstraction
+            </h2>
+            <div className="prose prose-slate text-slate-600">
+              <p>
+                Traditional component libraries are often &quot;black
+                boxes.&quot; You pass props in, and you hope the right styles
+                come out. When you need to change something core to the design,
+                you end up fighting the library&apos;s constraints.
+              </p>
+              <p>
+                Alorik UI inverts this.{" "}
+                <strong>
+                  We provide the source code, not the abstraction.
+                </strong>
+              </p>
+              <p>
+                By copying the code, you decouple your project from external
+                dependencies. Updates happen on your terms, styling is fully
+                transparent, and you never have to wait for a library maintainer
+                to fix a bug.
+              </p>
+            </div>
+          </div>
+
+          {/* Visual Workflow (Replaces the specific NPM question) */}
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8">
+            <h3 className="font-semibold text-slate-900 mb-6">How it works</h3>
+
+            <div className="space-y-8 relative">
+              {/* Connecting Line */}
+              <div className="absolute left-[19px] top-2 bottom-6 w-0.5 bg-slate-200" />
+
+              {/* Step 1 */}
+              <div className="relative flex gap-5">
+                <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white border border-slate-200 shadow-sm">
+                  <Copy size={18} className="text-slate-600" />
+                </div>
+                <div>
+                  <h4 className="font-medium text-slate-900 text-sm">
+                    Pick & Copy
+                  </h4>
+                  <p className="text-slate-500 text-sm mt-1">
+                    Find the component you need and copy the source code to your
+                    clipboard.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 2 */}
+              <div className="relative flex gap-5">
+                <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white border border-slate-200 shadow-sm">
+                  <Code2 size={18} className="text-slate-600" />
+                </div>
+                <div>
+                  <h4 className="font-medium text-slate-900 text-sm">
+                    Paste & Install
+                  </h4>
+                  <p className="text-slate-500 text-sm mt-1">
+                    Paste it into your project. If it uses external utils (like
+                    clsx), install them once.
+                  </p>
+                </div>
+              </div>
+
+              {/* Step 3 */}
+              <div className="relative flex gap-5">
+                <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-900 border border-slate-900 shadow-sm">
+                  <Paintbrush size={18} className="text-white" />
+                </div>
+                <div>
+                  <h4 className="font-medium text-slate-900 text-sm">
+                    Make it yours
+                  </h4>
+                  <p className="text-slate-500 text-sm mt-1">
+                    It&apos;s your code now. Tweak the Tailwind classes, change
+                    the motion variants, or rewrite the logic.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
-        {/* Callout / FAQ style box */}
-        <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
-          <h3 className="font-semibold text-slate-900 mb-2">
-            Is this an npm package?
-          </h3>
-          <p className="text-slate-600 text-sm leading-6">
-            No. There is no{" "}
-            <code className="text-xs bg-slate-200 px-1.5 py-0.5 rounded text-slate-800">
-              npm i alorik-ui
-            </code>
-            . You don&apos;t add it as a dependency. You use it as a reference
-            to build your own internal UI library tailored specifically to your
-            product.
-          </p>
-        </div>
       </div>
+      <FAQSection />
     </div>
   );
 }

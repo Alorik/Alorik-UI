@@ -1,75 +1,147 @@
 import InstallationBlock from "@/components-ui/install/install";
+import { CheckCircle2 } from "lucide-react";
 
 export default function InstallationPage() {
   return (
-    <>
-      <section id="installation" className="mb-16">
-        <h2 className="text-5xl font-bold mb-8">Installation</h2>
-        <div>
-          <p className="font-semibold text-3xl">Install Nextjs</p>
+    <div className=" mx-auto py-12 px-6">
+      {/* Header */}
+      <div className="mb-12 border-b border-slate-200 pb-8">
+        <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 mb-4">
+          Installation
+        </h1>
+        <p className="text-lg text-slate-600">
+          Get started with Alorik UI by setting up a new Next.js project.
+        </p>
+      </div>
+
+      <div className="space-y-12">
+        {/* Step 1: Create App */}
+        <section className="relative pl-8 border-l border-slate-200 space-y-4">
+          <div className="absolute -left-[9px] top-0 bg-white p-1">
+            <div className="w-2.5 h-2.5 rounded-full bg-slate-200 border-2 border-white ring-1 ring-slate-300" />
+          </div>
+
+          <h3 className="text-xl font-semibold text-slate-900 flex items-center gap-2">
+            <span className="text-slate-400 font-normal">01.</span> Create
+            Project
+          </h3>
+          <p className="text-slate-600 text-sm leading-6">
+            Start by creating a new Next.js application using `create-next-app`.
+          </p>
+
           <InstallationBlock
             defaultTab="npm"
             commands={{
               npm: "npx create-next-app@latest",
+              pnpm: "pnpm create next-app",
+              yarn: "yarn create next-app",
+              bun: "bun create next-app",
+            }}
+          />
+        </section>
+
+        {/* Step 2: Configuration (Terminal) */}
+        <section className="relative pl-8 border-l border-slate-200 space-y-4">
+          <div className="absolute -left-[9px] top-0 bg-white p-1">
+            <div className="w-2.5 h-2.5 rounded-full bg-slate-200 border-2 border-white ring-1 ring-slate-300" />
+          </div>
+
+          <h3 className="text-xl font-semibold text-slate-900 flex items-center gap-2">
+            <span className="text-slate-400 font-normal">02.</span>{" "}
+            Configuration
+          </h3>
+          <p className="text-slate-600 text-sm leading-6">
+            You will be asked a few questions. We recommend the following
+            defaults:
+          </p>
+
+          {/* Simulated Terminal Window */}
+          <div className="bg-[#0f172a] rounded-xl shadow-lg border border-slate-800 overflow-hidden text-sm font-mono leading-relaxed p-5 text-slate-300">
+            <div className="space-y-1">
+              <PromptLine
+                question="What is your project named?"
+                answer="my-app"
+              />
+              <PromptLine
+                question="Would you like to use TypeScript?"
+                answer="Yes"
+              />
+              <PromptLine
+                question="Would you like to use ESLint?"
+                answer="Yes"
+              />
+              <PromptLine
+                question="Would you like to use Tailwind CSS?"
+                answer="Yes"
+              />
+              <PromptLine
+                question="Would you like to use `src/` directory?"
+                answer="Yes"
+              />
+              <PromptLine
+                question="Would you like to use App Router? (recommended)"
+                answer="Yes"
+              />
+              <PromptLine
+                question="Would you like to customize the default import alias (@/*)?"
+                answer="No"
+              />
+            </div>
+          </div>
+        </section>
+
+        {/* Step 3: Run */}
+        <section className="relative pl-8 border-l-0 border-slate-200 space-y-4">
+          {/* End dot */}
+          <div className="absolute -left-[9px] top-0 bg-white p-1">
+            <div className="w-2.5 h-2.5 rounded-full bg-slate-900 border-2 border-white ring-1 ring-slate-900" />
+          </div>
+
+          <h3 className="text-xl font-semibold text-slate-900 flex items-center gap-2">
+            <span className="text-slate-400 font-normal">03.</span> Run the app
+          </h3>
+          <p className="text-slate-600 text-sm leading-6">
+            Navigate into your project directory and start the development
+            server.
+          </p>
+
+          <InstallationBlock
+            defaultTab="npm"
+            commands={{
+              npm: "cd my-app && npm run dev",
+              pnpm: "cd my-app && pnpm dev",
+              yarn: "cd my-app && yarn dev",
+              bun: "cd my-app && bun dev",
             }}
           />
 
-          <p className="font-semibold mb-1 text-lg"> On Installation:</p>
-          <div className="bg-gray-200 flex-col gap-2 p-4 rounded-xl">
-            <div>
-              {" "}
-              <span className="text-blue-600">What</span> is your project named?
-              my-app
-            </div>
-            <div>
-              <span className="text-blue-600">Would</span> you like to use
-              TypeScript? No / Yes
-            </div>
-            <div>
-              <span className="text-blue-600">Would</span> you like to use
-              ESLint? No / Yes
-            </div>
-            <div>
-              <span className="text-blue-600">Would</span> you like to use
-              Tailwind CSS? No / Yes
-            </div>
-            <div>
-              <span className="text-blue-600">Would</span> you like to use
-              `src/` directory? No / Yes
-            </div>
-            <div>
-              <span className="text-blue-600">Would</span> you like to use App
-              Router? (recommended) No / Yes
-            </div>
-            <div>
-              <span className="text-blue-600">Would</span>
-              you like to customize the default import alias (@/*)? No / Yes
-            </div>
-            <div>
-              <span className="text-blue-600">What</span> import alias would you
-              like configured? @/<span className="text-red-500">*</span>
+          <div className="pt-4">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-50 text-emerald-700 text-sm font-medium rounded-lg border border-emerald-100">
+              <CheckCircle2 size={16} />
+              You are ready to start building!
             </div>
           </div>
-          <p className="font-semibold mb-1 text-lg mt-2">Start the app</p>
-          <div className="bg-gray-200 flex-col gap-2 p-4 rounded-xl mb-4">
-            <div>
-              {" "}
-              <span className="text-blue-600">What</span> is your project named?
-              my-app
-            </div>
-          </div>
+        </section>
+      </div>
+    </div>
+  );
+}
 
-          <div>
-            <p className="font-semibold mb-1 text-lg mt-2">
-              {" "}
-              Start your build process
-            </p>
-            <div className="bg-gray-200 flex-col gap-2 p-4 rounded-xl">
-              npm run dev
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
+// --- Helper Component for the Terminal Lines ---
+
+function PromptLine({
+  question,
+  answer,
+}: {
+  question: string;
+  answer: string;
+}) {
+  return (
+    <div className="flex flex-wrap md:items-center gap-x-3">
+      <span className="text-sky-400 shrink-0">?</span>
+      <span className="text-slate-200">{question}</span>
+      <span className="text-slate-500 hidden md:inline">›</span>
+      <span className="text-sky-400">{answer}</span>
+    </div>
   );
 }
