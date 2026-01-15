@@ -85,6 +85,7 @@ const timelineData = [
   },
 ];
 
+
 const TimelineItem = ({ data, index }) => {
   return (
     <motion.div

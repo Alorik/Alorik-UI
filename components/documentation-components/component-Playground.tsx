@@ -1,6 +1,6 @@
 "use client";
 import { Check, Code, Copy, Eye } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 interface ComponentPlaygroundProps {
   title: string;
@@ -17,7 +17,17 @@ export default function ComponentPlayground({
 }: ComponentPlaygroundProps) {
   const [activeTab, setActiveTab] = useState("preview");
   const [copied, setCopied] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const id = title.toLowerCase().replace(/\s+/g, "-");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const handleCopy = () => {
     navigator.clipboard.writeText(code);
@@ -27,11 +37,12 @@ export default function ComponentPlayground({
 
   return (
     <section id={id} className="mb-16 scroll-mt-32">
-      <div className="mb-6">
+      <div className="sticky top-20 z-999 mb-6 bg-white/80 backdrop-blur-3xl border-b border-slate-200">
         <h3 className="text-2xl font-bold text-slate-900 tracking-tight flex items-center gap-2">
           {title}
         </h3>
         {description && <p className="text-slate-500 mt-2">{description}</p>}
+        <div className="border border-slate-200 mt-2" />
       </div>
 
       {/* FIXED: Removed overflow-hidden, adjusted structure */}
