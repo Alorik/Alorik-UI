@@ -2,13 +2,13 @@
 
 export default function AlorikLogo() {
   return (
-    <div className="bg-transparent flex flex-col items-start justify-start font-sans selection:bg-emerald-100">
+    <div className="bg-transparent flex flex-col items-start justify-start font-sans selection:bg-emerald-100 ">
       {/* MAIN CONTAINER */}
       <div className="relative group cursor-default select-none flex flex-col items-start">
         {/* 1. Atmospheric Glow (Subtle Green Shadow) */}
 
         {/* 2. LOGO TYPOGRAPHY */}
-        <h1 className="relative z-10 flex items-baseline tracking-tighter leading-none">
+        <h1 className="relative z-10 flex items-baseline tracking-tighter leading-none cursor-pointer">
           {/* 'Alorik' - Dark Chrome Gradient */}
           <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-neutral-900 via-neutral-700 to-neutral-500 drop-shadow-xl filter contrast-125">
             Alorik
