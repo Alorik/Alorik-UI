@@ -5,6 +5,7 @@ import { DocsProvider, useDocs } from "./docs-context"; // Make sure useDocs is 
 import DocumentLeftSidebar from "./left-header";
 import IntroductionPage from "./inroduction"; // Import your pages
 import InstallationPage from "./installation";
+import ButtonShowcase from "../showcase/button-showcase";
 
 export default function DocumentationContent() {
   return (
@@ -34,6 +35,8 @@ function ActivePageRenderer() {
       return <IntroductionPage />;
     case "Installation":
       return <InstallationPage />;
+    case "Beam Button":
+      return <ButtonShowcase />;
 
     default:
       return (

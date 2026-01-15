@@ -14,52 +14,10 @@ import CursorFollower from "@/components-ui/cursor/CursorFollower";
 
 import ComponentPlayground from "./component-Playground";
 
-/* ----------------------------- Code Block ----------------------------- */
-
-const CodeBlock = ({ code }: { code: string }) => {
-  const [copied, setCopied] = useState(false);
-
-  const handleCopy = async () => {
-    await navigator.clipboard.writeText(code);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  return (
-    <div className="relative rounded-xl bg-[#0f1117] border border-slate-800 overflow-hidden">
-      <div className="flex items-center justify-between px-4 py-2 bg-white/5 border-b border-white/5">
-        <div className="flex gap-1.5">
-          <div className="w-2.5 h-2.5 rounded-full bg-red-500/20" />
-          <div className="w-2.5 h-2.5 rounded-full bg-amber-500/20" />
-          <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/20" />
-        </div>
-
-        <button
-          onClick={handleCopy}
-          className="text-xs text-slate-400 hover:text-white transition flex items-center gap-1"
-        >
-          {copied ? (
-            <Check size={12} className="text-emerald-500" />
-          ) : (
-            <Copy size={12} />
-          )}
-          {copied ? "Copied" : "Copy"}
-        </button>
-      </div>
-
-      <pre className="p-4 text-xs font-mono text-slate-300 leading-relaxed overflow-x-auto">
-        <code>{code}</code>
-      </pre>
-    </div>
-  );
-};
-
-/* ------------------------------ Page ------------------------------ */
 
 export default function ComponentShowcase() {
   return (
     <div className="space-y-24">
-      {/* INSTALLATION */}
 
       {/* COMPONENTS */}
       <section>
