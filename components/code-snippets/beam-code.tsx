@@ -39,7 +39,9 @@ export default function BeamButton() {
 `;
 
 export default function BeamButtonCode() {
-  return <div>
-     <CodeShowCase title="Beam-Button" code={code} />
-  </div>
+  return (
+    <div>
+      <CodeShowCase title="Beam-Button" code={code} />
+    </div>
+  );
 }

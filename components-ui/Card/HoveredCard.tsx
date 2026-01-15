@@ -2,6 +2,17 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 
+interface CardProps {
+  item: {
+    title: string;
+    description: string;
+    color: string;
+  };
+  index:number;
+  hovered: number | null;
+  setHovered: React.Dispatch<React.SetStateAction<number | null>>;
+}
+
 const items = [
   {
     title: "The Summit",
@@ -25,7 +36,7 @@ const items = [
   },
 ];
 
-const Card = ({ item, index, hovered, setHovered }) => {
+const Card = ({ item, index, hovered, setHovered }:CardProps) => {
   return (
     <motion.div
       onMouseEnter={() => setHovered(index)}
@@ -50,7 +61,7 @@ const Card = ({ item, index, hovered, setHovered }) => {
 };
 
 export default function HoveredCard() {
-  const [hovered, setHovered] = useState(null);
+const [hovered, setHovered] = useState<number | null>(null);
 
   return (
     <div className="flex items-center justify-center p-8">

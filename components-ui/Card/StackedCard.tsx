@@ -2,24 +2,28 @@
 
 import { motion } from "motion/react";
 
+type AccentColor = "indigo" | "rose" | "emerald";
+
+interface StackedCardProps {
+  title: string;
+  date: string;
+  category: string;
+  color?: AccentColor;
+}
+
 const StackedCard = ({
   title,
   date,
   category,
   color = "rose",
-}: {
-  title: string;
-  date: string;
-  category: string;
-  color: string;
-}) => {
-  const colors = {
+}: StackedCardProps) => {
+  const colors: Record<AccentColor, string> = {
     indigo: "bg-gradient-to-r from-indigo-400 to-indigo-900",
     rose: "bg-rose-500",
     emerald: "bg-emerald-500",
   };
 
-  const accentColor = colors[color] || colors.rose;
+  const accentColor = colors[color];
 
   return (
     <motion.div
@@ -28,8 +32,6 @@ const StackedCard = ({
       whileHover="hover"
       animate="rest"
     >
-      {/* layer1 */}
-
       <motion.div
         className={`absolute inset-0 rounded-2xl opacity-40 ${accentColor}`}
         variants={{
@@ -38,7 +40,7 @@ const StackedCard = ({
         }}
         transition={{ duration: 0.4, type: "spring", stiffness: 150 }}
       />
-      {/* layer2 */}
+
       <motion.div
         className={`absolute inset-0 rounded-2xl opacity-70 ${accentColor}`}
         variants={{
@@ -47,7 +49,7 @@ const StackedCard = ({
         }}
         transition={{ duration: 0.4, type: "spring", stiffness: 200 }}
       />
-      {/* layer3 */}
+
       <motion.div
         className="absolute inset-0 rounded-2xl bg-slate-950 border border-slate-800 p-6 flex flex-col justify-between z-10"
         variants={{
@@ -55,13 +57,14 @@ const StackedCard = ({
           hover: { y: -25 },
         }}
       >
-        <div className=" flex flex-col justify-between gap-20">
-          <div className="flex justify-end items-center">
-            <div className="text-slate-500 font-medium text-sm border border-slate-600 px-2 py-1 rounded-xl">
+        <div className="flex flex-col justify-between gap-20">
+          <div className="flex justify-end">
+            <span className="text-slate-500 text-sm border border-slate-600 px-2 py-1 rounded-xl">
               {date}
-            </div>
+            </span>
           </div>
-          <div className="bg-clip-text bg-gradient-to-r from-slate-400 from-10% to-slate-700 to-90% text-transparent font-bold">
+
+          <div className="bg-clip-text bg-gradient-to-r from-slate-400 to-slate-700 text-transparent font-bold">
             {category}
             <p className="text-slate-300 mt-3 text-3xl">{title}</p>
           </div>
@@ -73,15 +76,13 @@ const StackedCard = ({
 
 export default function StackCard() {
   return (
-    <div>
-      <div className="w-full rounded-2xl bg-slate-950 flex flex-col md:flex-row items-center justify-center p-8">
-        <StackedCard
-          title="Design Systems"
-          category="UI Assets"
-          date="2024"
-          color="indigo"
-        />
-      </div>
+    <div className="w-full flex justify-center p-8 bg-slate-950">
+      <StackedCard
+        title="Design Systems"
+        category="UI Assets"
+        date="2024"
+        color="indigo"
+      />
     </div>
   );
 }
