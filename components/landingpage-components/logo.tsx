@@ -20,7 +20,7 @@ export default function AlorikLogo() {
           {/* 'UI' - Deep Emerald Glass */}
           <span className="text-2xl font-bold relative">
             {/* Base Layer: Deep Green to Black-Green */}
-            <span className="text-transparent bg-clip-text bg-gradient-to-b from-emerald-600 via-emerald-800 to-emerald-950">
+            <span className="text-transparent bg-clip-text bg-gradient-to-b from-slate-900 via-emerald-700 to-slate-950">
               UI
             </span>
 
