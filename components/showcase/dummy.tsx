@@ -70,7 +70,7 @@ export default function ComplexCounterComponent() {
 
 export default function Dummy() {
   return (
-    <div className="max-w-3xl mx-auto p-10">
+    <div className=" mx-auto p-10">
       <h1 className="text-3xl font-bold mb-6">Code Showcase Example</h1>
 
       <CodeShowCase title="CounterExample" code={dummyCode} />

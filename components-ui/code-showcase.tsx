@@ -27,7 +27,7 @@ export default function CodeShowCase({
   };
 
   return (
-    <div className="my-8 border border-slate-800 rounded-xl overflow-hidden bg-slate-950 shadow-xl">
+    <div className="my-8 border w-full border-slate-800 rounded-xl overflow-hidden bg-slate-950 shadow-xl">
       <div className="flex items-center justify-between px-4 py-3 bg-slate-900 border-b border-slate-800">
         <div className="flex items-center gap-2">
           <div className="flex gap-1.5">

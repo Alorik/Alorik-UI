@@ -1,6 +1,7 @@
 import BeamButton from "@/components-ui/Button/BeamButton";
 import ComponentPlayground from "../documentation-components/component-Playground";
 import Dummy from "./dummy";
+import BeamButtonCode from "../code-snippets/beam-code";
 
 export default function ButtonShowcase() {
   return (
@@ -19,7 +20,7 @@ export default function ButtonShowcase() {
       >
         <BeamButton />
       </ComponentPlayground>
-      <Dummy />
+      <BeamButtonCode />
     </>
   );
 }
