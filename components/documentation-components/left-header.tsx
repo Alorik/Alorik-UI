@@ -1,7 +1,7 @@
 "use client";
-import { motion } from "motion/react";
-import { Menu, X, ChevronRight } from "lucide-react";
-import { useState } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { Menu, X, ChevronRight, ChevronDown } from "lucide-react";
+import { useState, useEffect } from "react";
 
 type SidebarItem = {
   title: string;
@@ -15,7 +15,9 @@ type SidebarSection = {
 
 export default function DocumentLeftSidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [activeItem, setActiveItem] = useState<string | null>("Introduction");
+  const [activeItem, setActiveItem] = useState<string>("Introduction");
+  // Track which folders are open. Defaults to empty.
+  const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
   const sidebarLinks: SidebarSection[] = [
     {
@@ -50,13 +52,28 @@ export default function DocumentLeftSidebar() {
           title: "Sections",
           subItems: ["Hero Section", "Features Grid"],
         },
-        {
-          title: "Visuals",
-          subItems: ["Cards", "Backgrounds"],
-        },
       ],
     },
   ];
+
+  // Auto-expand the category if a sub-item is active
+  useEffect(() => {
+    sidebarLinks.forEach((section) => {
+      section.items.forEach((item) => {
+        if (item.subItems?.includes(activeItem)) {
+          setExpandedItems((prev) =>
+            prev.includes(item.title) ? prev : [...prev, item.title]
+          );
+        }
+      });
+    });
+  }, [activeItem]);
+
+  const toggleExpand = (title: string) => {
+    setExpandedItems((prev) =>
+      prev.includes(title) ? prev.filter((t) => t !== title) : [...prev, title]
+    );
+  };
 
   return (
     <>
@@ -79,74 +96,144 @@ export default function DocumentLeftSidebar() {
           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
         `}
       >
-        <nav className="space-y-10">
+        <nav className="space-y-8 pb-10">
           {sidebarLinks.map((section) => (
             <div key={section.category}>
-              {/* Category */}
               <h4 className="px-2 text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
                 {section.category}
               </h4>
 
-              <div className="space-y-2">
+              <div className="space-y-1">
                 {section.items.map((item) => {
+                  const isExpanded = expandedItems.includes(item.title);
                   const isActive = activeItem === item.title;
+                  const hasSubItems = item.subItems && item.subItems.length > 0;
 
                   return (
-                    <motion.button
-                      layout
-                      key={item.title}
-                      onClick={() => setActiveItem(item.title)}
-                      transition={{
-                        layout: {
-                          duration: 0.2,
-                          type: "spring",
-                          stiffness: 300,
-                          damping: 30,
-                        },
-                      }}
-                      className={`
-    group flex items-center justify-between w-full px-4 py-2 rounded-xl text-sm relative z-10
-    ${isActive ? "text-slate-900" : "text-slate-600 hover:text-slate-900"}
-  `}
-                    >
-                      {isActive && (
-                        <motion.div
-                          layoutId="active-bg"
-                          className="absolute inset-0 bg-gradient-to-r from-slate-200 to-slate-300 rounded-xl shadow-sm -z-10"
-                          initial={{ opacity: 0 }}
-                          animate={{ opacity: 1 }}
-                          exit={{ opacity: 0 }}
-                        />
-                      )}
-
-                      {!isActive && (
-                        <div className="absolute inset-0 rounded-xl bg-slate-100/0 transition-colors duration-200 group-hover:bg-slate-100/70 -z-10" />
-                      )}
-
-                      <span className="font-medium relative z-20">
-                        {item.title}
-                      </span>
-
-                      <motion.span
-                        className="relative z-20 flex items-center justify-center"
-                        animate={{
-                          opacity: isActive ? 1 : 0,
-                          x: isActive ? 0 : -4,
+                    <div key={item.title} className="space-y-1">
+                      {/* PARENT ITEM */}
+                      <motion.button
+                        layout
+                        onClick={() => {
+                          if (hasSubItems) {
+                            toggleExpand(item.title);
+                          } else {
+                            setActiveItem(item.title);
+                          }
                         }}
-                        style={{ opacity: undefined, x: undefined }}
+                        className={`
+                          group flex items-center justify-between w-full px-4 py-2 rounded-xl text-sm relative z-10 transition-colors
+                          ${
+                            isActive
+                              ? "text-slate-900"
+                              : "text-slate-600 hover:text-slate-900"
+                          }
+                        `}
                       >
-                        <ChevronRight
-                          size={16}
-                          className={`
-        transition-all duration-300
-        ${
-          !isActive &&
-          "opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0"
-        }
-      `}
-                        />
-                      </motion.span>
-                    </motion.button>
+                        {/* Active Background (Only if parent is strictly active) */}
+                        {isActive && (
+                          <motion.div
+                            layoutId="active-bg"
+                            className="absolute inset-0 bg-slate-100 rounded-xl border border-slate-200 shadow-sm -z-10"
+                            transition={{
+                              type: "spring",
+                              stiffness: 300,
+                              damping: 30,
+                            }}
+                          />
+                        )}
+
+                        {/* Hover Background */}
+                        {!isActive && (
+                          <div className="absolute inset-0 rounded-xl bg-slate-100/0 transition-colors duration-200 group-hover:bg-slate-100/50 -z-10" />
+                        )}
+
+                        <span className="font-medium relative z-20">
+                          {item.title}
+                        </span>
+
+                        {/* Chevron Animation */}
+                        {hasSubItems ? (
+                          <motion.span
+                            animate={{ rotate: isExpanded ? 90 : 0 }}
+                            transition={{ duration: 0.2 }}
+                            className="text-slate-400"
+                          >
+                            <ChevronRight size={14} />
+                          </motion.span>
+                        ) : (
+                          // Only show arrow for leaf nodes if active
+                          isActive && (
+                            <motion.span
+                              initial={{ opacity: 0, x: -5 }}
+                              animate={{ opacity: 1, x: 0 }}
+                            >
+                              <ChevronRight
+                                size={14}
+                                className="text-slate-400"
+                              />
+                            </motion.span>
+                          )
+                        )}
+                      </motion.button>
+
+                      {/* SUB ITEMS */}
+                      <AnimatePresence>
+                        {hasSubItems && isExpanded && (
+                          <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            transition={{ duration: 0.3, ease: "easeInOut" }}
+                            className="overflow-hidden"
+                          >
+                            <div className="pl-4 space-y-1 mt-1 relative">
+                              {/* Vertical Line for tree structure */}
+                              <div className="absolute left-6 top-0 bottom-2 w-px bg-slate-200" />
+
+                              {item.subItems!.map((subItem) => {
+                                const isSubActive = activeItem === subItem;
+
+                                return (
+                                  <motion.button
+                                    key={subItem}
+                                    layout
+                                    onClick={() => setActiveItem(subItem)}
+                                    className={`
+                                      relative flex items-center w-full pl-6 pr-4 py-2 rounded-lg text-sm transition-colors z-10
+                                      ${
+                                        isSubActive
+                                          ? "text-slate-900 font-medium"
+                                          : "text-slate-500 hover:text-slate-900"
+                                      }
+                                    `}
+                                  >
+                                    {isSubActive && (
+                                      <motion.div
+                                        layoutId="active-bg"
+                                        className="absolute inset-0 bg-slate-100 rounded-lg border border-slate-200 shadow-sm -z-10"
+                                        transition={{
+                                          type: "spring",
+                                          stiffness: 300,
+                                          damping: 30,
+                                        }}
+                                      />
+                                    )}
+
+                                    {/* Simple Hover for subitems */}
+                                    {!isSubActive && (
+                                      <div className="absolute inset-0 rounded-lg bg-slate-100/0 transition-colors duration-200 hover:bg-slate-100/50 -z-10" />
+                                    )}
+
+                                    <span>{subItem}</span>
+                                  </motion.button>
+                                );
+                              })}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </div>
                   );
                 })}
               </div>
