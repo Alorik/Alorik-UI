@@ -1,7 +1,10 @@
 "use client";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X, ChevronRight, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useDocs } from "./docs-context";
+// 1. Import the hook we created
+
 
 type SidebarItem = {
   title: string;
@@ -15,8 +18,12 @@ type SidebarSection = {
 
 export default function DocumentLeftSidebar() {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-  const [activeItem, setActiveItem] = useState<string>("Introduction");
-  // Track which folders are open. Defaults to empty.
+
+  // 2. REMOVED local state, ADDED context hook
+  // const [activeItem, setActiveItem] = useState<string>("Introduction");
+  const { activeItem, setActiveItem } = useDocs();
+
+  // Track which folders are open.
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
 
   const sidebarLinks: SidebarSection[] = [
@@ -56,7 +63,7 @@ export default function DocumentLeftSidebar() {
     },
   ];
 
-  // Auto-expand the category if a sub-item is active
+  // Auto-expand the category if a sub-item is active (Works with global state too!)
   useEffect(() => {
     sidebarLinks.forEach((section) => {
       section.items.forEach((item) => {
@@ -67,6 +74,7 @@ export default function DocumentLeftSidebar() {
         }
       });
     });
+    // We add sidebarLinks to dependency to be safe, though it's static
   }, [activeItem]);
 
   const toggleExpand = (title: string) => {
@@ -90,10 +98,9 @@ export default function DocumentLeftSidebar() {
       {/* Sidebar */}
       <aside
         className={`
-          fixed lg:sticky top-0 left-0 z-40 h-screen w-[600px] bg-white border-r border-slate-200
+          fixed lg:sticky top-0 left-0 z-40 h-screen w-64 bg-white border-r border-slate-200
           transition-transform duration-300
           pt-20 lg:pt-8 px-4 overflow-y-auto
-
           ${isSidebarOpen ? "translate-x-0" : "-translate-x-full"}
         `}
       >
@@ -131,7 +138,7 @@ export default function DocumentLeftSidebar() {
                           }
                         `}
                       >
-                        {/* Active Background (Only if parent is strictly active) */}
+                        {/* Active Background */}
                         {isActive && (
                           <motion.div
                             layoutId="active-bg"
@@ -189,7 +196,7 @@ export default function DocumentLeftSidebar() {
                             className="overflow-hidden"
                           >
                             <div className="pl-4 space-y-1 mt-1 relative">
-                              {/* Vertical Line for tree structure */}
+                              {/* Vertical Line */}
                               <div className="absolute left-6 top-0 bottom-2 w-px bg-slate-200" />
 
                               {item.subItems!.map((subItem) => {
@@ -221,7 +228,7 @@ export default function DocumentLeftSidebar() {
                                       />
                                     )}
 
-                                    {/* Simple Hover for subitems */}
+                                    {/* Subitem Hover */}
                                     {!isSubActive && (
                                       <div className="absolute inset-0 rounded-lg bg-slate-100/0 transition-colors duration-200 hover:bg-slate-100/50 -z-10" />
                                     )}

@@ -9,7 +9,12 @@ interface ComponentPlaygroundProps {
   code: string;
 }
 
-export default function ComponentPlayground({ title, description, children, code }: ComponentPlaygroundProps) {
+export default function ComponentPlayground({
+  title,
+  description,
+  children,
+  code,
+}: ComponentPlaygroundProps) {
   const [activeTab, setActiveTab] = useState("preview");
   const [copied, setCopied] = useState(false);
   const id = title.toLowerCase().replace(/\s+/g, "-");

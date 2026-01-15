@@ -60,7 +60,6 @@ export default function ComponentShowcase() {
   return (
     <div className="space-y-24">
       {/* INSTALLATION */}
-      
 
       {/* COMPONENTS */}
       <section>
