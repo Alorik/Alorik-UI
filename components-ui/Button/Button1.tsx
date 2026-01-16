@@ -1,6 +1,6 @@
 "use client";
-import { motion } from "motion/react";
-import React from "react";
+import { motion } from "framer-motion";
+
 
 export default function ScaleButton() {
   return (

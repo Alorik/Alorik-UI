@@ -1,7 +1,6 @@
 "use client";
 
-import { motion, Variants } from "motion/react";
-import type { ReactNode } from "react";
+import { motion, Variants } from "framer-motion";
 
 /* -------------------------------------------------------------------------- */
 /*                                   Types                                    */

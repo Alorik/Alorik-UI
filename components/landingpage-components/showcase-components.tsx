@@ -5,7 +5,6 @@ import GracefulHoverCard from "@/components-ui/Card/GracefulCard";
 
 import InputComponent from "@/components-ui/InputComponent";
 import SlideButton from "@/components-ui/SlideUpButton";
-import Link from "next/link";
 
 export default function ShowcaseComponents() {
   return (
