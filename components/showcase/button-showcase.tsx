@@ -2,7 +2,7 @@ import BeamButton from "@/components-ui/Button/BeamButton";
 import ComponentPlayground from "../documentation-components/component-Playground";
 import BeamButtonCode from "../code-snippets/beam-code";
 
-export default function ButtonShowcase() {
+export default function BeamButtonShowcase() {
   return (
     <>
       <h2 className="text-2xl font-bold text-slate-900 mb-6">Components</h2>

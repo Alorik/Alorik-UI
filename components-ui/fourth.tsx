@@ -2,6 +2,15 @@
 import { motion, useScroll, useSpring } from "motion/react";
 import { useRef } from "react";
 
+
+interface TimelineProps {
+  data: {
+    title: string;
+    description: string;
+  };
+  index: number;
+}
+
 export default function StarlightTimeline() {
   const containerRef = useRef(null);
 
@@ -86,7 +95,7 @@ const timelineData = [
 ];
 
 
-const TimelineItem = ({ data, index }) => {
+const TimelineItem = ({ data, index }: TimelineProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}

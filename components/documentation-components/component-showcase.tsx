@@ -14,11 +14,9 @@ import CursorFollower from "@/components-ui/cursor/CursorFollower";
 
 import ComponentPlayground from "./component-Playground";
 
-
 export default function ComponentShowcase() {
   return (
     <div className="space-y-24">
-
       {/* COMPONENTS */}
       <section>
         <h2 className="text-2xl font-bold text-slate-900 mb-6">Components</h2>

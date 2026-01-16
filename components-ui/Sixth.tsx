@@ -1,24 +1,41 @@
 "use client";
-import React, { useRef, useState } from "react";
-import { motion } from "framer-motion";
+
+import { useRef, useState } from "react";
+import type { MouseEvent, ReactNode } from "react";
 import { Sparkles } from "lucide-react";
 
-/**
- * Spotlight Button
- * * Logic:
- * 1. Tracks mouse position relative to the button.
- * 2. Updates the coordinates of a radial gradient background.
- * 3. Reveals a "border" highlight and a "surface" highlight dynamically.
- */
-const SpotlightButton = ({ children, className = "" }) => {
-  const btnRef = useRef(null);
-  const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [opacity, setOpacity] = useState(0);
+/* -------------------------------------------------------------------------- */
+/*                                   Types                                    */
+/* -------------------------------------------------------------------------- */
 
-  const handleMouseMove = (e) => {
+interface SpotlightButtonProps {
+  children: ReactNode;
+  className?: string;
+  onClick?: () => void;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                              Spotlight Button                               */
+/* -------------------------------------------------------------------------- */
+
+const SpotlightButton = ({
+  children,
+  className = "",
+  onClick,
+}: SpotlightButtonProps) => {
+  const btnRef = useRef<HTMLButtonElement | null>(null);
+
+  const [position, setPosition] = useState<{ x: number; y: number }>({
+    x: 0,
+    y: 0,
+  });
+  const [opacity, setOpacity] = useState<number>(0);
+
+  const handleMouseMove = (e: MouseEvent<HTMLButtonElement>) => {
     if (!btnRef.current) return;
 
     const rect = btnRef.current.getBoundingClientRect();
+
     setPosition({
       x: e.clientX - rect.left,
       y: e.clientY - rect.top,
@@ -38,34 +55,38 @@ const SpotlightButton = ({ children, className = "" }) => {
       className={`
         relative overflow-hidden rounded-full bg-slate-950 px-8 py-4 
         text-sm font-medium text-white transition-colors 
-        focus:outline-none focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-50
+        focus:outline-none focus:ring-2 focus:ring-slate-400 
+        focus:ring-offset-2 focus:ring-offset-slate-50
         ${className}
       `}
     >
-      {/* 1. The Spotlight Overlay (The "Flashlight" beam) 
-          This layer creates the main glow inside the button.
-      */}
+      {/* Spotlight surface */}
       <div
         className="pointer-events-none absolute -inset-px transition-opacity duration-300"
         style={{
           opacity,
-          background: `radial-gradient(150px circle at ${position.x}px ${position.y}px, rgba(255,255,255,0.1), transparent 60%)`,
+          background: `radial-gradient(
+            150px circle at ${position.x}px ${position.y}px,
+            rgba(255,255,255,0.1),
+            transparent 60%
+          )`,
         }}
       />
 
-      {/* 2. The Border Highlight 
-          This layer sits behind the content but creates the sharp border reveal.
-          We use a slightly brighter/smaller gradient here.
-      */}
+      {/* Border glow */}
       <div
-        className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        className="pointer-events-none absolute -inset-px transition-opacity duration-300"
         style={{
           opacity,
-          background: `radial-gradient(100px circle at ${position.x}px ${position.y}px, rgba(34, 211, 238, 0.4), transparent 50%)`,
+          background: `radial-gradient(
+            100px circle at ${position.x}px ${position.y}px,
+            rgba(34, 211, 238, 0.4),
+            transparent 50%
+          )`,
         }}
       />
 
-      {/* 3. Static Border Ring (Optional, for structure when not hovering) */}
+      {/* Static ring */}
       <div className="absolute inset-0 rounded-full ring-1 ring-white/10" />
 
       {/* Content */}
@@ -74,9 +95,10 @@ const SpotlightButton = ({ children, className = "" }) => {
   );
 };
 
-/**
- * Main Demo
- */
+/* -------------------------------------------------------------------------- */
+/*                                   Demo                                     */
+/* -------------------------------------------------------------------------- */
+
 export default function Spotlight() {
   return (
     <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-8 gap-12">
@@ -92,7 +114,6 @@ export default function Spotlight() {
         Explore Features
       </SpotlightButton>
 
-      {/* Large version for testing tracking */}
       <SpotlightButton className="text-lg px-12 py-6">
         Start Free Trial
       </SpotlightButton>
