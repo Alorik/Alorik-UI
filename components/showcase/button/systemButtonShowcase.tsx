@@ -1,6 +1,7 @@
 import SystemButton from "@/components-ui/Button/scale-button";
-import ComponentPlayground from "../documentation-components/component-Playground";
-import SystemButtonCode from "../code-snippets/system-button";
+import SystemButtonCode from "@/components/code-snippets/system-button";
+import ComponentPlayground from "@/components/documentation-components/component-Playground";
+
 
 export default function SystemButtonShowcase() {
   return (

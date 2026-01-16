@@ -5,9 +5,10 @@ import { DocsProvider, useDocs } from "./docs-context"; // Make sure useDocs is 
 import DocumentLeftSidebar from "./left-header";
 import IntroductionPage from "./inroduction"; // Import your pages
 import InstallationPage from "./installation";
-import BeamButtonShowcase from "../showcase/beambutton-showcase";
-import SystemButtonShowcase from "../showcase/systemButtonShowcase";
-import StarLightButtonShowcase from "../showcase/starlightbutton-showcase";
+import BeamButtonShowcase from "../showcase/button/beambutton-showcase";
+import SystemButtonShowcase from "../showcase/button/systemButtonShowcase";
+import StarLightButtonShowcase from "../showcase/button/starlightbutton-showcase";
+import ClipPathCardShowcase from "../showcase/card/clipPathCard-showcase";
 
 export default function DocumentationContent() {
   return (
@@ -43,6 +44,8 @@ function ActivePageRenderer() {
       return <SystemButtonShowcase />;
     case "StarLight Button":
       return <StarLightButtonShowcase />;
+    case "ClipPath Card":
+      return <ClipPathCardShowcase />;
 
 
     default:

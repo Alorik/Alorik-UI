@@ -1,6 +1,8 @@
 import StarlightButtonDisplay from "@/components-ui/Button/starlight";
-import ComponentPlayground from "../documentation-components/component-Playground";
-import StarLightButtonCode from "../code-snippets/starlight-code";
+import StarLightButtonCode from "@/components/code-snippets/starlight-code";
+
+
+import ComponentPlayground from "@/components/documentation-components/component-Playground";
 
 export default function StarLightButtonShowcase() {
   return (

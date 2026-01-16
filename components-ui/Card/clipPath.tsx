@@ -1,12 +1,17 @@
 "use client";
 
-import React, { useRef, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import React, { useRef } from "react";
+import {
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  useSpring,
+} from "framer-motion";
 import { ArrowUpRight, Code, Figma } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 /* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
+/* Types                                    */
 /* -------------------------------------------------------------------------- */
 
 type Theme = "cyan" | "lime" | "rose";
@@ -25,12 +30,12 @@ interface ThemeConfig {
 }
 
 /* -------------------------------------------------------------------------- */
-/*                               Theme Config                                 */
+/* Theme Config                                 */
 /* -------------------------------------------------------------------------- */
 
 const THEMES: Record<Theme, ThemeConfig> = {
   cyan: {
-    bg: "bg-cyan-400",
+    bg: "bg-emerald-400",
     text: "text-slate-900",
     sub: "text-slate-800",
   },
@@ -47,7 +52,7 @@ const THEMES: Record<Theme, ThemeConfig> = {
 };
 
 /* -------------------------------------------------------------------------- */
-/*                              ClipPath Card                                 */
+/* ClipPath Card                                 */
 /* -------------------------------------------------------------------------- */
 
 const ClipPathCard = ({
@@ -57,24 +62,46 @@ const ClipPathCard = ({
   theme = "cyan",
 }: ClipPathCardProps) => {
   const ref = useRef<HTMLDivElement | null>(null);
-  const [isHovered, setIsHovered] = useState(false);
 
-  /* ---------------------------- Mouse Tracking ---------------------------- */
+  /* ---------------------------- Motion Values ---------------------------- */
 
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
+  // 1. Track raw mouse position
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
-  // Smooth physics for nicer movement
-  const springConfig = { stiffness: 120, damping: 18, mass: 0.2 };
-  const springX = useSpring(mouseX, springConfig);
-  const springY = useSpring(mouseY, springConfig);
+  // 2. Track the radius of the reveal circle (0 = closed, 350 = open)
+  const radius = useMotionValue(0);
+
+  /* ---------------------------- Physics Config --------------------------- */
+
+  // Smooth mouse follow
+  const springX = useSpring(x, { stiffness: 1, damping: 1 });
+  const springY = useSpring(y, { stiffness: 1, damping: 1 });
+
+  // Smooth expansion/contraction of the revea
+  const springRadius = useSpring(radius, { stiffness: 250, damping: 25 });
+
+  // 3. Create the clip-path string directly from motion values
+  // This bypasses React re-renders for maximum performance
+  const clipPath = useMotionTemplate`circle(${springRadius}px at ${springX}px ${springY}px)`;
+
+  /* ---------------------------- Event Handlers --------------------------- */
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!ref.current) return;
-
     const rect = ref.current.getBoundingClientRect();
-    mouseX.set(e.clientX - rect.left);
-    mouseY.set(e.clientY - rect.top);
+    x.set(e.clientX - rect.left);
+    y.set(e.clientY - rect.top);
+  };
+
+  const handleMouseEnter = () => {
+    // Expand radius to cover the card
+    radius.set(400);
+  };
+
+  const handleMouseLeave = () => {
+    // Collapse radius back to 0
+    radius.set(0);
   };
 
   const activeTheme = THEMES[theme];
@@ -82,10 +109,10 @@ const ClipPathCard = ({
   return (
     <div
       ref={ref}
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
       onMouseMove={handleMouseMove}
-      className="relative h-80 w-72 cursor-pointer overflow-hidden rounded-2xl border border-slate-800 bg-slate-950"
+      className="relative h-80 w-72 cursor-pointer overflow-hidden rounded-2xl border border-slate-100 bg-slate-900 shadow-2xl"
     >
       {/* ------------------------------------------------------------------ */}
       {/* Base Layer (Dark)                                                   */}
@@ -111,25 +138,19 @@ const ClipPathCard = ({
       {/* ------------------------------------------------------------------ */}
       <motion.div
         className={`absolute inset-0 flex flex-col justify-between p-8 ${activeTheme.bg}`}
-        animate={{
-          clipPath: isHovered
-            ? `circle(150% at ${springX.get()}px ${springY.get()}px)`
-            : `circle(0% at ${springX.get()}px ${springY.get()}px)`,
-        }}
-        transition={{
-          duration: 0.45,
-          ease: "circOut",
+        style={{
+          clipPath, // Bind the optimized template directly to style
         }}
       >
         <div className="flex justify-between items-start">
           <div
-            className={`p-3 rounded-xl bg-black/10 backdrop-blur-sm ${activeTheme.text}`}
+            className={`p-3 rounded-xl bg-black/10 backdrop-blur-md ${activeTheme.text}`}
           >
             <Icon size={24} />
           </div>
 
           <div
-            className={`p-2 rounded-full bg-black/10 backdrop-blur-sm ${activeTheme.text}`}
+            className={`p-2 rounded-full bg-black/10 backdrop-blur-md ${activeTheme.text}`}
           >
             <ArrowUpRight size={20} />
           </div>
@@ -151,12 +172,12 @@ const ClipPathCard = ({
 };
 
 /* -------------------------------------------------------------------------- */
-/*                                   Demo                                     */
+/* Demo                                     */
 /* -------------------------------------------------------------------------- */
 
 export default function ClipPath() {
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col md:flex-row items-center justify-center p-8 gap-8">
+    <div className="bg-slate-150 flex flex-col md:flex-row items-center justify-center p-8 gap-8 rounded-xl w-full min-h-[500px]">
       <ClipPathCard
         title="Frontend"
         subtitle="Development"
