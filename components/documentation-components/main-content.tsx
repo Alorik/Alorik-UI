@@ -12,6 +12,7 @@ import ClipPathCardShowcase from "../showcase/card/clipPathCard-showcase";
 import GracefulCardShowcase from "../showcase/card/gracefulCard-showcase";
 import HoveredCardShowcase from "../showcase/card/hoveredCard-showcase";
 import StackedCardShowcase from "../showcase/card/stackedCard-showcase";
+import ExpandableCardShowcase from "../showcase/card/expandableCard-showcase";
 
 export default function DocumentationContent() {
   return (
@@ -56,7 +57,7 @@ function ActivePageRenderer() {
     case "Stacked Card":
       return <StackedCardShowcase />;
     case "Expandable Card":
-      return <StackedCardShowcase />;
+      return <ExpandableCardShowcase />;
 
     default:
       return (

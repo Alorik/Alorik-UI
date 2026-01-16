@@ -12,7 +12,7 @@ export default function StackedCardShowcase() {
         <ComponentPlayground
           title="Stacked Card"
           description="A layered card interaction that unfolds on hover — the center card rises and scales while the side cards drift apart, revealing visual hierarchy."
-          code={`import { StackedCard } from "@/components/alorik/buttons";
+          code={`import { StackedCard } from "@/components/alorik/card";
                   
                   export default function Home() {
                     return <StackedCard />;

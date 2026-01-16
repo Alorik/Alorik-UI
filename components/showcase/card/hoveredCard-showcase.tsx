@@ -12,7 +12,7 @@ export default function HoveredCardShowcase() {
         <ComponentPlayground
           title="Hovered Card"
           description="A focus-driven card layout where the active card expands on hover while surrounding cards subtly shrink and fade, guiding attention naturally."
-          code={`import { HoveredCard } from "@/components/alorik/buttons";
+          code={`import { HoveredCard } from "@/components/alorik/card";
                   export default function Home() {
                   return <HoveredCard />;
                   }`}

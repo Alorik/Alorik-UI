@@ -130,7 +130,7 @@ const ExpandableCards = () => {
 
 export default function ExpandableCard() {
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center">
+    <div className="min-w-5xl bg-slate-150 flex rounded-2xl items-center justify-center">
       <ExpandableCards />
     </div>
   );

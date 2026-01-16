@@ -12,7 +12,7 @@ export default function ClipPathCardShowcase() {
         <ComponentPlayground
           title="Clip Path Card"
           description="A dynamic card that uses a cursor-driven clip path to uncover vivid layers, creating a bold and immersive hover experience."
-          code={`import { ClipPathCard } from "@/components/alorik/buttons";
+          code={`import { ClipPathCard } from "@/components/alorik/card";
             
             export default function Home() {
               return <ClipPathCard />;
