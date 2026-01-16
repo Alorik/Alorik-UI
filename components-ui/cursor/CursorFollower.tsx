@@ -67,7 +67,7 @@ export default function CursorFollower() {
   return (
     <div
       ref={containerRef}
-      className="relative bg-white cursor-none flex flex-col items-center justify-center p-12 min-h-[300px] overflow-hidden"
+      className="relative bg-white cursor-none flex flex-col items-center justify-center p-12  overflow-hidden"
     >
       {/* Render cursor ONLY when inside container */}
       {isInside && (

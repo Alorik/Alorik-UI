@@ -1,10 +1,13 @@
 "use client";
 
-import Button2 from "@/components-ui/Button/starlight";
 import GracefulHoverCard from "@/components-ui/Card/GracefulCard";
 
 import InputComponent from "@/components-ui/Input/InputComponent";
 import SlideButton from "@/components-ui/Button/SlideUpButton";
+
+import CursorFollower from "@/components-ui/cursor/CursorFollower";
+import ClipPath from "@/components-ui/Card/clipPath";
+import StackCard from "@/components-ui/Card/StackedCard";
 
 export default function ShowcaseComponents() {
   return (
@@ -21,8 +24,8 @@ export default function ShowcaseComponents() {
       <div className="grid grid-cols-2 gap-6 mt-5 max-w-7xl mx-auto p-6">
         {/* Left Column */}
         <div className="space-y-6">
-          <div className="rounded-3xl bg-gray-950 p-12 shadow-2xl border border-slate-700 min-h-[400px] flex items-center justify-center">
-            <GracefulHoverCard />
+          <div className="rounded-3xl bg-gray-150 p-12 shadow-2xl border border-slate-100 min-h-[300px] flex items-center justify-center">
+<StackCard />
           </div>
 
           <div className="rounded-3xl bg-gray-950 p-12 shadow-2xl border border-slate-700 min-h-[215px] flex items-center justify-center">
@@ -36,8 +39,8 @@ export default function ShowcaseComponents() {
             <SlideButton />
           </div>
 
-          <div className="rounded-3xl bg-gray-950 p-12 shadow-2xl border border-slate-800 min-h-[300px] flex items-center justify-center">
-            <Button2 />
+          <div className="rounded-3xl bg-gray-150 p-12 shadow-2xl border border-slate-100 min-h-[300px] flex items-center justify-center">
+            <CursorFollower />
           </div>
         </div>
       </div>

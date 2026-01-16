@@ -16,7 +16,7 @@ export default function BreadCrumb() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center p-8">
+    <div className="bg-slate-950 flex items-center justify-center p-8">
       <nav aria-label="Breadcrumb">
         <ol className="flex items-center gap-2 px-6 py-4 rounded-xl bg-slate-900/50 border border-slate-800">
           {items.map((item, index) => {

@@ -126,7 +126,7 @@ export default function HoverReveal() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative min-h-screen bg-slate-950 flex items-center justify-center p-8 overflow-hidden"
+      className="relative bg-slate-950 flex items-center justify-center p-8 overflow-hidden"
     >
       <div className="w-full max-w-3xl relative z-10">
         <div className="mb-12 border-b border-slate-800 pb-4">

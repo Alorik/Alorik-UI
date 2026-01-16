@@ -154,7 +154,7 @@ const ClipPathCard = ({
 /*                                   Demo                                     */
 /* -------------------------------------------------------------------------- */
 
-export default function App() {
+export default function ClipPath() {
   return (
     <div className="min-h-screen bg-slate-950 flex flex-col md:flex-row items-center justify-center p-8 gap-8">
       <ClipPathCard
