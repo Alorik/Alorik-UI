@@ -1,9 +1,37 @@
 "use client";
+
 import React, { useRef, useState } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "motion/react";
 import { ArrowUpRight } from "lucide-react";
 
-const projects = [
+/* -------------------------------------------------------------------------- */
+/*                                   Types                                    */
+/* -------------------------------------------------------------------------- */
+
+interface Project {
+  title: string;
+  category: string;
+  color: TailwindColor;
+  description: string;
+}
+
+type TailwindColor =
+  | "bg-indigo-500"
+  | "bg-emerald-500"
+  | "bg-orange-500"
+  | "bg-rose-500";
+
+interface ProjectItemProps {
+  project: Project;
+  index: number;
+  setHoveredProject: React.Dispatch<React.SetStateAction<Project | null>>;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   Data                                     */
+/* -------------------------------------------------------------------------- */
+
+const projects: Project[] = [
   {
     title: "Orion Space",
     category: "Branding",
@@ -30,7 +58,15 @@ const projects = [
   },
 ];
 
-const ProjectItem = ({ project, setHoveredProject, index }) => {
+/* -------------------------------------------------------------------------- */
+/*                               Project Item                                 */
+/* -------------------------------------------------------------------------- */
+
+const ProjectItem = ({
+  project,
+  index,
+  setHoveredProject,
+}: ProjectItemProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -43,7 +79,7 @@ const ProjectItem = ({ project, setHoveredProject, index }) => {
         <span className="text-xs font-mono text-slate-500 mb-2 group-hover:text-cyan-400 transition-colors">
           0{index + 1} / {project.category}
         </span>
-        <h3 className="text-4xl md:text-5xl font-light text-slate-300 group-hover:text-white transition-colors group-hover:translate-x-4 duration-300">
+        <h3 className="text-4xl md:text-5xl font-light text-slate-300 group-hover:text-white transition-all group-hover:translate-x-4 duration-300">
           {project.title}
         </h3>
       </div>
@@ -55,25 +91,30 @@ const ProjectItem = ({ project, setHoveredProject, index }) => {
   );
 };
 
+/* -------------------------------------------------------------------------- */
+/*                              Main Component                                */
+/* -------------------------------------------------------------------------- */
+
 export default function HoverReveal() {
-  const [hoveredProject, setHoveredProject] = useState(null);
-  const containerRef = useRef(null);
+  const [hoveredProject, setHoveredProject] = useState<Project | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
 
   // Mouse tracking
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  // Smooth physics for the floating card
+  // Physics
   const springConfig = { stiffness: 150, damping: 15, mass: 0.1 };
   const springX = useSpring(x, springConfig);
   const springY = useSpring(y, springConfig);
 
-  const handleMouseMove = (e) => {
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!containerRef.current) return;
+
     const rect = containerRef.current.getBoundingClientRect();
-    // Center the card on the cursor
-    x.set(e.clientX - rect.left - 128); // 128 is half of w-64 (width)
-    y.set(e.clientY - rect.top - 100); // 100 is roughly half of height
+
+    x.set(e.clientX - rect.left - 128); // center X
+    y.set(e.clientY - rect.top - 100); // center Y
   };
 
   const handleMouseLeave = () => {
@@ -97,25 +138,19 @@ export default function HoverReveal() {
         <div className="flex flex-col">
           {projects.map((project, index) => (
             <ProjectItem
-              key={index}
-              index={index}
+              key={project.title}
               project={project}
+              index={index}
               setHoveredProject={setHoveredProject}
             />
           ))}
         </div>
       </div>
 
-      {/* FLOATING REVEAL CARD 
-          This element is shared. It moves to follow the mouse,
-          but its content changes based on what is hovered.
-      */}
+      {/* Floating Reveal Card */}
       <motion.div
         className="pointer-events-none absolute left-0 top-0 h-48 w-64 rounded-xl overflow-hidden shadow-2xl z-0 border border-white/10"
-        style={{
-          x: springX,
-          y: springY,
-        }}
+        style={{ x: springX, y: springY }}
         initial={{ scale: 0, opacity: 0 }}
         animate={{
           scale: hoveredProject ? 1 : 0,
@@ -123,7 +158,6 @@ export default function HoverReveal() {
         }}
         transition={{ type: "spring", stiffness: 200, damping: 20 }}
       >
-        {/* We animate the background color change smoothly */}
         <motion.div
           className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center"
           animate={{
@@ -132,14 +166,13 @@ export default function HoverReveal() {
               : "#1e293b",
           }}
         >
-          {/* Abstract Pattern Overlay */}
           <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent" />
 
           {hoveredProject && (
             <motion.div
+              key={hoveredProject.title}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              key={hoveredProject.title} // Re-animates when key changes
               className="relative z-10"
             >
               <h4 className="text-xl font-bold text-white mb-2 drop-shadow-md">
@@ -156,14 +189,17 @@ export default function HoverReveal() {
   );
 }
 
-// Helper to map Tailwind classes to roughly correct hex values for the animation
-// In a real app, you might just use style={{ backgroundColor: project.hex }}
-function getTailwindHex(className) {
-  const map = {
+/* -------------------------------------------------------------------------- */
+/*                               Color Helper                                 */
+/* -------------------------------------------------------------------------- */
+
+function getTailwindHex(color: TailwindColor): string {
+  const map: Record<TailwindColor, string> = {
     "bg-indigo-500": "#6366f1",
     "bg-emerald-500": "#10b981",
     "bg-orange-500": "#f97316",
     "bg-rose-500": "#f43f5e",
   };
-  return map[className] || "#1e293b";
+
+  return map[color];
 }
