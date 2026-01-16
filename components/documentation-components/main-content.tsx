@@ -14,6 +14,7 @@ import HoveredCardShowcase from "../showcase/card/hoveredCard-showcase";
 import StackedCardShowcase from "../showcase/card/stackedCard-showcase";
 import ExpandableCardShowcase from "../showcase/card/expandableCard-showcase";
 import ParticlesBackgroundShowcase from "../showcase/background/particleBackground-showcase";
+import FloatingNavShowcase from "../showcase/navbar/floating-navbar-showcase";
 
 export default function DocumentationContent() {
   return (
@@ -61,6 +62,8 @@ function ActivePageRenderer() {
       return <ExpandableCardShowcase />;
     case "Particles Background":
       return <ParticlesBackgroundShowcase />;
+    case "Floating Navbar":
+      return <FloatingNavShowcase />;
 
     default:
       return (

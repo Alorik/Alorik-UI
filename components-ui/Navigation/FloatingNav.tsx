@@ -1,19 +1,18 @@
 "use client";
+
 import { useState, useRef } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Home, User, Briefcase, Mail, LayoutGrid } from "lucide-react";
-import { useRouter } from "next/navigation"; // Changed import
 
 const navItems = [
-  { name: "Home", icon: Home, path: "/" },
-  { name: "About", icon: User, path: "/about" },
-  { name: "Documentation", icon: Briefcase, path: "/documentation" },
-  { name: "Components", icon: LayoutGrid, path: "/components" },
-  { name: "Contact", icon: Mail, path: "/contact" },
+  { name: "Home", icon: Home },
+  { name: "About", icon: User },
+  { name: "Documentation", icon: Briefcase },
+  { name: "Components", icon: LayoutGrid },
+  { name: "Contact", icon: Mail },
 ];
 
 export default function FloatingNav() {
-  const router = useRouter();
   const [active, setActive] = useState("Home");
   const { scrollY } = useScroll();
   const [hidden, setHidden] = useState(false);
@@ -21,13 +20,14 @@ export default function FloatingNav() {
   const scrollTimer = useRef<NodeJS.Timeout | null>(null);
 
   useMotionValueEvent(scrollY, "change", (latest) => {
-    const difference = latest - lastY;
+    const diff = latest - lastY;
 
-    if (difference > 0 && latest > 50) {
+    if (diff > 0 && latest > 50) {
       setHidden(true);
     } else {
       setHidden(false);
     }
+
     setLastY(latest);
 
     if (scrollTimer.current) {
@@ -39,11 +39,6 @@ export default function FloatingNav() {
     }, 400);
   });
 
-  const handleNavClick = (item: (typeof navItems)[0]) => {
-    setActive(item.name);
-    router.push(item.path);
-  };
-
   return (
     <motion.nav
       variants={{
@@ -52,16 +47,17 @@ export default function FloatingNav() {
       }}
       animate={hidden ? "hidden" : "visible"}
       transition={{ duration: 0.35, ease: "easeInOut" }}
-      className="fixed top-6 left-1/2 -translate-x-1/2 z-50"
+      className="z-50"
     >
       <div className="flex items-center gap-2 px-2 py-2 rounded-full border border-white/10 bg-gray-200 backdrop-blur-xl shadow-2xl shadow-black/50">
         {navItems.map((item) => {
           const isActive = active === item.name;
+
           return (
             <button
               key={item.name}
-              onClick={() => handleNavClick(item)}
-              className="relative px-4 py-2 text-sm font-medium transition-colors duration-300 rounded-full flex items-center gap-2"
+              onClick={() => setActive(item.name)}
+              className="relative px-4 py-2 text-sm font-medium rounded-full flex items-center gap-2 transition-colors duration-300"
               style={{
                 color: isActive ? "#184742" : "black",
               }}
