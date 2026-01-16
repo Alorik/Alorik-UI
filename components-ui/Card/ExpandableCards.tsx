@@ -1,40 +1,65 @@
 "use client";
+
 import { motion } from "motion/react";
 import { useState } from "react";
-import { ArrowUpRight, Layout } from "lucide-react";
-const items = [
+import { ArrowUpRight } from "lucide-react";
+
+/* -------------------------------------------------------------------------- */
+/*                                   Types                                    */
+/* -------------------------------------------------------------------------- */
+
+interface CardItem {
+  id: number;
+  title: string;
+  category: string;
+  color: string;
+  description: string;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                                   Data                                     */
+/* -------------------------------------------------------------------------- */
+
+const items: CardItem[] = [
   {
     id: 1,
     title: "Wilderness",
     category: "Photography",
-    color: "bg-slate-700", // Lighter
+    color: "bg-slate-700",
     description: "Capturing the raw essence of nature.",
   },
   {
     id: 2,
     title: "Urban",
     category: "Architecture",
-    color: "bg-slate-600", // Lighter
+    color: "bg-slate-600",
     description: "The geometry of modern living.",
   },
   {
     id: 3,
     title: "Oceanic",
     category: "Expedition",
-    color: "bg-indigo-800", // Lighter
+    color: "bg-indigo-800",
     description: "Depths of the silent blue world.",
   },
   {
     id: 4,
     title: "Alpine",
     category: "Travel",
-    color: "bg-zinc-700", // Lighter
+    color: "bg-zinc-700",
     description: "Peaks that touch the stratosphere.",
   },
 ];
+
+/* -------------------------------------------------------------------------- */
+/*                             Expandable Cards                                */
+/* -------------------------------------------------------------------------- */
+
 const ExpandableCards = () => {
-  const [hoveredId, setHoverId] = useState(null);
-  const activeId = hoveredId || 1;
+  const [hoveredId, setHoverId] = useState<number | null>(null);
+
+  // Fallback to first card when nothing is hovered
+  const activeId = hoveredId ?? items[0].id;
 
   return (
     <div className="flex h-96 w-full max-w-4xl gap-2 p-8">
@@ -57,6 +82,7 @@ const ExpandableCards = () => {
           }}
         >
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+
           <div className="absolute inset-0 flex flex-col justify-end p-6">
             {activeId === item.id ? (
               <motion.div
@@ -70,7 +96,11 @@ const ExpandableCards = () => {
                   </span>
                   <ArrowUpRight className="text-slate-300" size={18} />
                 </div>
-                <h3 className="text-2xl font-light text-white mb-1">{item.title}</h3>
+
+                <h3 className="text-2xl font-light text-white mb-1">
+                  {item.title}
+                </h3>
+
                 <p className="text-sm text-slate-400 leading-relaxed max-w-[200px]">
                   {item.description}
                 </p>
@@ -94,7 +124,9 @@ const ExpandableCards = () => {
   );
 };
 
-
+/* -------------------------------------------------------------------------- */
+/*                                   Page                                     */
+/* -------------------------------------------------------------------------- */
 
 export default function ExpandableCard() {
   return (
