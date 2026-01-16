@@ -1,10 +1,10 @@
 "use client";
 
-import Button2 from "@/components-ui/Button/Button2";
+import Button2 from "@/components-ui/Button/starlight";
 import GracefulHoverCard from "@/components-ui/Card/GracefulCard";
 
-import InputComponent from "@/components-ui/InputComponent";
-import SlideButton from "@/components-ui/SlideUpButton";
+import InputComponent from "@/components-ui/Input/InputComponent";
+import SlideButton from "@/components-ui/Button/SlideUpButton";
 
 export default function ShowcaseComponents() {
   return (

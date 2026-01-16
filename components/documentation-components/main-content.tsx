@@ -5,7 +5,9 @@ import { DocsProvider, useDocs } from "./docs-context"; // Make sure useDocs is 
 import DocumentLeftSidebar from "./left-header";
 import IntroductionPage from "./inroduction"; // Import your pages
 import InstallationPage from "./installation";
-import BeamButtonShowcase from "../showcase/button-showcase";
+import BeamButtonShowcase from "../showcase/beambutton-showcase";
+import SystemButtonShowcase from "../showcase/systemButtonShowcase";
+import StarLightButtonShowcase from "../showcase/starlightbutton-showcase";
 
 export default function DocumentationContent() {
   return (
@@ -37,6 +39,11 @@ function ActivePageRenderer() {
       return <InstallationPage />;
     case "Beam Button":
       return <BeamButtonShowcase />;
+    case "System Button":
+      return <SystemButtonShowcase />;
+    case "StarLight Button":
+      return <StarLightButtonShowcase />;
+
 
     default:
       return (

@@ -101,21 +101,10 @@ const SpotlightButton = ({
 
 export default function Spotlight() {
   return (
-    <div className="min-h-screen bg-slate-950 flex flex-col items-center justify-center p-8 gap-12">
-      <div className="text-center space-y-2">
-        <h2 className="text-2xl font-bold text-white">Spotlight Button</h2>
-        <p className="text-slate-400">
-          Hover to see the light track your cursor.
-        </p>
-      </div>
-
+    <div className="bg-slate-150 flex flex-col items-center justify-center p-8 gap-12">
       <SpotlightButton onClick={() => console.log("Clicked!")}>
         <Sparkles size={16} className="text-cyan-400" />
         Explore Features
-      </SpotlightButton>
-
-      <SpotlightButton className="text-lg px-12 py-6">
-        Start Free Trial
       </SpotlightButton>
     </div>
   );

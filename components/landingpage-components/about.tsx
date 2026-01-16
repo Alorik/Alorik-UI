@@ -1,6 +1,6 @@
 "use client";
 import BeamButton from "@/components-ui/Button/BeamButton";
-import Button1 from "@/components-ui/Button/Button1";
+import Button1 from "@/components-ui/Button/scale-button";
 import { motion } from "framer-motion";
 import { ArrowRight, Terminal } from "lucide-react";
 import { useRef } from "react";

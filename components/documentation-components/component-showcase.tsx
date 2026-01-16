@@ -1,9 +1,9 @@
 "use client";
 
 import BeamButton from "@/components-ui/Button/BeamButton";
-import StarlightButtonDisplay from "@/components-ui/Button/Button2";
-import ScaleButton from "@/components-ui/Button/Button1";
-import InputComponent from "@/components-ui/InputComponent";
+import StarlightButtonDisplay from "@/components-ui/Button/starlight";
+import ScaleButton from "@/components-ui/Button/scale-button";
+import InputComponent from "@/components-ui/Input/InputComponent";
 import GracefulHoverCard from "@/components-ui/Card/GracefulCard";
 import HoveredCard from "@/components-ui/Card/HoveredCard";
 import StackCard from "@/components-ui/Card/StackedCard";

@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import { useDocs } from "./docs-context";
 // 1. Import the hook we created
 
-
 type SidebarItem = {
   title: string;
   subItems?: string[];
@@ -36,15 +35,29 @@ export default function DocumentLeftSidebar() {
       items: [
         {
           title: "Buttons",
-          subItems: ["Beam Button", "System Button", "Move Button"],
-        },
-        {
-          title: "Inputs",
-          subItems: ["Input Field"],
+          subItems: ["Beam Button", "System Button", "StarLight Button"],
         },
         {
           title: "Cards",
-          subItems: ["GracefulCard", "HoveredCard", "StackedCard"],
+          subItems: [
+            "ClipPath Card",
+            "Graceful Card",
+            "Hovered Card",
+            "Stacked Card",
+            "Expandable Card",
+          ],
+        },
+        {
+          title: "Background",
+          subItems: ["Particles Background"],
+        },
+        {
+          title: "Navigation Bar",
+          subItems: ["Floating Navbar", "Navbar Reveal", "BreadCrumb Navbar"],
+        },
+        {
+          title: "TimeLine",
+          subItems: ["Starlight Timeline"],
         },
       ],
     },
