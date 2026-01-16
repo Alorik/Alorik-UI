@@ -1,5 +1,5 @@
 import StarlightButtonDisplay from "@/components-ui/Button/starlight";
-import StarLightButtonCode from "@/components/code-snippets/starlight-code";
+import StarLightButtonCode from "@/components/code-snippets/button/starlight-code";
 
 
 import ComponentPlayground from "@/components/documentation-components/component-Playground";

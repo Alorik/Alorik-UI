@@ -1,5 +1,5 @@
 import SystemButton from "@/components-ui/Button/scale-button";
-import SystemButtonCode from "@/components/code-snippets/system-button";
+import SystemButtonCode from "@/components/code-snippets/button/system-button";
 import ComponentPlayground from "@/components/documentation-components/component-Playground";
 
 

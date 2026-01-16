@@ -1,5 +1,5 @@
 import BeamButton from "@/components-ui/Button/BeamButton";
-import BeamButtonCode from "@/components/code-snippets/beam-code";
+import BeamButtonCode from "@/components/code-snippets/button/beam-code";
 import ComponentPlayground from "@/components/documentation-components/component-Playground";
 
 

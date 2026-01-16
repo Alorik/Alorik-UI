@@ -11,6 +11,7 @@ import StarLightButtonShowcase from "../showcase/button/starlightbutton-showcase
 import ClipPathCardShowcase from "../showcase/card/clipPathCard-showcase";
 import GracefulCardShowcase from "../showcase/card/gracefulCard-showcase";
 import HoveredCardShowcase from "../showcase/card/hoveredCard-showcase";
+import StackedCardShowcase from "../showcase/card/stackedCard-showcase";
 
 export default function DocumentationContent() {
   return (
@@ -52,6 +53,10 @@ function ActivePageRenderer() {
       return <GracefulCardShowcase />;
     case "Hovered Card":
       return <HoveredCardShowcase />;
+    case "Stacked Card":
+      return <StackedCardShowcase />;
+    case "Expandable Card":
+      return <StackedCardShowcase />;
 
     default:
       return (

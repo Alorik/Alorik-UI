@@ -12,10 +12,10 @@ export default function GracefulCardShowcase() {
         <ComponentPlayground
           title="Graceful Card"
           description="An elegant card component that uses subtle motion and layered depth to reveal content gracefully on hover."
-          code={`import { StarLightButton } from "@/components/alorik/buttons";
+          code={`import { GracefulCard } from "@/components/alorik/buttons";
                 
                 export default function Home() {
-                  return <StarLightButton />;
+                  return <GracefulCard />;
                 }`}
         >
           <GracefulHoverCard />
