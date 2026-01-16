@@ -1,4 +1,6 @@
-"use client";
+import CodeShowCase from "@/components-ui/code-showcase";
+
+const code = String.raw`"use client";
 import { useEffect, useRef } from "react";
 
 class Particle {
@@ -19,7 +21,7 @@ class Particle {
     this.vx = (Math.random() - 0.5) * 0.5;
     this.vy = (Math.random() - 0.5) * 0.5;
     this.size = Math.random() * 2 + 1;
-    this.color = `rgba(148, 163, 184, ${Math.random() * 0.5 + 0.3})`;
+    this.color = \`rgba(148, 163, 184, \${Math.random() * 0.5 + 0.3})\`;
   }
 
   update(mouseX: number, mouseY: number, mouseDistance: number) {
@@ -29,20 +31,15 @@ class Particle {
     if (this.x < 0 || this.x > this.canvasWidth) this.vx *= -1;
     if (this.y < 0 || this.y > this.canvasHeight) this.vy *= -1;
 
-    // Mouse repulsion
     const dx = mouseX - this.x;
     const dy = mouseY - this.y;
     const distance = Math.sqrt(dx * dx + dy * dy);
 
     if (distance < mouseDistance) {
-      const forceDirectionX = dx / distance;
-      const forceDirectionY = dy / distance;
-      const force = (mouseDistance - distance) / mouseDistance;
-      const directionX = forceDirectionX * force * 3;
-      const directionY = forceDirectionY * force * 3;
-
-      this.x -= directionX;
-      this.y -= directionY;
+      const forceX = (dx / distance) * ((mouseDistance - distance) / mouseDistance) * 3;
+      const forceY = (dy / distance) * ((mouseDistance - distance) / mouseDistance) * 3;
+      this.x -= forceX;
+      this.y -= forceY;
     }
   }
 
@@ -56,7 +53,6 @@ class Particle {
 
 export default function ParticlesHero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
   const mouse = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
@@ -68,8 +64,8 @@ export default function ParticlesHero() {
 
     let animationFrameId: number;
     let particles: Particle[] = [];
-    const particlesCount = 180;
-    const connectionDistance = 100;
+    const particleCount = 180;
+    const connectDistance = 100;
     const mouseDistance = 150;
 
     const resize = () => {
@@ -79,32 +75,30 @@ export default function ParticlesHero() {
 
     const init = () => {
       resize();
-      particles = [];
-      for (let i = 0; i < particlesCount; i++) {
-        particles.push(new Particle(canvas.width, canvas.height));
-      }
+      particles = Array.from(
+        { length: particleCount },
+        () => new Particle(canvas.width, canvas.height)
+      );
     };
 
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      particles.forEach((particle) => {
-        particle.update(mouse.current.x, mouse.current.y, mouseDistance);
-        particle.draw(ctx);
+      particles.forEach(p => {
+        p.update(mouse.current.x, mouse.current.y, mouseDistance);
+        p.draw(ctx);
       });
 
-      particles.forEach((a, index) => {
-        for (let j = index + 1; j < particles.length; j++) {
+      particles.forEach((a, i) => {
+        for (let j = i + 1; j < particles.length; j++) {
           const b = particles[j];
           const dx = a.x - b.x;
           const dy = a.y - b.y;
-          const distance = Math.sqrt(dx * dx + dy * dy);
+          const dist = Math.sqrt(dx * dx + dy * dy);
 
-          if (distance < connectionDistance) {
+          if (dist < connectDistance) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(148, 163, 184, ${
-              1 - distance / connectionDistance
-            })`;
+            ctx.strokeStyle = \`rgba(148,163,184,\${1 - dist / connectDistance})\`;
             ctx.lineWidth = 0.5;
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
@@ -116,40 +110,40 @@ export default function ParticlesHero() {
       animationFrameId = requestAnimationFrame(animate);
     };
 
-    // Initialize and start animation
     init();
     animate();
 
-    const handleMouseMove = (e: MouseEvent) => {
+    const onMouseMove = (e: MouseEvent) => {
       mouse.current.x = e.clientX;
       mouse.current.y = e.clientY;
     };
 
-    const handleResize = () => {
-      resize();
-      init();
-    };
-
-    window.addEventListener("resize", handleResize);
-    window.addEventListener("mousemove", handleMouseMove);
+    window.addEventListener("mousemove", onMouseMove);
+    window.addEventListener("resize", init);
 
     return () => {
-      window.removeEventListener("resize", handleResize);
-      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("mousemove", onMouseMove);
+      window.removeEventListener("resize", init);
       cancelAnimationFrame(animationFrameId);
     };
   }, []);
 
   return (
-    <div
-      ref={containerRef}
-      className="relative min-h-screen min-w-screen rounded-xl mx-auto bg-slate-950 flex items-center justify-center"
-    >
-      <canvas ref={canvasRef} className="absolute inset-0"></canvas>
+    <div className="relative min-h-screen bg-slate-950 flex items-center justify-center">
+      <canvas ref={canvasRef} className="absolute inset-0" />
       <div className="relative z-10 text-center text-white">
         <h1 className="text-6xl font-bold mb-4">Particle Network</h1>
         <p className="text-xl text-slate-300">Move your mouse to interact</p>
       </div>
     </div>
+  );
+}
+`;
+
+export default function ParticlesBackgroundCode() {
+  return (
+    <>
+      <CodeShowCase language=".tsx" title="Particles Background" code={code} />
+    </>
   );
 }

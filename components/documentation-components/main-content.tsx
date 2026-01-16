@@ -13,6 +13,7 @@ import GracefulCardShowcase from "../showcase/card/gracefulCard-showcase";
 import HoveredCardShowcase from "../showcase/card/hoveredCard-showcase";
 import StackedCardShowcase from "../showcase/card/stackedCard-showcase";
 import ExpandableCardShowcase from "../showcase/card/expandableCard-showcase";
+import ParticlesBackgroundShowcase from "../showcase/background/particleBackground-showcase";
 
 export default function DocumentationContent() {
   return (
@@ -58,6 +59,8 @@ function ActivePageRenderer() {
       return <StackedCardShowcase />;
     case "Expandable Card":
       return <ExpandableCardShowcase />;
+    case "Particles Background":
+      return <ParticlesBackgroundShowcase />;
 
     default:
       return (
