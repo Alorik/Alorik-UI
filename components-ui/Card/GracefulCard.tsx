@@ -1,9 +1,36 @@
-"use client"
+"use client";
 
-import { motion } from "motion/react";
+import { motion, Variants } from "motion/react";
+import type { ReactNode } from "react";
 
-const GracefulCard = ({ subtitle, title, description, color = "void" }) => {
-const colors = {
+/* -------------------------------------------------------------------------- */
+/*                                   Types                                    */
+/* -------------------------------------------------------------------------- */
+
+type AccentColor =
+  | "midnight"
+  | "abyss"
+  | "shadow"
+  | "twilight"
+  | "void"
+  | "eclipse"
+  | "nebula"
+  | "phantom"
+  | "depth"
+  | "cosmos";
+
+interface GracefulCardProps {
+  subtitle: string;
+  title: string;
+  description: string;
+  color?: AccentColor;
+}
+
+/* -------------------------------------------------------------------------- */
+/*                               Color Palette                                */
+/* -------------------------------------------------------------------------- */
+
+const COLORS: Record<AccentColor, string> = {
   midnight: "from-slate-900 via-indigo-400 to-slate-900",
   abyss: "from-gray-900 via-purple-400 to-gray-900",
   shadow: "from-black via-blue-500 to-black",
@@ -16,18 +43,32 @@ const colors = {
   cosmos: "from-slate-950 via-pink-400 to-slate-950",
 };
 
-  const accentColor = colors[color] || colors.eclipse;
+/* -------------------------------------------------------------------------- */
+/*                              Motion Variants                               */
+/* -------------------------------------------------------------------------- */
 
-   const slideUp = {
-     rest: { y: 0 },
-     hover: { y: -8 },
-   };
+const slideUp: Variants = {
+  rest: { y: 0 },
+  hover: { y: -8 },
+};
 
-   const revealText = {
-     rest: { height: 0, opacity: 0 },
-     hover: { height: "auto", opacity: 1 },
-   };
-  
+const revealText: Variants = {
+  rest: { height: 0, opacity: 0 },
+  hover: { height: "auto", opacity: 1 },
+};
+
+/* -------------------------------------------------------------------------- */
+/*                              Graceful Card                                 */
+/* -------------------------------------------------------------------------- */
+
+const GracefulCard = ({
+  subtitle,
+  title,
+  description,
+  color = "void",
+}: GracefulCardProps) => {
+  const accentColor = COLORS[color];
+
   return (
     <motion.div
       initial="rest"
@@ -35,20 +76,23 @@ const colors = {
       animate="rest"
       className="group cursor-pointer relative h-96 w-72 overflow-hidden rounded-2xl bg-slate-950 border border-slate-800 transition-colors hover:border-slate-700"
     >
-      {/* bg layer */}
+      {/* Background gradient layer */}
       <div
         className={`absolute inset-0 bg-gradient-to-br ${accentColor} opacity-50 transition-transform duration-700 group-hover:scale-110`}
       />
+
+      {/* Subtle noise / blur overlay */}
       <div className="absolute inset-0 opacity-5 bg-gradient-to-br from-white/10 via-transparent to-white/10 backdrop-blur-3xl" />
 
+      {/* Content */}
       <div className="absolute inset-0 flex flex-col justify-end p-6">
         <div className="mb-4 h-px w-full bg-gradient-to-r from-slate-500/30 to-transparent" />
+
         <motion.div variants={slideUp} transition={{ duration: 0.4 }}>
-          <div className="flex items-center">
-            <span className="text-xl uppercase tracking-widest transition-colors">
-              {subtitle}
-            </span>
-          </div>
+          <span className="text-xl uppercase tracking-widest text-slate-400">
+            {subtitle}
+          </span>
+
           <h3 className="mb-2 text-3xl font-light text-slate-200 group-hover:text-white transition-colors">
             {title}
           </h3>
@@ -64,20 +108,25 @@ const colors = {
           </motion.div>
         </motion.div>
       </div>
+
+      {/* Animated top shimmer */}
       <div className="absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full transition-transform duration-1000 group-hover:translate-x-full" />
     </motion.div>
   );
 };
 
+/* -------------------------------------------------------------------------- */
+/*                                   Demo                                     */
+/* -------------------------------------------------------------------------- */
 
 export default function GracefulHoverCard() {
   return (
-    <div className="relative flex flex-col md:flex-row items-center justify-center">
+    <div className="relative flex items-center justify-center">
       <GracefulCard
         subtitle="Strategy"
         title="Vision"
         description="Defining the long-term trajectory and core values that drive the brand forward."
-        color="indigo"
+        color="midnight"
       />
     </div>
   );
