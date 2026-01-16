@@ -1,4 +1,6 @@
-"use client";
+import CodeShowCase from "@/components-ui/code-showcase";
+
+const code = String.raw`"use client";
 import { motion } from "framer-motion";
 import { useState } from "react";
 
@@ -49,7 +51,7 @@ const Card = ({ item, index, hovered, setHovered }:CardProps) => {
       transition={{ duration: 0.3 }}
     >
       <div
-        className={`absolute -right-4 -top-4 h-32 w-32 rounded-full ${item.color} opacity-20 blur-3xl`}
+        className={\`absolute -right-4 -top-4 h-32 w-32 rounded-full \${item.color} opacity-20 blur-3xl\`}
       />
 
       <div className="relative z-10 flex h-full flex-col justify-end">
@@ -78,4 +80,11 @@ const [hovered, setHovered] = useState<number | null>(null);
       </div>
     </div>
   );
+}
+`;
+
+export default function HoveredCardCode() {
+  return <>
+    <CodeShowCase language=".tsx" code={code} title="Hovered Card"/>
+  </>
 }

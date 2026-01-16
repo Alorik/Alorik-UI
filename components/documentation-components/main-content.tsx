@@ -9,6 +9,8 @@ import BeamButtonShowcase from "../showcase/button/beambutton-showcase";
 import SystemButtonShowcase from "../showcase/button/systemButtonShowcase";
 import StarLightButtonShowcase from "../showcase/button/starlightbutton-showcase";
 import ClipPathCardShowcase from "../showcase/card/clipPathCard-showcase";
+import GracefulCardShowcase from "../showcase/card/gracefulCard-showcase";
+import HoveredCardShowcase from "../showcase/card/hoveredCard-showcase";
 
 export default function DocumentationContent() {
   return (
@@ -46,7 +48,10 @@ function ActivePageRenderer() {
       return <StarLightButtonShowcase />;
     case "ClipPath Card":
       return <ClipPathCardShowcase />;
-
+    case "Graceful Card":
+      return <GracefulCardShowcase />;
+    case "Hovered Card":
+      return <HoveredCardShowcase />;
 
     default:
       return (

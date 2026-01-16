@@ -10,8 +10,8 @@ export default function ClipPathCardShowcase() {
 
       <div>
         <ComponentPlayground
-          title="Starlight Button"
-          description="A luminous button with an animated starlight border that flows endlessly, creating a subtle yet futuristic interaction."
+          title="Clip Path Card"
+          description="A dynamic card that uses a cursor-driven clip path to uncover vivid layers, creating a bold and immersive hover experience."
           code={`import { StarLightButton } from "@/components/alorik/buttons";
             
             export default function Home() {
