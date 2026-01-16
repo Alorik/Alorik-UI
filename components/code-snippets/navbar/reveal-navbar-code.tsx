@@ -1,4 +1,6 @@
-"use client";
+import CodeShowCase from "@/components-ui/code-showcase";
+
+const code = String.raw`"use client";
 
 import React, { useRef, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
@@ -95,7 +97,7 @@ const ProjectItem = ({
 /*                              Main Component                                */
 /* -------------------------------------------------------------------------- */
 
-export default function NavReveal() {
+export default function HoverReveal() {
   const [hoveredProject, setHoveredProject] = useState<Project | null>(null);
   const containerRef = useRef<HTMLDivElement | null>(null);
 
@@ -126,7 +128,7 @@ export default function NavReveal() {
       ref={containerRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="relative bg-slate-950 min-w-6xl flex items-center justify-center p-8 overflow-hidden"
+      className="relative bg-slate-950 flex items-center justify-center p-8 overflow-hidden"
     >
       <div className="w-full max-w-3xl relative z-10">
         <div className="mb-12 border-b border-slate-800 pb-4">
@@ -202,4 +204,12 @@ function getTailwindHex(color: TailwindColor): string {
   };
 
   return map[color];
+}
+`;
+
+
+export default function NavRevealCode() {
+  return <>
+  <CodeShowCase title="Navbar Reveal" code={code} />
+  </>
 }

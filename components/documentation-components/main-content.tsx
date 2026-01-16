@@ -15,6 +15,7 @@ import StackedCardShowcase from "../showcase/card/stackedCard-showcase";
 import ExpandableCardShowcase from "../showcase/card/expandableCard-showcase";
 import ParticlesBackgroundShowcase from "../showcase/background/particleBackground-showcase";
 import FloatingNavShowcase from "../showcase/navbar/floating-navbar-showcase";
+import RevealNavbarShowcase from "../showcase/navbar/RevealNavbar-showcase";
 
 export default function DocumentationContent() {
   return (
@@ -64,6 +65,8 @@ function ActivePageRenderer() {
       return <ParticlesBackgroundShowcase />;
     case "Floating Navbar":
       return <FloatingNavShowcase />;
+    case "Navbar Reveal":
+      return <RevealNavbarShowcase />;
 
     default:
       return (
