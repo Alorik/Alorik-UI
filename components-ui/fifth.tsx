@@ -1,4 +1,5 @@
 "use client";
+
 import React from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { Fingerprint, ShieldCheck, Zap } from "lucide-react";
@@ -7,24 +8,25 @@ export default function HolographicCard() {
   const x = useMotionValue(0.5);
   const y = useMotionValue(0.5);
 
-  // Smooth physics configuration
-  const spring = { damping: 15, stiffness: 150 };
-  const mouseX = useSpring(x, spring);
-  const mouseY = useSpring(y, spring);
+  // Smooth physics
+  const springConfig = { damping: 15, stiffness: 150 };
+  const mouseX = useSpring(x, springConfig);
+  const mouseY = useSpring(y, springConfig);
 
-  // Map mouse (0-1) to rotation (-15deg to 15deg)
+  // Rotation mapping
   const rotateX = useTransform(mouseY, [0, 1], [15, -15]);
   const rotateY = useTransform(mouseX, [0, 1], [-15, 15]);
 
-  // Glare position
+  // Glare mapping
   const glareX = useTransform(mouseX, [0, 1], [0, 100]);
   const glareY = useTransform(mouseY, [0, 1], [0, 100]);
 
-  function handleMove(e) {
+  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
+
     x.set((e.clientX - rect.left) / rect.width);
     y.set((e.clientY - rect.top) / rect.height);
-  }
+  };
 
   return (
     <div
@@ -37,7 +39,11 @@ export default function HolographicCard() {
           x.set(0.5);
           y.set(0.5);
         }}
-        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        style={{
+          rotateX,
+          rotateY,
+          transformStyle: "preserve-3d",
+        }}
         className="relative h-96 w-72 rounded-xl bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 shadow-2xl group"
       >
         {/* Parallax Content */}
@@ -49,21 +55,24 @@ export default function HolographicCard() {
             <Fingerprint size={40} />
             <div className="absolute inset-0 bg-cyan-500 blur-2xl opacity-20 rounded-full" />
           </div>
+
           <h2 className="text-2xl font-bold text-white mb-2">Secure Access</h2>
+
           <p className="text-slate-400 text-sm mb-6">
             Biometric encryption enabled.
           </p>
 
           <div className="flex gap-4 w-full">
             {[
-              { I: ShieldCheck, t: "Verified" },
-              { I: Zap, t: "Active" },
-            ].map(({ I, t }) => (
+              { Icon: ShieldCheck, label: "Verified" },
+              { Icon: Zap, label: "Active" },
+            ].map(({ Icon, label }) => (
               <div
-                key={t}
+                key={label}
                 className="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg bg-slate-950/50 border border-slate-700/50 text-xs font-medium text-slate-300"
               >
-                <I size={12} className="text-cyan-400" /> {t}
+                <Icon size={12} className="text-cyan-400" />
+                {label}
               </div>
             ))}
           </div>
@@ -72,6 +81,7 @@ export default function HolographicCard() {
         {/* Glare Layer */}
         <motion.div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
           <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent" />
+
           <motion.div
             style={{
               left: useTransform(glareX, (v) => `${v}%`),
