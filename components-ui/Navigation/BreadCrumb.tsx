@@ -16,7 +16,7 @@ export default function BreadCrumb() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
-    <div className="bg-slate-950 flex items-center justify-center p-8">
+    <div className="bg-slate-950 rounded-2xl flex items-center justify-center p-8">
       <nav aria-label="Breadcrumb">
         <ol className="flex items-center gap-2 px-6 py-4 rounded-xl bg-slate-900/50 border border-slate-800">
           {items.map((item, index) => {
@@ -27,7 +27,7 @@ export default function BreadCrumb() {
               <React.Fragment key={item.id}>
                 {index > 0 && (
                   <motion.li
-                    className="text-slate-600 flex items-center"
+                    className="text-slate-900 flex items-center"
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: isDimmed ? 0.2 : 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
