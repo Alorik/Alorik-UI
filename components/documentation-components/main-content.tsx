@@ -16,6 +16,7 @@ import ExpandableCardShowcase from "../showcase/card/expandableCard-showcase";
 import ParticlesBackgroundShowcase from "../showcase/background/particleBackground-showcase";
 import FloatingNavShowcase from "../showcase/navbar/floating-navbar-showcase";
 import RevealNavbarShowcase from "../showcase/navbar/RevealNavbar-showcase";
+import BreadCrumbNavbarShowcase from "../showcase/navbar/breadCrumb-showcase";
 
 export default function DocumentationContent() {
   return (
@@ -67,6 +68,8 @@ function ActivePageRenderer() {
       return <FloatingNavShowcase />;
     case "Navbar Reveal":
       return <RevealNavbarShowcase />;
+          case "BreadCrumb Navbar":
+      return <BreadCrumbNavbarShowcase />;
 
     default:
       return (
