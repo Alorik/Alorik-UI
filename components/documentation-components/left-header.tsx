@@ -51,10 +51,7 @@ export default function DocumentLeftSidebar() {
           title: "Background",
           subItems: ["Particles Background"],
         },
-        {
-          title: "Navigation Bar",
-          subItems: ["Floating Navbar", "Navbar Reveal", "BreadCrumb Navbar"],
-        },
+
         {
           title: "TimeLine",
           subItems: ["Starlight Timeline"],
@@ -66,7 +63,7 @@ export default function DocumentLeftSidebar() {
       items: [
         {
           title: "Navigation",
-          subItems: ["Navbar", "Sidebar"],
+          subItems: ["Floating Navbar", "Navbar Reveal", "BreadCrumb Navbar"],
         },
         {
           title: "Sections",

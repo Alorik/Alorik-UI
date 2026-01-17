@@ -25,7 +25,7 @@ const items: CardItem[] = [
     id: 1,
     title: "Wilderness",
     category: "Photography",
-    color: "bg-slate-700",
+    color: "bg-rose-500",
     description: "Capturing the raw essence of nature.",
   },
   {
@@ -91,7 +91,7 @@ const ExpandableCards = () => {
                 transition={{ duration: 0.3, delay: 0.1 }}
               >
                 <div className="flex items-center justify-between mb-2">
-                  <span className="text-xs font-medium uppercase tracking-widest text-slate-400">
+                  <span className="text-xs font-medium uppercase tracking-widest text-slate-100">
                     {item.category}
                   </span>
                   <ArrowUpRight className="text-slate-300" size={18} />
@@ -101,7 +101,7 @@ const ExpandableCards = () => {
                   {item.title}
                 </h3>
 
-                <p className="text-sm text-slate-400 leading-relaxed max-w-[200px]">
+                <p className="text-sm text-slate-200 leading-relaxed max-w-[200px]">
                   {item.description}
                 </p>
               </motion.div>
@@ -112,7 +112,7 @@ const ExpandableCards = () => {
                 transition={{ duration: 0.3 }}
                 className="absolute inset-0 flex items-center justify-center"
               >
-                <h3 className="rotate-[-90deg] whitespace-nowrap text-xl font-light text-slate-500 tracking-widest">
+                <h3 className="rotate-[-90deg] whitespace-nowrap text-xl font-light text-slate-100 tracking-widest">
                   {item.title}
                 </h3>
               </motion.div>
