@@ -6,7 +6,7 @@ export default function VideoSection() {
       {/* Video */}
       <video
         className="absolute inset-0 w-full h-full object-cover"
-        src="dis.mp4"
+        src="landing.mp4"
         autoPlay
         loop
         muted
