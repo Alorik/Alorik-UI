@@ -8,7 +8,8 @@ export default function FloatingNavShowcase() {
         <div className="h-px w-full bg-slate-200 mb-10" />
   
         <div>
-          <ComponentPlayground
+      <ComponentPlayground
+        id="Expandable-card"
             title="Expandable Card"
             description="A motion-based card system where focus shifts on hover — the active card expands while surrounding cards subtly shrink and fade back."
             code={`import { ExpandableCardCode } from "@/components/alorik/card";

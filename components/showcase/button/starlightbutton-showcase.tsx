@@ -12,6 +12,7 @@ export default function StarLightButtonShowcase() {
 
       <div>
         <ComponentPlayground
+          id="starligh-button"
           title="Starlight Button"
           description="A luminous button with an animated starlight border that flows endlessly, creating a subtle yet futuristic interaction."
           code={`import { StarLightButton } from "@/components/alorik/buttons";

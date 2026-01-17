@@ -3,6 +3,7 @@ import { Check, Code, Copy, Eye } from "lucide-react";
 import { useEffect, useState } from "react";
 
 interface ComponentPlaygroundProps {
+  id: string;
   title: string;
   description: string;
   children: React.ReactNode;
