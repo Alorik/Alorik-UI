@@ -32,8 +32,8 @@ export default function Footer() {
             </h4>
             <div className="flex flex-col gap-3">
               <FooterLink href="/documentation">Documentation</FooterLink>
-              <FooterLink href="/components">Components</FooterLink>
-              <FooterLink href="/faq">FAQ</FooterLink>
+              <FooterLink href="/documentation">Components</FooterLink>
+              <FooterLink href="/documentation">FAQ</FooterLink>
             </div>
           </div>
 
@@ -47,7 +47,7 @@ export default function Footer() {
                 GitHub
               </SocialLink>
               <SocialLink
-                href="https://discord.gg/your-invite"
+                href="https://discord.com/users/immaculate_seahorse_07817"
                 icon={<FaDiscord />}
               >
                 Discord
@@ -65,16 +65,10 @@ export default function Footer() {
             &copy; {currentYear} Alorik UI. All rights reserved.
           </p>
           <div className="flex gap-6 text-sm text-slate-400">
-            <Link
-              href="/privacy"
-              className="hover:text-slate-600 transition-colors"
-            >
+            <Link href="/" className="hover:text-slate-600 transition-colors">
               Privacy Policy
             </Link>
-            <Link
-              href="/terms"
-              className="hover:text-slate-600 transition-colors"
-            >
+            <Link href="/" className="hover:text-slate-600 transition-colors">
               Terms of Service
             </Link>
           </div>

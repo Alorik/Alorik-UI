@@ -42,15 +42,6 @@ export default function Navbar() {
             <span className="absolute -bottom-1 left-0 w-0 h-px bg-slate-900 transition-all duration-300 ease-out group-hover:w-full" />
           </Link>
         </div>
-        <div className="">
-          <Link
-            href="/"
-            className="group relative text-sm font-medium text-slate-500 hover:text-slate-900 transition-colors duration-300"
-          >
-            Contact
-            <span className="absolute -bottom-1 left-0 w-0 h-px bg-slate-900 transition-all duration-300 ease-out group-hover:w-full" />
-          </Link>
-        </div>
       </div>
 
       {/* Border appears only when scrolled */}
