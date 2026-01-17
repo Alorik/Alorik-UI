@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ArrowRight, Terminal } from "lucide-react";
 import { useRef } from "react";
 import Mid from "./mid";
+import Link from "next/link";
 
 export default function AlorikHero() {
   const containerRef = useRef(null);
@@ -77,12 +78,17 @@ export default function AlorikHero() {
               transition={{ delay: 0.3 }}
               className="flex flex-row items-center gap-4"
             >
-              <button className="h-12 px-8 rounded-full bg-slate-900 text-white font-bold text-sm hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-xl shadow-slate-900/20">
-                <Terminal size={16} /> Get Started
-              </button>
-              <button className="h-12 px-8 rounded-full bg-white border border-slate-200 text-slate-900 font-medium text-sm hover:bg-slate-50 transition-all flex items-center gap-2 shadow-sm hover:shadow-md">
-                View Components
-              </button>
+              <Link href="/documentation">
+                <button className="h-12 px-8 rounded-full bg-slate-900 text-white font-bold text-sm hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-xl shadow-slate-900/20">
+                  <Terminal size={16} /> Get Started
+                </button>
+              </Link>
+              <Link href="/documentation">
+                {" "}
+                <button className="h-12 px-8 rounded-full bg-white border border-slate-200 text-slate-900 font-medium text-sm hover:bg-slate-50 transition-all flex items-center gap-2 shadow-sm hover:shadow-md">
+                  View Components
+                </button>
+              </Link>
             </motion.div>
           </div>
 
