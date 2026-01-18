@@ -19,7 +19,7 @@ Explore live previews, animations, and full source code for every component.
 
 > A glimpse of Alorik UI components in action
 
-![Alorik UI Hero](./public/hero.png)
+![Alorik UI Hero](./public/Hero.png)
 ![Component Preview 1](./public/comp1.png)
 ![Component Preview 2](./public/comp2.png)
 ![Component Preview 3](./public/comp3.png)
