@@ -34,10 +34,6 @@ export default function DocumentLeftSidebar() {
       category: "Components",
       items: [
         {
-          title: "Buttons",
-          subItems: ["Beam Button", "System Button", "StarLight Button"],
-        },
-        {
           title: "Cards",
           subItems: [
             "ClipPath Card",
@@ -47,6 +43,11 @@ export default function DocumentLeftSidebar() {
             "Expandable Card",
           ],
         },
+        {
+          title: "Buttons",
+          subItems: ["Beam Button", "System Button", "StarLight Button"],
+        },
+
         {
           title: "Background",
           subItems: ["Particles Background"],
