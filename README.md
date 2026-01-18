@@ -1,36 +1,154 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ✨ Alorik UI
 
-## Getting Started
+**Alorik UI** is a modern, animation-driven UI toolkit built for developers who care about **craft, motion, and control**.
 
-First, run the development server:
+It’s not a packaged component library.  
+It’s a **collection of thoughtfully designed, production-ready components** that you copy, customize, and truly own.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🌐 Live Documentation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+👉 **https://alorik-ui.vercel.app/documentation**
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Explore live previews, animations, and full source code for every component.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🖼 Preview
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> A glimpse of Alorik UI components in action
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+![Alorik UI Hero](./Hero.png)
+![Card Components](./comp1.png)
+(./comp2.png)
+(./comp3.png)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🚀 What is Alorik UI?
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Alorik UI is a growing set of **interactive UI components** built with:
+
+- **React**
+- **Next.js (App Router)**
+- **Tailwind CSS**
+- **Framer Motion**
+
+Every component is designed to feel **alive** — subtle motion, tactile feedback, and polished interactions by default.
+
+---
+
+## ❌ Not a Traditional Component Library
+
+Alorik UI is **NOT** published as an npm package.
+
+There is:
+- ❌ No dependency lock-in
+- ❌ No black-box abstractions
+- ❌ No forced design opinions
+
+Instead:
+
+✅ You **copy the component code**  
+✅ Paste it into your project  
+✅ Modify styles, motion, and structure freely  
+
+The components become **part of your codebase**, not an external dependency.
+
+---
+
+## 🧠 Philosophy
+
+- Design first, but developer-friendly
+- Motion should feel intentional, not flashy
+- Customization over configuration
+- Readable code over clever abstractions
+
+Alorik UI is meant to be a **foundation**, not a cage.
+
+---
+
+## 🧩 Components
+
+### Buttons
+- Beam Button
+- Starlight Button
+- Spotlight Button
+- Move / Scale Button
+
+### Cards
+- Hovered Card (focus + dim others)
+- Stacked Card (depth-based interaction)
+- Graceful Card
+- Expandable Cards
+
+### Navigation
+- Floating Navigation
+- Breadcrumbs
+- Sidebar & Reveal Nav
+
+### Visuals & Effects
+- Cursor Followers
+- Clip-path Reveal Cards
+- Particle Backgrounds
+- Grid & Spotlight Effects
+
+---
+
+## 📂 Documentation Structure
+
+```txt
+/documentation
+  /components
+    /button
+    /card
+    /navigation
+    /background
+
+
+    Each component includes:
+	•	Live preview
+	•	Copy-paste ready code
+	•	Usage example
+	•	Motion & styling logic
+
+⸻
+
+🛠 Tech Stack
+	•	Next.js
+	•	React
+	•	TypeScript
+	•	Tailwind CSS
+	•	Framer Motion
+	•	Lucide Icons
+
+⸻
+
+💬 Personal Contact (Discord)
+
+This is a personal project, not a community server.
+
+👉 https://discord.com/users/YOUR_USER_ID
+
+(Send a friend request to DM)
+
+⸻
+
+📜 License
+
+MIT — free to use in personal and commercial projects.
+
+⸻
+
+⭐ Support
+
+If Alorik UI helped you:
+	•	⭐ Star the repo
+	•	🔁 Share it with other developers
+	•	🧩 Build something beautiful with it
+
+⸻
+
+Built with care by Nitin Kirola
+Crafting interfaces that feel alive.
