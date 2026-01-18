@@ -19,10 +19,10 @@ Explore live previews, animations, and full source code for every component.
 
 > A glimpse of Alorik UI components in action
 
-![Alorik UI Hero](./Hero.png)
-![Card Components](./comp1.png)
-(./comp2.png)
-(./comp3.png)
+![Alorik UI Hero](/Hero.png)
+![Card Components](/comp1.png)
+!(./comp2.png)
+!(./comp3.png)
 
 ---
 
