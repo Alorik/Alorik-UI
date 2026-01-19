@@ -1,49 +1,49 @@
 "use client";
 
-import GracefulHoverCard from "@/components-ui/Card/GracefulCard";
-
 import InputComponent from "@/components-ui/Input/InputComponent";
 import SlideButton from "@/components-ui/Button/SlideUpButton";
-
 import CursorFollower from "@/components-ui/cursor/CursorFollower";
-import ClipPath from "@/components-ui/Card/clipPath";
 import StackCard from "@/components-ui/Card/StackedCard";
 
 export default function ShowcaseComponents() {
   return (
-    <div className="min-h-screen flex-col container justify-center items-center py-12">
-      <div>
-        <h1 className="text-gray-800 text-3xl font-medium tracking-tight">
+    <section className="w-full py-16 px-4 sm:px-6 lg:px-8">
+      {/* Header */}
+      <div className="max-w-3xl mx-auto text-center mb-12">
+        <h1 className="text-slate-900 text-2xl sm:text-3xl md:text-4xl font-semibold tracking-tight">
           Simply copy and paste the code
         </h1>
-        <p className="text-gray-600 text-lg max-w-lg">
-          Copy paste the code to standout your projects. It&apos;s Efficient,
-          Easy.
+        <p className="mt-3 text-slate-600 text-base sm:text-lg">
+          Copy-paste components to instantly elevate your UI.
+          <br className="hidden sm:block" />
+          Efficient, elegant, and easy to integrate.
         </p>
       </div>
-      <div className="grid grid-cols-2 gap-6 mt-5 max-w-7xl mx-auto p-6">
+
+      {/* Grid */}
+      <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Left Column */}
         <div className="space-y-6">
-          <div className="rounded-3xl bg-gray-150 p-12 shadow-2xl border border-slate-100 min-h-[300px] flex items-center justify-center">
-<StackCard />
+          <div className="rounded-3xl bg-slate-50 p-6 sm:p-10 lg:p-12 shadow-xl border border-slate-100 min-h-[260px] sm:min-h-[300px] flex items-center justify-center">
+            <StackCard />
           </div>
 
-          <div className="rounded-3xl bg-gray-950 p-12 shadow-2xl border border-slate-700 min-h-[215px] flex items-center justify-center">
+          <div className="rounded-3xl bg-slate-950 p-6 sm:p-10 lg:p-12 shadow-xl border border-slate-800 min-h-[200px] sm:min-h-[240px] flex items-center justify-center">
             <InputComponent />
           </div>
         </div>
 
         {/* Right Column */}
         <div className="space-y-6">
-          <div className="rounded-3xl bg-gray-950 p-12 shadow-2xl border border-slate-800 min-h-[400px] flex items-center justify-center">
+          <div className="rounded-3xl bg-slate-950 p-6 sm:p-10 lg:p-12 shadow-xl border border-slate-800 min-h-[280px] sm:min-h-[360px] flex items-center justify-center">
             <SlideButton />
           </div>
 
-          <div className="rounded-3xl bg-gray-150 p-12 shadow-2xl border border-slate-100 min-h-[300px] flex items-center justify-center">
+          <div className="rounded-3xl bg-slate-50 p-6 sm:p-10 lg:p-12 shadow-xl border border-slate-100 min-h-[260px] sm:min-h-[300px] flex items-center justify-center">
             <CursorFollower />
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 }
