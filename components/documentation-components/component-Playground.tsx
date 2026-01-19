@@ -28,26 +28,31 @@ export default function ComponentPlayground({
   };
 
   return (
-    <section id={id} className="mb-20 scroll-mt-40">
+    <section id={id} className="mb-16 sm:mb-20 scroll-mt-32 sm:scroll-mt-40">
       {/* ================= Sticky Header ================= */}
-      <div className="sticky top-16 z-40 bg-white/80 backdrop-blur-md">
+      <div className="sticky top-14 sm:top-16 z-40 bg-white/80 backdrop-blur-md">
         <div className="pb-4">
-          <h3 className="text-2xl font-bold text-slate-900 tracking-tight">
+          <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
             {title}
           </h3>
-          {description && <p className="mt-2 text-slate-500">{description}</p>}
+          {description && (
+            <p className="mt-2 text-sm sm:text-base text-slate-500 max-w-2xl">
+              {description}
+            </p>
+          )}
         </div>
         <div className="border-b border-slate-200" />
       </div>
 
       {/* ================= Playground ================= */}
-      <div className="mt-6 border border-slate-200 rounded-xl bg-white shadow-sm">
+      <div className="mt-6 border border-slate-200 rounded-xl bg-white shadow-sm overflow-hidden">
         {/* Tabs */}
-        <div className="flex items-center justify-between px-4 py-3 border-b border-slate-100 bg-slate-50/50">
-          <div className="flex bg-slate-200/50 p-1 rounded-lg">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-4 py-3 border-b border-slate-100 bg-slate-50/50">
+          {/* Tab Buttons */}
+          <div className="flex w-full sm:w-auto bg-slate-200/50 p-1 rounded-lg">
             <button
               onClick={() => setActiveTab("preview")}
-              className={`flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-md transition-all ${
+              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-1.5 text-xs font-medium rounded-md transition-all ${
                 activeTab === "preview"
                   ? "bg-white text-slate-900 shadow-sm"
                   : "text-slate-500 hover:text-slate-700"
@@ -58,7 +63,7 @@ export default function ComponentPlayground({
 
             <button
               onClick={() => setActiveTab("code")}
-              className={`flex items-center gap-2 px-3 py-1.5 text-xs font-medium rounded-md transition-all ${
+              className={`flex-1 sm:flex-none flex items-center justify-center gap-2 px-3 py-1.5 text-xs font-medium rounded-md transition-all ${
                 activeTab === "code"
                   ? "bg-white text-slate-900 shadow-sm"
                   : "text-slate-500 hover:text-slate-700"
@@ -68,10 +73,11 @@ export default function ComponentPlayground({
             </button>
           </div>
 
+          {/* Copy Button */}
           {activeTab === "code" && (
             <button
               onClick={handleCopy}
-              className="text-xs text-slate-500 hover:text-indigo-600 transition-colors flex items-center gap-1.5 px-2 py-1 rounded hover:bg-slate-100"
+              className="w-full sm:w-auto text-xs text-slate-500 hover:text-indigo-600 transition-colors flex items-center justify-center gap-1.5 px-3 py-1.5 rounded hover:bg-slate-100"
             >
               {copied ? <Check size={14} /> : <Copy size={14} />}
               {copied ? "Copied" : "Copy Code"}
@@ -80,15 +86,17 @@ export default function ComponentPlayground({
         </div>
 
         {/* Content */}
-        <div className="relative rounded-b-xl overflow-hidden">
+        <div className="relative">
           {activeTab === "preview" ? (
-            <div className="min-h-[320px] flex items-center justify-center p-12 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:20px_20px]">
+            <div className="min-h-[260px] sm:min-h-[320px] flex items-center justify-center p-6 sm:p-12 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:20px_20px]">
               <div className="absolute inset-0 bg-white/30 pointer-events-none" />
-              <div className="relative z-10">{children}</div>
+              <div className="relative z-10 w-full flex justify-center">
+                {children}
+              </div>
             </div>
           ) : (
-            <div className="bg-[#0f1117] p-6 overflow-x-auto min-h-[320px]">
-              <pre className="text-sm font-mono text-slate-300 leading-relaxed">
+            <div className="bg-[#0f1117] p-4 sm:p-6 overflow-x-auto min-h-[260px] sm:min-h-[320px]">
+              <pre className="text-xs sm:text-sm font-mono text-slate-300 leading-relaxed">
                 <code>{code}</code>
               </pre>
             </div>
