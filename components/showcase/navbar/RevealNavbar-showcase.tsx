@@ -10,7 +10,6 @@ export default function RevealNavbarShowcase() {
 
       <div>
         <ComponentPlayground
-          id="RevealNav"
           title="Expandable Card"
           description="A motion-based card system where focus shifts on hover — the active card expands while surrounding cards subtly shrink and fade back."
           code={`import { RevealNavbarShowcase } from "@/components/alorik/card";

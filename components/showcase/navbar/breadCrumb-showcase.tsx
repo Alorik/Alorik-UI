@@ -10,7 +10,6 @@ export default function BreadCrumbNavbarShowcase() {
 
       <div>
         <ComponentPlayground
-          id="breadCrumb"
           title="Breadcrumb Navbar"
           description="A dynamic breadcrumb navigation where items respond to hover focus, subtly guiding attention while maintaining clear navigation context."
           code={`import { BreadCrumb } from "@/components-ui/Navbar";

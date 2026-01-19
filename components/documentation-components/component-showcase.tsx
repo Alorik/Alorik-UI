@@ -14,15 +14,14 @@ import ComponentPlayground from "./component-Playground";
 export default function ComponentShowcase() {
   return (
     <div className="space-y-24">
-      {/* COMPONENTS */}
       <section>
         <h2 className="text-2xl font-bold text-slate-900 mb-6">Components</h2>
         <div className="h-px w-full bg-slate-200 mb-10" />
 
+        {/* Beam Button */}
         <ComponentPlayground
-          id="beambutton"
           title="Beam Button"
-          description="A glowing button with animated beam effects."
+          description="A high-impact call-to-action with a flowing beam animation that draws attention without distraction."
           code={`import { BeamButton } from "@/components/alorik/buttons";
 
 export default function Home() {
@@ -32,10 +31,10 @@ export default function Home() {
           <BeamButton />
         </ComponentPlayground>
 
+        {/* Starlight Button */}
         <ComponentPlayground
-          id="sys"
-          title="System Button"
-          description="A system-style button with subtle interaction."
+          title="Starlight Button"
+          description="A luminous button featuring an endless animated border, inspired by subtle starlight motion."
           code={`import { StarlightButtonDisplay } from "@/components/alorik/buttons";
 
 export default function Home() {
@@ -45,10 +44,10 @@ export default function Home() {
           <StarlightButtonDisplay />
         </ComponentPlayground>
 
+        {/* Scale / Move Button */}
         <ComponentPlayground
-          id="move"
           title="Move Button"
-          description="A button with motion-based hover interaction."
+          description="A motion-driven button that reacts to hover with depth, tilt, and tactile feedback."
           code={`import { ScaleButton } from "@/components/alorik/buttons";
 
 export default function Home() {
@@ -58,10 +57,10 @@ export default function Home() {
           <ScaleButton />
         </ComponentPlayground>
 
+        {/* Input */}
         <ComponentPlayground
-          id="input"
-          title="Input Field"
-          description="A clean, accessible text input component."
+          title="Interactive Input"
+          description="A responsive input field with animated glow feedback that reacts naturally to user interaction."
           code={`import { InputComponent } from "@/components/alorik";
 
 export default function Home() {
@@ -71,10 +70,10 @@ export default function Home() {
           <InputComponent />
         </ComponentPlayground>
 
+        {/* Graceful Card */}
         <ComponentPlayground
-          id="graceful"
-          title="GracefulCard"
-          description="A card with smooth hover reveal animations."
+          title="Graceful Card"
+          description="A refined card component with elegant hover reveals and smooth visual transitions."
           code={`import { GracefulCard } from "@/components/alorik/Card";
 
 export default function Home() {
@@ -84,10 +83,10 @@ export default function Home() {
           <GracefulHoverCard />
         </ComponentPlayground>
 
+        {/* Hovered Card */}
         <ComponentPlayground
-          id="hovercard"
-          title="HoveredCard"
-          description="A card that lifts gently on hover."
+          title="Hovered Card"
+          description="A focus-driven card layout where the active card stands out while others subtly fade and scale down."
           code={`import { HoveredCard } from "@/components/alorik/Card";
 
 export default function Home() {
@@ -97,10 +96,10 @@ export default function Home() {
           <HoveredCard />
         </ComponentPlayground>
 
+        {/* Stacked Card */}
         <ComponentPlayground
-          id="stacked"
-          title="StackedCard"
-          description="A layered card stack with depth."
+          title="Stacked Card"
+          description="A layered card stack that expands on hover, creating depth through motion and spatial separation."
           code={`import { StackedCard } from "@/components/alorik/Card";
 
 export default function Home() {
@@ -110,10 +109,10 @@ export default function Home() {
           <StackCard />
         </ComponentPlayground>
 
+        {/* Cursor Follower */}
         <ComponentPlayground
-          id="cursor"
           title="Cursor Follower"
-          description="A container-scoped custom cursor interaction."
+          description="A container-scoped cursor interaction that responds fluidly to movement and hover context."
           code={`import CursorFollower from "@/components-ui/cursor/CursorFollower";
 
 export default function Home() {

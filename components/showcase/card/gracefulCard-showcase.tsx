@@ -10,7 +10,6 @@ export default function GracefulCardShowcase() {
 
       <div>
         <ComponentPlayground
-          id="graceful Card"
           title="Graceful Card"
           description="An elegant card component that uses subtle motion and layered depth to reveal content gracefully on hover."
           code={`import { GracefulCard } from "@/components/alorik/card";

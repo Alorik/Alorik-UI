@@ -11,7 +11,6 @@ export default function SystemButtonShowcase() {
 
       <div>
         <ComponentPlayground
-          id="system-button"
           title="System Button"
           description="A responsive button that subtly Systems to create a natural, tactile interaction."
           code={`import { SystemButton } from "@/components/alorik/buttons";

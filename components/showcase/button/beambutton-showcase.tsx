@@ -10,7 +10,6 @@ export default function BeamButtonShowcase() {
 
       <div>
         <ComponentPlayground
-          id="beambutton"
           title="Beam Button"
           description="A glowing button with animated beam effects."
           code={`import { BeamButton } from "@/components/alorik/buttons";
