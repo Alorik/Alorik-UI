@@ -10,36 +10,58 @@ import type { ReactNode } from "react";
 interface StarlightButtonProps {
   children: ReactNode;
   onClick?: () => void;
+  className?: string;
 }
 
 /* -------------------------------------------------------------------------- */
 /*                               Button Component                              */
 /* -------------------------------------------------------------------------- */
 
-const StarlightButton = ({ children, onClick }: StarlightButtonProps) => {
+const StarlightButton = ({
+  children,
+  onClick,
+  className = "",
+}: StarlightButtonProps) => {
   return (
     <motion.button
       onClick={onClick}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      className="relative px-7 py-3 rounded-lg text-slate-300 font-medium"
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      className={`
+        relative rounded-lg font-medium text-slate-300
+        bg-transparent overflow-hidden
+
+        px-6 py-2.5 text-sm
+        sm:px-8 sm:py-3 sm:text-base
+        md:px-10 md:py-3.5 md:text-lg
+
+        focus:outline-none focus:ring-2 focus:ring-cyan-400
+        active:scale-95
+
+        ${className}
+      `}
     >
-      <span className="relative z-10 text-slate-300 font-medium">
+      {/* Content */}
+      <span className="relative z-10 flex items-center justify-center whitespace-nowrap">
         {children}
       </span>
 
       {/* Animated Border */}
-      <svg className="absolute inset-0 w-full h-full pointer-events-none">
+      <svg
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        aria-hidden
+      >
         {/* Static border */}
         <rect
           x="1"
           y="1"
           width="99%"
           height="98%"
-          rx="8"
-          ry="8"
+          rx="10"
+          ry="10"
           fill="none"
-          stroke="rgba(255,255,255,0.2)"
+          stroke="rgba(255,255,255,0.18)"
           strokeWidth="1"
         />
 
@@ -49,8 +71,8 @@ const StarlightButton = ({ children, onClick }: StarlightButtonProps) => {
           y="1"
           width="99%"
           height="98%"
-          rx="8"
-          ry="8"
+          rx="10"
+          ry="10"
           fill="none"
           stroke="url(#starlight-gradient)"
           strokeWidth="2"
@@ -59,11 +81,11 @@ const StarlightButton = ({ children, onClick }: StarlightButtonProps) => {
           animate={{
             pathLength: 1,
             opacity: 1,
-            strokeDashoffset: -100,
+            strokeDashoffset: -120,
           }}
           transition={{
             pathLength: {
-              duration: 1.3,
+              duration: 1.4,
               repeat: Infinity,
               ease: "linear",
             },
@@ -95,7 +117,7 @@ const StarlightButton = ({ children, onClick }: StarlightButtonProps) => {
 
 export default function StarlightButtonDisplay() {
   return (
-    <div className="rounded-xl bg-slate-950 flex items-center justify-center p-8">
+    <div className="rounded-xl bg-slate-950 flex items-center justify-center p-6 sm:p-8">
       <StarlightButton onClick={() => console.log("Exploring...")}>
         Explore Universe
       </StarlightButton>
