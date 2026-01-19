@@ -21,12 +21,10 @@ import BreadCrumbNavbarShowcase from "../showcase/navbar/breadCrumb-showcase";
 export default function DocumentationContent() {
   return (
     <div className="min-h-screen bg-white text-slate-900 font-sans selection:bg-gray-100">
-
       <DocsProvider>
         <Navbar />
 
         <div className="flex max-w-screen-2xl mx-auto">
-
           <DocumentLeftSidebar />
 
           <main className="flex-1 min-w-0 pt-20 lg:pt-8 px-8 lg:px-12">
@@ -68,7 +66,7 @@ function ActivePageRenderer() {
       return <FloatingNavShowcase />;
     case "Navbar Reveal":
       return <RevealNavbarShowcase />;
-          case "BreadCrumb Navbar":
+    case "BreadCrumb Navbar":
       return <BreadCrumbNavbarShowcase />;
 
     default:
