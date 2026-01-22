@@ -132,7 +132,6 @@ export default function IntroductionPage() {
                 </div>
               </div>
 
-              {/* Step 3 */}
               <div className="relative flex gap-5">
                 <div className="relative z-10 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-slate-900 border border-slate-900 shadow-sm">
                   <Paintbrush size={18} className="text-white" />
