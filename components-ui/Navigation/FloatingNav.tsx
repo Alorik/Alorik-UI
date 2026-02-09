@@ -49,7 +49,12 @@ export default function FloatingNav() {
       transition={{ duration: 0.35, ease: "easeInOut" }}
       className="z-50"
     >
-      <div className="flex items-center gap-2 px-2 py-2 rounded-full border border-white/10 bg-gray-200 backdrop-blur-xl shadow-2xl shadow-black/50">
+      <div
+        className="flex items-center gap-2 px-2 py-2 rounded-full 
+        border border-white/10 
+        bg-black/70 backdrop-blur-xl 
+        shadow-2xl shadow-black/80"
+      >
         {navItems.map((item) => {
           const isActive = active === item.name;
 
@@ -57,15 +62,19 @@ export default function FloatingNav() {
             <button
               key={item.name}
               onClick={() => setActive(item.name)}
-              className="relative px-4 py-2 text-sm font-medium rounded-full flex items-center gap-2 transition-colors duration-300"
+              className="relative px-4 py-2 text-sm font-medium rounded-full 
+              flex items-center gap-2 
+              transition-colors duration-300"
               style={{
-                color: isActive ? "#184742" : "black",
+                color: isActive ? "#ffffff" : "#9ca3af",
               }}
             >
               {isActive && (
                 <motion.div
                   layoutId="active-pill"
-                  className="absolute inset-0 bg-gray-400 rounded-full border border-white/5"
+                  className="absolute inset-0 
+                  bg-white/10 rounded-full 
+                  border border-white/20"
                   transition={{
                     type: "spring",
                     stiffness: 200,
