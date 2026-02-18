@@ -30,7 +30,7 @@ export default function ComponentPlayground({
   return (
     <section id={id} className="mb-16 sm:mb-20 scroll-mt-32 sm:scroll-mt-40">
       {/* ================= Sticky Header ================= */}
-      <div className="sticky top-14 sm:top-16 z-40 bg-white/80 backdrop-blur-md">
+      <div className=" sm:top-16  bg-white/80 backdrop-blur-md">
         <div className="pb-4">
           <h3 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
             {title}

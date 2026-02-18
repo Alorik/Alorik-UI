@@ -17,6 +17,7 @@ import ParticlesBackgroundShowcase from "../showcase/background/particleBackgrou
 import FloatingNavShowcase from "../showcase/navbar/floating-navbar-showcase";
 import RevealNavbarShowcase from "../showcase/navbar/RevealNavbar-showcase";
 import BreadCrumbNavbarShowcase from "../showcase/navbar/breadCrumb-showcase";
+import StarlightTimelineShowcase from "../showcase/timeline/StarlightTimeline-showcase";
 
 export default function DocumentationContent() {
   return (
@@ -68,6 +69,8 @@ function ActivePageRenderer() {
       return <RevealNavbarShowcase />;
     case "BreadCrumb Navbar":
       return <BreadCrumbNavbarShowcase />;
+    case "Starlight Timeline":
+      return <StarlightTimelineShowcase />;
 
     default:
       return (
