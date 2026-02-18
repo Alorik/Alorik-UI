@@ -18,6 +18,7 @@ import FloatingNavShowcase from "../showcase/navbar/floating-navbar-showcase";
 import RevealNavbarShowcase from "../showcase/navbar/RevealNavbar-showcase";
 import BreadCrumbNavbarShowcase from "../showcase/navbar/breadCrumb-showcase";
 import StarlightTimelineShowcase from "../showcase/timeline/StarlightTimeline-showcase";
+import JourneyTimelineShowcase from "../showcase/timeline/JourneyTimeline-showcase";
 
 export default function DocumentationContent() {
   return (
@@ -71,6 +72,8 @@ function ActivePageRenderer() {
       return <BreadCrumbNavbarShowcase />;
     case "Starlight Timeline":
       return <StarlightTimelineShowcase />;
+    case "Journey Timeline":
+      return <JourneyTimelineShowcase />;
 
     default:
       return (

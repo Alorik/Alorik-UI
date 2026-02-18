@@ -55,7 +55,7 @@ export default function DocumentLeftSidebar() {
 
         {
           title: "TimeLine",
-          subItems: ["Starlight Timeline"],
+          subItems: ["Starlight Timeline", "Journey Timeline"],
         },
       ],
     },

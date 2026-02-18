@@ -1,8 +1,8 @@
-import StarlightTimeline from "@/components-ui/Timeline/starlight-timeline";
-import StarlightTimelineCode from "@/components/code-snippets/timeline/starlight-timeline-code";
+import Timeline2 from "@/components-ui/Timeline/Journey-timeline";
+import JourneyTimelineCode from "@/components/code-snippets/timeline/journey-timeline-code";
 import ComponentPlayground from "@/components/documentation-components/component-Playground";
 
-export default function StarlightTimelineShowcase() {
+export default function JourneyTimelineShowcase() {
   return (
     <>
       <h2 className="text-2xl font-bold text-slate-900 mb-6">Components</h2>
@@ -10,19 +10,19 @@ export default function StarlightTimelineShowcase() {
 
       <div>
         <ComponentPlayground
-          title="Starlight Timeline"
+          title="Journey Timeline"
           description="A motion-based card system where focus shifts on hover — the active card expands while surrounding cards subtly shrink and fade back."
-          code={`import { StarlightTImeline } from "@/components/alorik/card";
+          code={`import { JourneyTimeline } from "@/components/alorik/card";
                       export default function Home() {
-                        return <StarlightTImeline />;
+                        return <JourneyTimeline />;
                       }`}
         >
-          <StarlightTimeline />
+          <Timeline2 />
         </ComponentPlayground>
       </div>
 
       <div>
-        <StarlightTimelineCode />
+        <JourneyTimelineCode />
       </div>
     </>
   );
