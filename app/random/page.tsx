@@ -1,120 +1,95 @@
-
 "use client";
 
-import { motion } from "framer-motion";
-import { CreditCard, ScanLine, Wifi } from "lucide-react";
+import React from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { Fingerprint, ShieldCheck, Zap } from "lucide-react";
 
 export default function Random() {
+  const x = useMotionValue(0.5);
+  const y = useMotionValue(0.5);
+
+  // Smooth physics
+  const springConfig = { damping: 15, stiffness: 150 };
+  const mouseX = useSpring(x, springConfig);
+  const mouseY = useSpring(y, springConfig);
+
+  // Rotation mapping
+  const rotateX = useTransform(mouseY, [0, 1], [15, -15]);
+  const rotateY = useTransform(mouseX, [0, 1], [-15, 15]);
+
+  // Glare mapping
+  const glareX = useTransform(mouseX, [0, 1], [0, 100]);
+  const glareY = useTransform(mouseY, [0, 1], [0, 100]);
+
+  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+
+    x.set((e.clientX - rect.left) / rect.width);
+    y.set((e.clientY - rect.top) / rect.height);
+  };
+
   return (
-    <div className="flex items-center justify-center h-125 bg-slate-100">
+    <div
+      style={{ perspective: 1000 }}
+      className="min-h-screen bg-slate-950 flex items-center justify-center p-8"
+    >
       <motion.div
-        className="relative w-72 h-44 group perspective-1000"
-        initial="rest"
-        whileHover="hover"
-        animate="rest"
+        onMouseMove={handleMove}
+        onMouseLeave={() => {
+          x.set(0.5);
+          y.set(0.5);
+        }}
+        style={{
+          rotateX,
+          rotateY,
+          transformStyle: "preserve-3d",
+        }}
+        className="relative h-96 w-72 rounded-xl bg-linear-to-br from-slate-900 to-slate-800 border border-slate-700/50 shadow-2xl group"
       >
-
-        {/* -- Card 3: RIGHT (Back Layer - Rose) --- */}
-        <motion.div
-          className="absolute inset-0 rounded-2xl bg-linear-to-br from-rose-500 to-rose-600 shadow-xl border border-rose-400/50 flex flex-col justify-between p-5 text-white z-0"
-          variants={{
-            rest: { x: 0, y: 0, rotate: 0, scale: 0.95, opacity: 0.8 },
-            hover: { x: 80, y: -20, rotate: 20, scale: 1, opacity: 1 },
-          }}
-          transition={{
-            duration: 3.9,
-            type: "spring",
-            stiffness: 200,
-            damping: 35,
-          }}
-          style={{ transformOrigin: "bottom center" }}
+        {/* Parallax Content */}
+        <div
+          style={{ transform: "translateZ(50px)" }}
+          className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center"
         >
-          <div className="flex justify-between items-center opacity-70">
-            <div className="w-8 h-5 rounded bg-white/20" />
-            <Wifi size={18} />
+          <div className="relative w-20 h-20 bg-slate-950 rounded-2xl border border-slate-700 flex items-center justify-center text-cyan-400 shadow-lg mb-6">
+            <Fingerprint size={40} />
+            <div className="absolute inset-0 bg-cyan-500 blur-2xl opacity-20 rounded-full" />
           </div>
-          <div className="space-y-1">
-            <div className="h-2 w-12 rounded bg-white/30" />
-            <div className="h-2 w-24 rounded bg-white/30" />
-          </div>
-        </motion.div>
 
+          {/* subtle */}
+          <h2 className="text-2xl font-bold text-white mb-2">Secure Access</h2>
 
-        {/* -- Card 2: LEFT (Middle Layer - Dark) -- */}
-        <motion.div
-          className="absolute inset-0 rounded-2xl bg-slate-900 shadow-xl border border-slate-700 flex flex-col justify-between p-5 text-slate-200 z-10"
-          variants={{
-            rest: { x: 0, y: 0, rotate: 0, scale: 0.95, opacity: 0.8 },
-            hover: { x: -80, y: -20, rotate: -20, scale: 1, opacity: 1 },
-          }}
-          transition={{
-            duration: 0.5,
-            type: "spring",
-            stiffness: 200,
-            damping: 35,
-          }}
-          style={{ transformOrigin: "bottom center" }}
-        >
-          <div className="flex justify-between items-center text-slate-500">
-            <ScanLine size={20} />
-            <div className="text-xs font-mono tracking-widest">**** 4242</div>
-          </div>
-          <div className="flex justify-between items-end">
-            <div className="h-8 w-12 rounded bg-yellow-600/20 border border-yellow-600/50" />
-          </div>
-        </motion.div>
+          <p className="text-slate-400 text-sm mb-6">
+            Biometric encryption enabled.
+          </p>
 
-        
-        {/* -- Card 1: UP (Front Layer - White/Clean) -- */}
-        <motion.div
-          className="absolute inset-0 rounded-2xl bg-white shadow-2xl border border-slate-100 flex flex-col justify-between p-6 z-20"
-          variants={{
-            rest: { y: 0, scale: 1 },
-            hover: { y: -50, scale: 1.05 },
-          }}
-          transition={{
-            duration: 0.4,
-            type: "spring",
-            stiffness: 300,
-            damping: 35,
-          }}
-        >
-          {/* Header */}
-          <div className="flex justify-between items-start">
-            <div className="flex items-center gap-2">
-              <div className="p-2 bg-slate-50 text-slate-600 rounded-lg">
-                <CreditCard size={20} />
+          <div className="flex gap-4 w-full">
+            {[
+              { Icon: ShieldCheck, label: "Verified" },
+              { Icon: Zap, label: "Active" },
+            ].map(({ Icon, label }) => (
+              <div
+                key={label}
+                className="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg bg-slate-950/50 border border-slate-700/50 text-xs font-medium text-slate-300"
+              >
+                <Icon size={12} className="text-cyan-400" />
+                {label}
               </div>
-              <div>
-                <h3 className="text-sm font-bold text-slate-900">Main Card</h3>
-                <p className="text-[10px] text-slate-500 font-medium">
-                  Active Status
-                </p>
-              </div>
-            </div>
-            <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
+            ))}
           </div>
+        </div>
 
-          {/* Body */}
-          <div className="space-y-3">
-            <div className="flex justify-between items-end">
-              <span className="text-3xl font-bold text-slate-900 tracking-tight">
-                $8,240.00
-              </span>
-            </div>
-            <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-              <motion.div
-                className="bg-emerald-500 h-full rounded-full"
-                initial={{ width: 0 }}
-                whileInView={{ width: "60%" }}
-                transition={{ delay: 0.4 }}
-              />
-            </div>
-            <div className="flex justify-between text-[10px] font-medium text-slate-400">
-              <span>Limit</span>
-              <span>$12k</span>
-            </div>
-          </div>
+        {/* Glare Layer */}
+        <motion.div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+          <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/10 to-transparent" />
+
+          <motion.div
+            style={{
+              left: useTransform(glareX, (v) => `${v}%`),
+              top: useTransform(glareY, (v) => `${v}%`),
+            }}
+            className="absolute w-[150%] h-[150%] -translate-x-1/2 -translate-y-1/2 bg-radial-gradient from-cyan-400/20 to-transparent blur-2xl"
+          />
         </motion.div>
       </motion.div>
     </div>
