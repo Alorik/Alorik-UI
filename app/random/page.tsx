@@ -1,95 +1,75 @@
-"use client";
+import { FaReact } from "react-icons/fa";
+import { RiNextjsFill } from "react-icons/ri";
+import { TbBrandFramerMotion } from "react-icons/tb";
+import { BiLogoTypescript } from "react-icons/bi";
+import { RiTailwindCssFill } from "react-icons/ri";
+import { ReactNode } from "react";
+import AlorikFeatures from "./midlow";
 
-import React from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
-import { Fingerprint, ShieldCheck, Zap } from "lucide-react";
+interface IconWithTooltipProps {
+  icon: ReactNode;
+  name: string;
+}
 
-export default function Random() {
-  const x = useMotionValue(0.5);
-  const y = useMotionValue(0.5);
-
-  // Smooth physics
-  const springConfig = { damping: 15, stiffness: 150 };
-  const mouseX = useSpring(x, springConfig);
-  const mouseY = useSpring(y, springConfig);
-
-  // Rotation mapping
-  const rotateX = useTransform(mouseY, [0, 1], [15, -15]);
-  const rotateY = useTransform(mouseX, [0, 1], [-15, 15]);
-
-  // Glare mapping
-  const glareX = useTransform(mouseX, [0, 1], [0, 100]);
-  const glareY = useTransform(mouseY, [0, 1], [0, 100]);
-
-  const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    x.set((e.clientX - rect.left) / rect.width);
-    y.set((e.clientY - rect.top) / rect.height);
-  };
-
+export default function Mid() {
   return (
-    <div
-      style={{ perspective: 1000 }}
-      className="min-h-screen bg-slate-950 flex items-center justify-center p-8"
-    >
-      <motion.div
-        onMouseMove={handleMove}
-        onMouseLeave={() => {
-          x.set(0.5);
-          y.set(0.5);
-        }}
-        style={{
-          rotateX,
-          rotateY,
-          transformStyle: "preserve-3d",
-        }}
-        className="relative h-96 w-72 rounded-xl bg-linear-to-br from-slate-900 to-slate-800 border border-slate-700/50 shadow-2xl group"
-      >
-        {/* Parallax Content */}
-        <div
-          style={{ transform: "translateZ(50px)" }}
-          className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center"
-        >
-          <div className="relative w-20 h-20 bg-slate-950 rounded-2xl border border-slate-700 flex items-center justify-center text-cyan-400 shadow-lg mb-6">
-            <Fingerprint size={40} />
-            <div className="absolute inset-0 bg-cyan-500 blur-2xl opacity-20 rounded-full" />
+    <div>
+      <div className="flex flex-col items-center justify-center my-25">
+        <div className="my-5">
+          <div className="bg-linear-to-r from-emerald-300 via-black to-emerald-300 bg-clip-text mb-5">
+            <h1 className="font-medium text-2xl sm:text-3xl md:text-4xl lg:text-5xl leading-[1.05] tracking-[-0.03em] text-center lg:max-w-2xl text-transparent">
+              Craft Interfaces That Feel Alive and Responsive
+            </h1>
           </div>
-
-          {/* subtle */}
-          <h2 className="text-2xl font-bold text-white mb-2">Secure Access</h2>
-
-          <p className="text-slate-400 text-sm mb-6">
-            Biometric encryption enabled.
-          </p>
-
-          <div className="flex gap-4 w-full">
-            {[
-              { Icon: ShieldCheck, label: "Verified" },
-              { Icon: Zap, label: "Active" },
-            ].map(({ Icon, label }) => (
-              <div
-                key={label}
-                className="flex-1 flex items-center justify-center gap-2 py-2 rounded-lg bg-slate-950/50 border border-slate-700/50 text-xs font-medium text-slate-300"
-              >
-                <Icon size={12} className="text-cyan-400" />
-                {label}
-              </div>
-            ))}
+          <div className="bg-linear-to-r from-gray-500 via-black to-gray-500 from-5% via-30% to-55% bg-clip-text">
+            <p className="font-medium text-xl sm:text-xl md:text-xl lg:text-xl leading-[1.05] tracking-[-0.03em] text-center lg:max-w-2xl text-transparent">
+              A modern UI library crafted for developers who care about
+              performance, aesthetics, and motion — all in perfect balance.
+            </p>
           </div>
         </div>
+        <div className="flex gap-4 ">
+          <IconWithTooltip name="React" icon={<FaReact size={40} />} />
 
-        {/* Glare Layer */}
-        <motion.div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/10 to-transparent" />
-          <motion.div
-            style={{
-              left: useTransform(glareX, (v) => `${v}%`),
-              top: useTransform(glareY, (v) => `${v}%`),
-            }}
-            className="absolute w-[150%] h-[150%] -translate-x-1/2 -translate-y-1/2 bg-radial-gradient from-cyan-400/20 to-transparent blur-2xl"
+          <IconWithTooltip name="Next.js" icon={<RiNextjsFill size={40} />} />
+
+          <IconWithTooltip
+            name="Framer Motion"
+            icon={<TbBrandFramerMotion size={40} />}
           />
-        </motion.div>
-      </motion.div>
+
+          <IconWithTooltip
+            name="TypeScript"
+            icon={<BiLogoTypescript size={40} />}
+          />
+
+          <IconWithTooltip
+            name="Tailwind CSS"
+            icon={<RiTailwindCssFill size={40} />}
+          />
+        </div>
+      </div>
+      <AlorikFeatures />
     </div>
   );
 }
+
+const IconWithTooltip = ({ icon, name }: IconWithTooltipProps) => {
+  return (
+    <div className="group relative flex flex-col items-center justify-center cursor-pointer">
+      {/* The Icon (Scale & Color on hover) */}
+      <div className="text-slate-500 transition-all duration-300 group-hover:text-black group-hover:scale-110">
+        {icon}
+      </div>
+
+      {/* The Tooltip (Pop-up Animation) */}
+      <div className="absolute -top-14 left-1/2 -translate-x-1/2 z-20 pointer-events-none opacity-0 scale-75 translate-y-4 transition-all duration-500 cubic-bezier(0.19, 1, 0.22, 1) group-hover:opacity-100 group-hover:scale-100 group-hover:translate-y-0">
+        <div className="relative px-3 py-1.5 bg-slate-900 border border-white/10 text-slate-200 text-xs font-semibold tracking-wide rounded-lg shadow-xl whitespace-nowrap">
+          {name}
+          {/* Little arrow pointing down */}
+          <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-slate-900 border-b border-r border-white/10 rotate-45" />
+        </div>
+      </div>
+    </div>
+  );
+};
