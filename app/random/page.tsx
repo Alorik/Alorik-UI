@@ -23,7 +23,6 @@ export default function Random() {
 
   const handleMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
-
     x.set((e.clientX - rect.left) / rect.width);
     y.set((e.clientY - rect.top) / rect.height);
   };
@@ -82,7 +81,6 @@ export default function Random() {
         {/* Glare Layer */}
         <motion.div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
           <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/10 to-transparent" />
-
           <motion.div
             style={{
               left: useTransform(glareX, (v) => `${v}%`),
