@@ -65,57 +65,6 @@ export default function Random() {
         </motion.div>
 
         
-        {/* -- Card 1: UP (Front Layer - White/Clean) -- */}
-        <motion.div
-          className="absolute inset-0 rounded-2xl bg-white shadow-2xl border border-slate-100 flex flex-col justify-between p-6 z-20"
-          variants={{
-            rest: { y: 0, scale: 1 },
-            hover: { y: -50, scale: 1.05 },
-          }}
-          transition={{
-            duration: 0.4,
-            type: "spring",
-            stiffness: 300,
-            damping: 35,
-          }}
-        >
-          {/* Header */}
-          <div className="flex justify-between items-start">
-            <div className="flex items-center gap-2">
-              <div className="p-2 bg-slate-50 text-slate-600 rounded-lg">
-                <CreditCard size={20} />
-              </div>
-              <div>
-                <h3 className="text-sm font-bold text-slate-900">Main Card</h3>
-                <p className="text-[10px] text-slate-500 font-medium">
-                  Active Status
-                </p>
-              </div>
-            </div>
-            <div className="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
-          </div>
-
-          {/* Body */}
-          <div className="space-y-3">
-            <div className="flex justify-between items-end">
-              <span className="text-3xl font-bold text-slate-900 tracking-tight">
-                $8,240.00
-              </span>
-            </div>
-            <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-              <motion.div
-                className="bg-emerald-500 h-full rounded-full"
-                initial={{ width: 0 }}
-                whileInView={{ width: "60%" }}
-                transition={{ delay: 0.4 }}
-              />
-            </div>
-            <div className="flex justify-between text-[10px] font-medium text-slate-400">
-              <span>Limit</span>
-              <span>$12k</span>
-            </div>
-          </div>
-        </motion.div>
       </motion.div>
     </div>
   );
