@@ -40,29 +40,7 @@ export default function Random() {
         </motion.div>
 
 
-        {/* -- Card 2: LEFT (Middle Layer - Dark) -- */}
-        <motion.div
-          className="absolute inset-0 rounded-2xl bg-slate-900 shadow-xl border border-slate-700 flex flex-col justify-between p-5 text-slate-200 z-10"
-          variants={{
-            rest: { x: 0, y: 0, rotate: 0, scale: 0.95, opacity: 0.8 },
-            hover: { x: -80, y: -20, rotate: -20, scale: 1, opacity: 1 },
-          }}
-          transition={{
-            duration: 0.5,
-            type: "spring",
-            stiffness: 200,
-            damping: 35,
-          }}
-          style={{ transformOrigin: "bottom center" }}
-        >
-          <div className="flex justify-between items-center text-slate-500">
-            <ScanLine size={20} />
-            <div className="text-xs font-mono tracking-widest">**** 4242</div>
-          </div>
-          <div className="flex justify-between items-end">
-            <div className="h-8 w-12 rounded bg-yellow-600/20 border border-yellow-600/50" />
-          </div>
-        </motion.div>
+
 
         
       </motion.div>
