@@ -9,7 +9,7 @@ const BorderBeam = () => {
           y="2"
           width="calc(100% - 4px)"
           height="calc(100% - 4px)"
-          rx="38" // Matches rounded-[2.5rem] (40px) minus padding
+          rx="38" 
           ry="38"
           fill="none"
           stroke="transparent"

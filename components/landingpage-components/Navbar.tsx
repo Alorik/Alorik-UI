@@ -25,6 +25,7 @@ export default function Navbar() {
       <div className="flex justify-between items-center px-4">
         <div className="flex p-4 justify-start items-center gap-8">
           <Link href="/">
+            {/* LOGO */}
             <AlorikLogo />
           </Link>
           <Link
