@@ -24,22 +24,22 @@ export default function ShowcaseComponents() {
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Left Column */}
         <div className="space-y-6">
-          <div className="rounded-3xl bg-slate-50 p-6 sm:p-10 lg:p-12 shadow-xl border border-slate-100 min-h-[260px] sm:min-h-[300px] flex items-center justify-center">
+          <div className="rounded-3xl bg-slate-50 p-6 sm:p-10 lg:p-12 shadow-xl border border-slate-100 min-h-65 sm:min-h-75 flex items-center justify-center">
             <StackCard />
           </div>
 
-          <div className="rounded-3xl bg-slate-950 p-6 sm:p-10 lg:p-12 shadow-xl border border-slate-800 min-h-[200px] sm:min-h-[240px] flex items-center justify-center">
+          <div className="rounded-3xl bg-slate-950 p-6 sm:p-10 lg:p-12 shadow-xl border border-slate-800 min-h-50 sm:min-h-60 flex items-center justify-center">
             <InputComponent />
           </div>
         </div>
 
         {/* Right Column */}
         <div className="space-y-6">
-          <div className="rounded-3xl bg-slate-950 p-6 sm:p-10 lg:p-12 shadow-xl border border-slate-800 min-h-70 sm:min-h-[360px] flex items-center justify-center">
+          <div className="rounded-3xl bg-slate-950 p-6 sm:p-10 lg:p-12 shadow-xl border border-slate-800 min-h-70 sm:min-h-90 flex items-center justify-center">
             <SlideButton />
           </div>
 
-          <div className="rounded-3xl bg-slate-50 p-6 sm:p-10 lg:p-12 shadow-xl border border-slate-100 min-h-[260px] sm:min-h-[300px] flex items-center justify-center">
+          <div className="rounded-3xl bg-slate-50 p-6 sm:p-10 lg:p-12 shadow-xl border border-slate-100 min-h-65 sm:min-h-75 flex items-center justify-center">
             <CursorFollower />
           </div>
         </div>
