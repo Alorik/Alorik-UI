@@ -35,7 +35,7 @@ export default function ShowcaseComponents() {
 
         {/* Right Column */}
         <div className="space-y-6">
-          <div className="rounded-3xl bg-slate-950 p-6 sm:p-10 lg:p-12 shadow-xl border border-slate-800 min-h-[280px] sm:min-h-[360px] flex items-center justify-center">
+          <div className="rounded-3xl bg-slate-950 p-6 sm:p-10 lg:p-12 shadow-xl border border-slate-800 min-h-70 sm:min-h-[360px] flex items-center justify-center">
             <SlideButton />
           </div>
 
