@@ -117,7 +117,7 @@ const features = [
     bgContent: (
       <>
         <div className="absolute inset-0 opacity-5">
-          <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(16,185,129,0.1)_1px,transparent_1px),linear-gradient(-45deg,rgba(16,185,129,0.1)_1px,transparent_1px)] bg-[size:20px_20px]" />
+          <div className="absolute inset-0 bg-[linear-gradient(45deg,rgba(16,185,129,0.1)_1px,transparent_1px),linear-gradient(-45deg,rgba(16,185,129,0.1)_1px,transparent_1px)] bg-size-[20px_20px]" />
         </div>
         <div className="absolute right-10 top-1/2 -translate-y-1/2 flex gap-3 opacity-30 grayscale transition-all duration-500 group-hover:grayscale-0 group-hover:opacity-70">
           <div className="h-10 px-4 rounded-lg bg-emerald-200/50 border border-emerald-200 flex items-center text-xs font-mono text-emerald-700 shadow-sm">
@@ -186,7 +186,7 @@ export default function AlorikFeatures() {
 
               {/* 1. Ghost Gradient Layer */}
               <div
-                className={`absolute inset-0 bg-gradient-to-br ${feature.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out`}
+                className={`absolute inset-0 bg-linear-to-br ${feature.bgGradient} opacity-0 group-hover:opacity-100 transition-opacity duration-700 ease-out`}
               />
 
               {/* 2. Background Content (Scales on Hover) */}
