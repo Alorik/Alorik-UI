@@ -150,10 +150,10 @@ export default function AlorikFeatures() {
             Philosophy
           </motion.div>
 
-          <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-gradient-to-br from-slate-900 via-slate-700 to-slate-500 mb-8 leading-[0.9]">
+          <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-transparent bg-clip-text bg-linear-to-br from-slate-900 via-slate-700 to-slate-500 mb-8 leading-[0.9]">
             Everything you need. <br />
             <span className="text-slate-400 font-medium">
-              Nothing you don't.
+              Nothing you don&apos;t.
             </span>
           </h2>
 
