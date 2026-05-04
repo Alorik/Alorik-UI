@@ -119,7 +119,7 @@ export default function AlorikHero() {
                 </div>
 
                 {/* Component Slot 2 - Button1 */}
-                <div className="w-full bg-gradient-to-br from-slate-100 to-slate-300 border border-slate-700 rounded-2xl p-6 flex items-center justify-center relative group/slot overflow-hidden">
+                <div className="w-full bg-linear-to-br from-slate-100 to-slate-300 border border-slate-700 rounded-2xl p-6 flex items-center justify-center relative group/slot overflow-hidden">
                   <div className="w-full flex items-center justify-center transform group-hover/slot:scale-105 transition-transform duration-300">
                     <Button1 />
                   </div>
