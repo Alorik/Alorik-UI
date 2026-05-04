@@ -5,7 +5,7 @@ export default function AlorikLogo() {
     <div className="bg-transparent flex flex-col items-start justify-start font-sans selection:bg-emerald-100 ">
       {/* MAIN CONTAINER */}
       <div className="relative group cursor-default select-none flex flex-col items-start">
-        {/* 1. Atmospheric Glow (Subtle Green Shadow) */}
+
 
         {/* 2. LOGO TYPOGRAPHY */}
         <h1 className="relative z-10 flex items-baseline tracking-tighter leading-none cursor-pointer">
