@@ -10,7 +10,7 @@ export default function AlorikLogo() {
         {/* 2. LOGO TYPOGRAPHY */}
         <h1 className="relative z-10 flex items-baseline tracking-tighter leading-none cursor-pointer">
           {/* 'Alorik' - Dark Chrome Gradient */}
-          <span className="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-b from-neutral-900 via-neutral-700 to-neutral-500 drop-shadow-xl filter contrast-125">
+          <span className="text-2xl font-bold text-transparent bg-clip-text bg-linear-to-b from-neutral-900 via-neutral-700 to-neutral-500 drop-shadow-xl filter contrast-125">
             Alorik
           </span>
 
@@ -20,13 +20,13 @@ export default function AlorikLogo() {
           {/* 'UI' - Deep Emerald Glass */}
           <span className="text-2xl font-bold relative">
             {/* Base Layer: Deep Green to Black-Green */}
-            <span className="text-transparent bg-clip-text bg-gradient-to-b from-slate-900 via-emerald-700 to-slate-950">
+            <span className="text-transparent bg-clip-text bg-linear-to-b from-slate-900 via-emerald-700 to-slate-950">
               UI
             </span>
 
             {/* Top Shine (Subtle reflection) */}
             <span
-              className="absolute inset-0 text-transparent bg-clip-text bg-gradient-to-tr from-white/40 via-transparent to-transparent opacity-100 mix-blend-overlay"
+              className="absolute inset-0 text-transparent bg-clip-text bg-linear-to-tr from-white/40 via-transparent to-transparent opacity-100 mix-blend-overlay"
               aria-hidden="true"
             >
               UI
@@ -34,7 +34,7 @@ export default function AlorikLogo() {
 
             {/* Inner Shadow for depth */}
             <span
-              className="absolute inset-0 text-transparent bg-clip-text bg-gradient-to-t from-black/10 to-transparent mix-blend-multiply"
+              className="absolute inset-0 text-transparent bg-clip-text bg-linear-to-t from-black/10 to-transparent mix-blend-multiply"
               aria-hidden="true"
             >
               UI
