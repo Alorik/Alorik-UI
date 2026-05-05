@@ -109,7 +109,7 @@ export default function AlorikHero() {
                 </div>
 
                 {/* Background Grid inside Card */}
-                <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:20px_20px] opacity-20 pointer-events-none" />
+                <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] bg-size-[20px_20px] opacity-20 pointer-events-none" />
 
                 {/* Component Slot 1 - BeamButton */}
                 <div className="w-full bg-linear-to-br from-slate-200 to-slate-800 border border-slate-300 rounded-2xl p-6 flex items-center justify-center relative group/slot overflow-hidden">
