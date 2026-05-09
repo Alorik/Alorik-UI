@@ -25,7 +25,7 @@ export default function AlorikHero() {
                 "perspective(500px) rotateX(60deg) translateY(-100px) scale(3)",
             }}
           />
-          <div className="absolute top-0 left-0 right-0 h-125 bg-linear-to-b from-indigo-100/40 via-purple-100/20 to-transparent blur-[100px]" />
+          <div className="absolute top-0 left-0 right-0 h-125 grom-indigo-100/40 via-purple-100/20 to-transparent blur-[100px]" />
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-multiply" />
         </div>
 
@@ -54,7 +54,7 @@ export default function AlorikHero() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
-              className="text-4xl md:text-6xl max-w-lg font-bold leading-tight mb-5 text-transparent bg-clip-text bg-gradient-to-br from-slate-900 via-slate-700 to-slate-500"
+              className="text-4xl md:text-6xl max-w-lg font-bold leading-tight mb-5 text-transparent bg-clip-text bg-linear-to-br from-slate-900 via-slate-700 to-slate-500"
             >
               Where aesthetics meet performance
             </motion.p>
