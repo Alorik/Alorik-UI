@@ -25,7 +25,7 @@ export default function AlorikHero() {
                 "perspective(500px) rotateX(60deg) translateY(-100px) scale(3)",
             }}
           />
-          <div className="absolute top-0 left-0 right-0 h-[500px] bg-gradient-to-b from-indigo-100/40 via-purple-100/20 to-transparent blur-[100px]" />
+          <div className="absolute top-0 left-0 right-0 h-125 bg-linear-to-b from-indigo-100/40 via-purple-100/20 to-transparent blur-[100px]" />
           <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-[0.03] mix-blend-multiply" />
         </div>
 
