@@ -78,7 +78,7 @@ export default function Footer() {
   );
 }
 
-// Helper components to keep code clean
+
 function FooterLink({
   href,
   children,
