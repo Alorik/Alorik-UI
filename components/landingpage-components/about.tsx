@@ -19,7 +19,7 @@ export default function AlorikHero() {
         {/* 1. INFINITE GRID BACKGROUND (Light) */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <div
-            className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-size-[40px_40px] [mask-image:radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)]"
+            className="absolute inset-0 bg-[linear-gradient(to_right,#00000008_1px,transparent_1px),linear-gradient(to_bottom,#00000008_1px,transparent_1px)] bg-size-[40px_40px] mask-[radial-gradient(ellipse_80%_50%_at_50%_0%,#000_70%,transparent_100%)]"
             style={{
               transform:
                 "perspective(500px) rotateX(60deg) translateY(-100px) scale(3)",
