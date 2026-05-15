@@ -31,6 +31,7 @@ class Particle {
     if (this.x < 0 || this.x > this.canvasWidth) this.vx *= -1;
     if (this.y < 0 || this.y > this.canvasHeight) this.vy *= -1;
 
+  
     const dx = mouseX - this.x;
     const dy = mouseY - this.y;
     const distance = Math.sqrt(dx * dx + dy * dy);
@@ -139,6 +140,8 @@ export default function ParticlesHero() {
   );
 }
 `;
+
+
 
 export default function ParticlesBackgroundCode() {
   return (
