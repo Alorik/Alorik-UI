@@ -1,5 +1,4 @@
 "use client";
-
 import { motion } from "framer-motion";
 import type { ReactNode } from "react";
 
@@ -14,7 +13,7 @@ interface StarlightButtonProps {
 }
 
 /* -------------------------------------------------------------------------- */
-/*                               Button Component                              */
+/*                               Button Component                             */
 /* -------------------------------------------------------------------------- */
 
 const StarlightButton = ({
@@ -31,11 +30,9 @@ const StarlightButton = ({
       className={`
         relative rounded-lg font-medium text-slate-300
         bg-transparent overflow-hidden
-
         px-6 py-2.5 text-sm
         sm:px-8 sm:py-3 sm:text-base
         md:px-10 md:py-3.5 md:text-lg
-
         focus:outline-none focus:ring-2 focus:ring-cyan-400
         active:scale-95
 
@@ -66,6 +63,7 @@ const StarlightButton = ({
         />
 
         {/* Animated gradient stroke */}
+
         <motion.rect
           x="1"
           y="1"
