@@ -4,9 +4,9 @@ import { useRef, useState } from "react";
 import type { MouseEvent, ReactNode } from "react";
 import { Sparkles } from "lucide-react";
 
-/* -------------------------------------------------------------------------- */
-/*                                   Types                                    */
-/* -------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/*                                  Types                                    */
+/* ------------------------------------------------------------------------- */
 
 interface SpotlightButtonProps {
   children: ReactNode;
@@ -15,7 +15,7 @@ interface SpotlightButtonProps {
 }
 
 /* -------------------------------------------------------------------------- */
-/*                              Spotlight Button                               */
+/*                              Spotlight Button                              */
 /* -------------------------------------------------------------------------- */
 
 const SpotlightButton = ({
@@ -52,7 +52,6 @@ const SpotlightButton = ({
         focus:outline-none focus:ring-2 focus:ring-slate-400
         focus:ring-offset-2 focus:ring-offset-slate-50
         active:scale-95
-
         px-6 py-2.5 text-sm
         sm:px-8 sm:py-3 sm:text-base
         md:px-10 md:py-4 md:text-lg
