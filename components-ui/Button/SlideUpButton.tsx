@@ -8,10 +8,10 @@ interface AgencyButtonProps {
 }
 
 const AgencyButton = ({ children }: AgencyButtonProps) => {
-// slideup button
+  // slideup button
   return (
     <motion.button
-      whileTap={{ scale: 0.97 }}
+      whileTap={{ scale: 0.95 }}
       className="
         group
         relative
@@ -22,7 +22,6 @@ const AgencyButton = ({ children }: AgencyButtonProps) => {
         transition-all duration-300
         hover:border-slate-500
         active:scale-95
-
         px-6 py-2.5 text-sm
         sm:px-8 sm:py-3 sm:text-base
         md:px-10 md:py-3.5 md:text-lg
