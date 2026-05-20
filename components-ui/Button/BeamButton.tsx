@@ -30,7 +30,7 @@ export default function BeamButton() {
         "
       >
         {/* Hover glow */}
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500/0 via-cyan-500/10 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute inset-0 rounded-full bg-linear-to-r from-cyan-500/0 via-cyan-500/10 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity" />
 
         {/* Content */}
         <div className="relative flex items-center gap-2 sm:gap-3">
@@ -38,8 +38,8 @@ export default function BeamButton() {
             className="
               font-bold tracking-tight
               bg-clip-text text-transparent
-              bg-gradient-to-r from-slate-400 via-white to-slate-400
-              bg-[length:200%_auto]
+              bg-linear-to-r from-slate-400 via-white to-slate-400
+              bg-size-[200%_auto]
               animate-[beam-slide_2s_linear_infinite]
 
               text-base
@@ -58,7 +58,7 @@ export default function BeamButton() {
               group-hover:text-white
               group-hover:translate-x-1
 
-              sm:size-[20px]
+              sm:size-5
             "
           />
         </div>
