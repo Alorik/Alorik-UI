@@ -12,7 +12,7 @@ export default function BeamButton() {
           100% { background-position: -200% center; }
         }`}
       </style>
-
+{/* button beam */}
       <button
         className="
           group relative
