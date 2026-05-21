@@ -12,7 +12,6 @@ export default function LandingPage() {
       <AlorikHero />
       <VideoSection />
       <ShowcaseComponents />
-
       <Footer />
     </>
   );
