@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 
 export default function ScaleButton() {
+  // scale-button
   return (
     <div className="flex items-center justify-center w-full px-4">
       <motion.button
