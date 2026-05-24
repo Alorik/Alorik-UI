@@ -20,10 +20,10 @@ export default function BeamButton() {
       </style>
 
       <button className="group relative px-8 py-4 rounded-full bg-slate-900 border border-slate-800 transition-all hover:scale-105 hover:border-slate-700 active:scale-95">
-        <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-500/0 via-cyan-500/10 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute inset-0 rounded-full bg-linear-to-r from-cyan-500/0 via-cyan-500/10 to-cyan-500/0 opacity-0 group-hover:opacity-100 transition-opacity" />
 
         <div className="relative flex items-center gap-2">
-          <span className="text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-400 via-white to-slate-400 bg-[length:200%_auto] animate-[beam-slide_2s_linear_infinite]">
+          <span className="text-2xl font-bold tracking-tight bg-clip-text text-transparent bg-linear-to-r from-slate-400 via-white to-slate-400 bg-size-[200%_auto] animate-[beam-slide_2s_linear_infinite]">
             Unlock Potential
           </span>
 
