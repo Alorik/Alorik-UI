@@ -59,7 +59,7 @@ export default function CodeShowCase({
           transition={{ duration: 0.4, ease: [0.04, 0.62, 0.23, 0.98] }} // Smooth bezier
           className="overflow-hidden bg-slate-950 p-5 text-slate-300"
         >
-          <pre className="whitespace-pre-wrap break-words">
+          <pre className="whitespace-pre-wrap wrap-break-word">
             <code className={`language-${language}`}>{code}</code>
           </pre>
         </motion.div>
@@ -71,7 +71,7 @@ export default function CodeShowCase({
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
-              className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-slate-950 to-transparent pointer-events-none"
+              className="absolute inset-x-0 bottom-0 h-24 bg-linear-to-t from-slate-950 to-transparent pointer-events-none"
             />
           )}
         </AnimatePresence>
