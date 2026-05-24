@@ -99,7 +99,7 @@ export default function CodeShowCase({
                 initial={{ opacity: 0, y: -5 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 5 }}
-                className="flex items-center gap-2 "
+                className="flex items-center gap-2"
               >
                 Show More <ChevronDown size={14} />
               </motion.span>
