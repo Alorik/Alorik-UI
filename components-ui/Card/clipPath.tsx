@@ -11,7 +11,7 @@ import { ArrowUpRight, Code, Figma } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 /* -------------------------------------------------------------------------- */
-/* Types                                    */
+/* Types     clippath                                */
 /* -------------------------------------------------------------------------- */
 
 type Theme = "cyan" | "lime" | "rose";
