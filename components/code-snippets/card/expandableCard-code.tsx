@@ -103,7 +103,7 @@ const ExpandableCards = () => {
                   {item.title}
                 </h3>
 
-                <p className="text-sm text-slate-400 leading-relaxed max-w-[200px]">
+                <p className="text-sm text-slate-400 leading-relaxed max-w-50">
                   {item.description}
                 </p>
               </motion.div>
@@ -114,7 +114,7 @@ const ExpandableCards = () => {
                 transition={{ duration: 0.3 }}
                 className="absolute inset-0 flex items-center justify-center"
               >
-                <h3 className="rotate-[-90deg] whitespace-nowrap text-xl font-light text-slate-500 tracking-widest">
+                <h3 className="-rotate-90 whitespace-nowrap text-xl font-light text-slate-500 tracking-widest">
                   {item.title}
                 </h3>
               </motion.div>
