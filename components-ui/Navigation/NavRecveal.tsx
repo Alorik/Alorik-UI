@@ -166,7 +166,7 @@ export default function NavReveal() {
               : "#1e293b",
           }}
         >
-          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-transparent to-transparent" />
+          <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_center,var(--tw-gradient-stops))] from-white via-transparent to-transparent" />
 
           {hoveredProject && (
             <motion.div

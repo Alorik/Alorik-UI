@@ -77,15 +77,15 @@ const GracefulCard = ({
     >
       {/* Background gradient layer */}
       <div
-        className={`absolute inset-0 bg-gradient-to-br ${accentColor} opacity-50 transition-transform duration-700 group-hover:scale-110`}
+        className={`absolute inset-0 bg-linear-to-br ${accentColor} opacity-50 transition-transform duration-700 group-hover:scale-110`}
       />
 
       {/* Subtle noise / blur overlay */}
-      <div className="absolute inset-0 opacity-5 bg-gradient-to-br from-white/10 via-transparent to-white/10 backdrop-blur-3xl" />
+      <div className="absolute inset-0 opacity-5 bg-linear-to-br from-white/10 via-transparent to-white/10 backdrop-blur-3xl" />
 
       {/* Content */}
       <div className="absolute inset-0 flex flex-col justify-end p-6">
-        <div className="mb-4 h-px w-full bg-gradient-to-r from-slate-500/30 to-transparent" />
+        <div className="mb-4 h-px w-full bg-linear-to-r from-slate-500/30 to-transparent" />
 
         <motion.div variants={slideUp} transition={{ duration: 0.4 }}>
           <span className="text-xl uppercase tracking-widest text-slate-400">
@@ -109,7 +109,7 @@ const GracefulCard = ({
       </div>
 
       {/* Animated top shimmer */}
-      <div className="absolute top-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full transition-transform duration-1000 group-hover:translate-x-full" />
+      <div className="absolute top-0 left-0 h-px w-full bg-linear-to-r from-transparent via-white/50 to-transparent -translate-x-full transition-transform duration-1000 group-hover:translate-x-full" />
     </motion.div>
   );
 };

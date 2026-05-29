@@ -89,7 +89,7 @@ export default function InputComponent() {
           whileHover={{ scale: 1.05 }}
           whileFocus={{ scale: 1.08 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
-          className="min-w-[300px] rounded-lg border-2 border-gray-600 bg-black px-6 py-3 text-lg text-white shadow-2xl outline-none placeholder-gray-400 backdrop-blur-md"
+          className="min-w-75 rounded-lg border-2 border-gray-600 bg-black px-6 py-3 text-lg text-white shadow-2xl outline-none placeholder-gray-400 backdrop-blur-md"
         />
       </div>
     </div>

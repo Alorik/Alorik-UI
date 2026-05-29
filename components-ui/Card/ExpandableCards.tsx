@@ -71,7 +71,7 @@ const ExpandableCards = () => {
           layout
           className={`relative cursor-pointer overflow-hidden rounded-2xl border border-slate-800 ${
             item.color
-          } ${activeId === item.id ? "flex-[3]" : "flex-[1]"}`}
+          } ${activeId === item.id ? "flex-3" : "flex-1"}`}
           transition={{
             layout: {
               duration: 0.4,
@@ -81,7 +81,7 @@ const ExpandableCards = () => {
             },
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent" />
 
           <div className="absolute inset-0 flex flex-col justify-end p-6">
             {activeId === item.id ? (
@@ -101,7 +101,7 @@ const ExpandableCards = () => {
                   {item.title}
                 </h3>
 
-                <p className="text-sm text-slate-200 leading-relaxed max-w-[200px]">
+                <p className="text-sm text-slate-200 leading-relaxed max-w-50">
                   {item.description}
                 </p>
               </motion.div>
@@ -112,7 +112,7 @@ const ExpandableCards = () => {
                 transition={{ duration: 0.3 }}
                 className="absolute inset-0 flex items-center justify-center"
               >
-                <h3 className="rotate-[-90deg] whitespace-nowrap text-xl font-light text-slate-100 tracking-widest">
+                <h3 className="-rotate-90 whitespace-nowrap text-xl font-light text-slate-100 tracking-widest">
                   {item.title}
                 </h3>
               </motion.div>

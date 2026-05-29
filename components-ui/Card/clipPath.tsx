@@ -176,7 +176,7 @@ const ClipPathCard = ({
 
 export default function ClipPath() {
   return (
-    <div className="bg-slate-150 flex flex-col md:flex-row items-center justify-center p-8 gap-8 rounded-xl w-full min-h-[500px]">
+    <div className="bg-slate-150 flex flex-col md:flex-row items-center justify-center p-8 gap-8 rounded-xl w-full min-h-125">
       <ClipPathCard
         title="Frontend"
         subtitle="Development"

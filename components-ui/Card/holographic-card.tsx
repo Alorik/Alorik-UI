@@ -44,7 +44,7 @@ export default function HolographicCard() {
           rotateY,
           transformStyle: "preserve-3d",
         }}
-        className="relative h-96 w-72 rounded-xl bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700/50 shadow-2xl group"
+        className="relative h-96 w-72 rounded-xl bg-linear-to-br from-slate-900 to-slate-800 border border-slate-700/50 shadow-2xl group"
       >
         {/* Parallax Content */}
         <div
@@ -80,7 +80,7 @@ export default function HolographicCard() {
 
         {/* Glare Layer */}
         <motion.div className="absolute inset-0 rounded-xl overflow-hidden pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-          <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/10 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-tr from-transparent via-white/10 to-transparent" />
 
           <motion.div
             style={{
