@@ -40,7 +40,7 @@ export default function ScaleButton() {
             group-hover:scale-110
           "
         >
-          click me!!
+          click me
         </span>
       </motion.button>
     </div>
