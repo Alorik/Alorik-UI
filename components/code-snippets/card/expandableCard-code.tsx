@@ -73,7 +73,7 @@ const ExpandableCards = () => {
           layout
           className={\`relative cursor-pointer overflow-hidden rounded-2xl border border-slate-800 \${
             item.color
-          } \${activeId === item.id ? "flex-[3]" : "flex-[1]"}\`}
+          } \${activeId === item.id ? "flex-3" : "flex-1"}\`}
           transition={{
             layout: {
               duration: 0.4,
