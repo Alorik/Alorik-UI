@@ -12,6 +12,7 @@ export default function StackedCards() {
         whileHover="hover"
         animate="rest"
       >
+        
         {/* --- Card 3: RIGHT (Back Layer - Rose) --- */}
         <motion.div
           className="absolute inset-0 rounded-2xl bg-linear-to-br from-rose-500 to-rose-600 shadow-xl border border-rose-400/50 flex flex-col justify-between p-5 text-white z-0"
@@ -37,7 +38,8 @@ export default function StackedCards() {
           </div>
         </motion.div>
 
-        {/* --- Card 2: LEFT (Middle Layer - Dark) --- */}
+
+        {/* --- Card 2: LEFT (Middle Layer - Dark) -- */}
         <motion.div
           className="absolute inset-0 rounded-2xl bg-slate-900 shadow-xl border border-slate-700 flex flex-col justify-between p-5 text-slate-200 z-10"
           variants={{
@@ -61,7 +63,8 @@ export default function StackedCards() {
           </div>
         </motion.div>
 
-        {/* --- Card 1: UP (Front Layer - White/Clean) --- */}
+        
+        {/* --- Card 1: UP (Front Layer - White/Clean) -- */}
         <motion.div
           className="absolute inset-0 rounded-2xl bg-white shadow-2xl border border-slate-100 flex flex-col justify-between p-6 z-20"
           variants={{
