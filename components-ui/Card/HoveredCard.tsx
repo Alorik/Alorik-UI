@@ -48,7 +48,6 @@ const Card = ({ item, index, hovered, setHovered }:CardProps) => {
       }}
       transition={{ duration: 0.3 }}
     >
-      {/* blue layer */}
       <div
         className={`absolute -right-4 -top-4 h-32 w-32 rounded-full ${item.color} opacity-20 blur-3xl`}
       />
