@@ -55,7 +55,8 @@ export default function HolographicCard() {
             <Fingerprint size={40} />
             <div className="absolute inset-0 bg-cyan-500 blur-2xl opacity-20 rounded-full" />
           </div>
-
+          
+          {/* subtle */}
           <h2 className="text-2xl font-bold text-white mb-2">Secure Access</h2>
 
           <p className="text-slate-400 text-sm mb-6">
