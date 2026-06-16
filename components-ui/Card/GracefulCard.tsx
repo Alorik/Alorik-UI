@@ -106,16 +106,15 @@ const GracefulCard = ({
           </motion.div>
         </motion.div>
       </div>
-
       {/*  top shimmer */}
       <div className="absolute top-0 left-0 h-px w-full bg-linear-to-r from-transparent via-white/50 to-transparent -translate-x-full transition-transform duration-1000 group-hover:translate-x-full" />
     </motion.div>
   );
 };
 
-/* -------------------------------------------------------------------------- */
-/*                                   Demo                                     */
-/* -------------------------------------------------------------------------- */
+/* ------------------------------------------------------------------------- */
+/*                                   Demo                                    */
+/* ------------------------------------------------------------------------- */
 
 export default function GracefulHoverCard() {
   return (
