@@ -11,7 +11,7 @@ import { ArrowUpRight, Code, Figma } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
 /* -------------------------------------------------------------------------- */
-/* Types     clippath                                */
+/*   clippath                                */
 /* -------------------------------------------------------------------------- */
 
 type Theme = "cyan" | "lime" | "rose";
@@ -30,7 +30,7 @@ interface ThemeConfig {
 }
 
 /* -------------------------------------------------------------------------- */
-/* Theme Config                                 */
+/* Theme Config */
 /* -------------------------------------------------------------------------- */
 
 const THEMES: Record<Theme, ThemeConfig> = {
@@ -52,7 +52,7 @@ const THEMES: Record<Theme, ThemeConfig> = {
 };
 
 /* -------------------------------------------------------------------------- */
-/* ClipPath Card                                 */
+/* ClipPath Card */
 /* -------------------------------------------------------------------------- */
 
 const ClipPathCard = ({
@@ -139,7 +139,7 @@ const ClipPathCard = ({
       <motion.div
         className={`absolute inset-0 flex flex-col justify-between p-8 ${activeTheme.bg}`}
         style={{
-          clipPath, // Bind the optimized template directly to style
+          clipPath,
         }}
       >
         <div className="flex justify-between items-start">
@@ -170,9 +170,6 @@ const ClipPathCard = ({
     </div>
   );
 };
-
-/* Demo                                     */
-
 
 export default function ClipPath() {
   return (
