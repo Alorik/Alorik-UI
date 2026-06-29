@@ -74,7 +74,7 @@ export default function CursorFollower() {
         <>
           {/* Small dot */}
           <motion.div
-            className="fixed top-0 left-0 w-2 h-2 bg-black rounded-full pointer-events-none z-[9999] mix-blend-difference"
+            className="fixed top-0 left-0 w-2 h-2 bg-black rounded-full pointer-events-none z-50 mix-blend-difference"
             style={{
               x: mouseX,
               y: mouseY,
@@ -85,7 +85,7 @@ export default function CursorFollower() {
 
           {/* Trailing ring */}
           <motion.div
-            className="fixed top-0 left-0 border border-black rounded-full pointer-events-none z-[9999] mix-blend-difference"
+            className="fixed top-0 left-0 border border-black rounded-full pointer-events-none z-50 mix-blend-difference"
             style={{
               x: ringX,
               y: ringY,
@@ -112,7 +112,7 @@ export default function CursorFollower() {
         <button className="interactive px-8 py-4 bg-black text-white rounded-full font-medium flex items-center gap-2 transition-transform hover:scale-105 active:scale-95">
           Hover Me <ArrowRight size={18} />
         </button>
-
+{/* button */}
         <button className="interactive px-8 py-4 border border-black/20 rounded-full font-medium text-black transition-colors hover:bg-gray-100">
           Secondary Action
         </button>
